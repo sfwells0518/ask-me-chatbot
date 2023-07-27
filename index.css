@@ -1,5 +1,5 @@
 :root {
-  --border-rad-lg: 15px;
+  --border-rad-lg: 12px;
   --medium-light-text: #586e88;
   --light-text: #fcfcfc;
 }
@@ -18,7 +18,7 @@ body {
 }
 
 main {
-  background-color: slategrey;
+  background-color: rgb(230, 230, 230);
   height: 100vh;
   display: flex;
   align-items: center;
