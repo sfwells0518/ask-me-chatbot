@@ -6,7 +6,23 @@ const configuration = new Configuration({
 
 const openai = new OpenAIApi(configuration);
 
+/*async function fetchFactAnswer() {
+  const response = await openai.createCompletion({
+    model: "text-davinci-003",
+    prompt: `Who won Wimbledon in 2001?`,
+    max_tokens: 60
+  });
+  console.log(response.data.choices[0].text.trim());
+}
+fetchFactAnswer();
+*/
+
 const chatbotConversation = document.getElementById("chatbot-conversation");
+
+const conversationArr = [{
+  role: "system",
+  content: "You are a highly knowledgeable assistant that is always happy to help."
+}];
 
 document.addEventListener("submit", (e) => {
   e.preventDefault();
