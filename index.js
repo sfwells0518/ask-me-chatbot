@@ -6,33 +6,24 @@ const configuration = new Configuration({
 
 const openai = new OpenAIApi(configuration);
 
-/*async function fetchFactAnswer() {
-  const response = await openai.createCompletion({
-    model: "text-davinci-003",
-    prompt: `Who won Wimbledon in 2001?`,
-    max_tokens: 60
-  });
-  console.log(response.data.choices[0].text.trim());
-}
-fetchFactAnswer();
-*/
-
 const chatbotConversation = document.getElementById("chatbot-conversation");
 
-const conversationArr = [{
-  role: "system",
-  content: "You are a highly knowledgeable assistant that is always happy to help."
-}];
+const conversationArr = [
+  {
+    role: "system",
+    content: "You are a highly knowledgeable assistant that is always happy to help."
+  }
+];
 
 document.addEventListener("submit", (e) => {
   e.preventDefault();
   const userInput = document.getElementById("user-input");
   conversationArr.push({
     role: "user",
-    content: "userInput.value"
+    content: userInput.value
   });
-
-  const newSpeechBubble = document.getElementById('div');
+  fetchReply(conversationArr);
+  const newSpeechBubble = document.createElement('div');
   newSpeechBubble.classList.add("speech", "speech-human");
   chatbotConversation.appendChild(newSpeechBubble);
   newSpeechBubble.textContent = userInput.value;
@@ -40,18 +31,35 @@ document.addEventListener("submit", (e) => {
   chatbotConversation.scrollTop = chatbotConversation.scrollHeight;
 });
 
+async function fetchReply(conversationArr) {
+  try {
+    const prompt = JSON.stringify(conversationArr);
+    const response = await openai.createChatCompletion({
+      model: "gpt-3.5-turbo",
+      messages: [
+        { "role": "system", "content": "You are a helpful assistant." }, { role: "user", content: prompt }
+      ]
+    });
+    console.log(response.data.choices[0].message);
+  } catch (error) {
+    console.error(error);
+  }
+}
+    
 function renderTypewriterText(text) {
   const newSpeechBubble = document.createElement("div");
   newSpeechBubble.classList.add("speech", "speech-ai", "blinking-cursor");
   chatbotConversation.appendChild(newSpeechBubble);
   let i = 0;
-  const interval = setInterval(() => {
-    newSpeechBubble.textContent += text.slice(i - 1, i);
+  function animate() {
+    newSpeechBubble.textContent = newSpeechBubble.textContent + text.slice(i - 1, i);
     if (text.length === i) {
-      clearInterval(interval);
-      newSpeechBubble.classList.remove("blinking-cursos");
+      newSpeechBubble.classList.remove("blinking-cursor");
+      return;
     }
     i++;
     chatbotConversation.scrollTop = chatbotConversation.scrollHeight;
-  }, 50);
+    requestAnimationFrame(animate);
+  }
+  requestAnimationFrame(animate);
 }
