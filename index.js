@@ -36,9 +36,7 @@ async function fetchReply(conversationArr) {
     const prompt = JSON.stringify(conversationArr);
     const response = await openai.createChatCompletion({
       model: "gpt-3.5-turbo",
-      messages: [
-        { "role": "assistant", "content": "You are a helpful assistant." }, { role: "user", content: prompt }
-      ],
+      messages: conversationArr,
       presence_penalty: 0,
       frequency_penalty: 0.3
     });
