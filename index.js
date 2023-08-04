@@ -38,7 +38,9 @@ async function fetchReply(conversationArr) {
       model: "gpt-3.5-turbo",
       messages: [
         { "role": "assistant", "content": "You are a helpful assistant." }, { role: "user", content: prompt }
-      ]
+      ],
+      presence_penalty: 0,
+      frequency_penalty: 0.3
     });
     conversationArr.push(response.data.choices[0].message);
     renderTypewriterText(response.data.choices[0].message.content);
