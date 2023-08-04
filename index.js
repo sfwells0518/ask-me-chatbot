@@ -37,10 +37,11 @@ async function fetchReply(conversationArr) {
     const response = await openai.createChatCompletion({
       model: "gpt-3.5-turbo",
       messages: [
-        { "role": "system", "content": "You are a helpful assistant." }, { role: "user", content: prompt }
+        { "role": "assistant", "content": "You are a helpful assistant." }, { role: "user", content: prompt }
       ]
     });
-    console.log(response.data.choices[0].message);
+    conversationArr.push(response.data.choices[0].message);
+    renderTypewriterText(response.data.choices[0].message.content);
   } catch (error) {
     console.error(error);
   }
