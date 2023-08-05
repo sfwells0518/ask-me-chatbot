@@ -1,6 +1,6 @@
 import { Configuration, OpenAIApi } from "openai";
 import { initializeApp } from 'firebase/app'; 
-import { getDatabase, ref } from 'firebase/database';
+import { getDatabase, ref, push, get } from 'firebase/database';
 
 const configuration = new Configuration({
   apiKey: import.meta.env.VITE_OpenAI_API_KEY,
@@ -20,21 +20,20 @@ const openai = new OpenAIApi(configuration);
 
 const chatbotConversation = document.getElementById("chatbot-conversation");
 
-const conversationArr = [
+const instructionObj = 
   {
     role: "system",
     content: "You are an enthusiastic, yet knowledgeable assistant that is always happy to help, but gives short and concise responses. "
-  }
-];
+  };
 
 document.addEventListener("submit", (e) => {
   e.preventDefault();
   const userInput = document.getElementById("user-input");
-  conversationArr.push({
+  push(conversationInDb, {
     role: "user",
     content: userInput.value
   });
-  fetchReply(conversationArr);
+  fetchReply();
   const newSpeechBubble = document.createElement('div');
   newSpeechBubble.classList.add("speech", "speech-human");
   chatbotConversation.appendChild(newSpeechBubble);
@@ -43,20 +42,24 @@ document.addEventListener("submit", (e) => {
   chatbotConversation.scrollTop = chatbotConversation.scrollHeight;
 });
 
-async function fetchReply(conversationArr) {
-  try {
-    const prompt = JSON.stringify(conversationArr);
-    const response = await openai.createChatCompletion({
-      model: "gpt-3.5-turbo",
-      messages: conversationArr,
-      presence_penalty: 0,
-      frequency_penalty: 0.3
-    });
-    conversationArr.push(response.data.choices[0].message);
-    renderTypewriterText(response.data.choices[0].message.content);
-  } catch (error) {
-    console.error(error);
-  }
+function fetchReply() {
+  get(conversationInDb).then(async (snapshot) => {
+    if (snapshot.exists()) {
+      const conversationArr = Object.values(snapshot.val());
+      conversationArr.unshift(instructionObj);
+      const prompt = JSON.stringify(conversationArr);
+      const response = await openai.createChatCompletion({
+        model: "gpt-3.5-turbo",
+        messages: conversationArr,
+        presence_penalty: 0,
+        frequency_penalty: 0.3
+      });
+      conversationArr.push(response.data.choices[0].message);
+      renderTypewriterText(response.data.choices[0].message.content);
+    } else {
+      console.log("No data available");
+    }
+  });
 }
     
 function renderTypewriterText(text) {
