@@ -61,7 +61,7 @@ function fetchReply() {
     }
   });
 }
-    
+
 function renderTypewriterText(text) {
   const newSpeechBubble = document.createElement("div");
   newSpeechBubble.classList.add("speech", "speech-ai", "blinking-cursor");
@@ -79,3 +79,18 @@ function renderTypewriterText(text) {
   }
   requestAnimationFrame(animate);
 }
+
+function renderConversationFromDb() {
+  get(conversationInDb).then((snapshot) => {
+    if (snapshot.exists()) {
+      Object.values(snapshot.val()).forEach((dbObj) => {
+        const newSpeechBubble = document.createElement("div");
+        newSpeechBubble.classList.add("speech", `speech-${dbObj.role === "user" ? "human" : "ai"}`);
+        chatbotConversation.appendChild(newSpeechBubble);
+        newSpeechBubble.textContent = dbObj.content;
+      });
+      chatbotConversation.scrollTop = chatbotConversation.scrollHeight;
+    }
+  });
+}
+renderConversationFromDb();
