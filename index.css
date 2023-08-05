@@ -60,7 +60,7 @@ main {
 .supportId {
   font-size: 10px;
   grid-area: supportId;
-  text-align: right;
+  text-align: center;
 }
 
 .clear-btn {
