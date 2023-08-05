@@ -63,6 +63,16 @@ main {
   text-align: right;
 }
 
+.clear-btn {
+  grid-area: clear-btn;
+  height: 20px;
+  padding: 0;
+  width: 80%;
+  color: var(--medium-light-text);
+  font-size: 12px;
+  margin: 0 auto;
+}
+
 .chatbot-conversation-container {
   max-height: 250px;
   min-height: 250px;

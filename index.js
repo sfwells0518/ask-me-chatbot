@@ -1,6 +1,6 @@
 import { Configuration, OpenAIApi } from "openai";
-import { initializeApp } from "firebase/app";
-import { getDatabase, ref } from "firebase/database";
+import { initializeApp } from 'firebase/app'; 
+import { getDatabase, ref } from 'firebase/database';
 
 const configuration = new Configuration({
   apiKey: import.meta.env.VITE_OpenAI_API_KEY,
