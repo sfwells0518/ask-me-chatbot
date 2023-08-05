@@ -20,11 +20,11 @@ const openai = new OpenAIApi(configuration);
 
 const chatbotConversation = document.getElementById("chatbot-conversation");
 
-const instructionObj = 
-  {
-    role: "system",
-    content: "You are an enthusiastic, yet knowledgeable assistant that is always happy to help, but gives short and concise responses. "
-  };
+const instructionObj = {
+  role: "system",
+  content:
+    "You are an empathetic, compassionate listener offering short and concise positive affirmations and insights to boost moods and self-esteem. ",
+};
 
 document.addEventListener("submit", (e) => {
   e.preventDefault();
