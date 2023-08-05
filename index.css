@@ -45,7 +45,7 @@ main {
   display: grid;
   grid-template-areas: 'logo . .'
     'logo title supportId'
-    'logo subtitle .';
+    'logo subtitle clear-btn';
 }
 
 .chatbot-header>* {
@@ -71,6 +71,12 @@ main {
   color: var(--medium-light-text);
   font-size: 12px;
   margin: 0 auto;
+}
+
+.clear-btn:hover {
+  border: 1px solid #24976f;
+  color: #24976f;
+  cursor: pointer;
 }
 
 .chatbot-conversation-container {
@@ -132,7 +138,7 @@ input[type="text"] {
   border-bottom-right-radius: 0;
 }
 
-button {
+.submit-btn {
   border-left: 0;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
