@@ -11,7 +11,7 @@ const chatbotConversation = document.getElementById("chatbot-conversation");
 const conversationArr = [
   {
     role: "system",
-    content: "You are a highly knowledgeable assistant that is always happy to help."
+    content: "You are an enthusiastic, yet knowledgeable assistant that is always happy to help, but gives short and concise responses. "
   }
 ];
 
