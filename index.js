@@ -1,8 +1,20 @@
 import { Configuration, OpenAIApi } from "openai";
+import { initializeApp } from "firebase/app";
+import { getDatabase, ref } from "firebase/database";
 
 const configuration = new Configuration({
   apiKey: import.meta.env.VITE_OpenAI_API_KEY,
 });
+
+const firebaseConfig = {
+  databaseURL: "https://askme-openai-default-rtdb.firebaseio.com/",
+};
+
+const app = initializeApp(firebaseConfig);
+
+const database = getDatabase(app);
+
+const conversationInDb = ref(database);
 
 const openai = new OpenAIApi(configuration);
 
