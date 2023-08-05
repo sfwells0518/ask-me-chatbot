@@ -1,6 +1,6 @@
 import { Configuration, OpenAIApi } from "openai";
 import { initializeApp } from 'firebase/app'; 
-import { getDatabase, ref, push, get } from 'firebase/database';
+import { getDatabase, ref, push, get, remove } from 'firebase/database';
 
 const configuration = new Configuration({
   apiKey: import.meta.env.VITE_OpenAI_API_KEY,
@@ -79,6 +79,11 @@ function renderTypewriterText(text) {
   }
   requestAnimationFrame(animate);
 }
+
+document.getElementById("clear-btn").addEventListener("click", () => {
+  remove(conversationInDb);
+  chatbotConversation.innerHTML = '<div class="speech speech-ai">Hey! How can I help you?</div>';
+});
 
 function renderConversationFromDb() {
   get(conversationInDb).then((snapshot) => {
