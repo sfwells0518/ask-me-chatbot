@@ -54,7 +54,7 @@ function fetchReply() {
         presence_penalty: 0,
         frequency_penalty: 0.3
       });
-      conversationArr.push(response.data.choices[0].message);
+      push(conversationInDb, response.data.choices[0].message);
       renderTypewriterText(response.data.choices[0].message.content);
     } else {
       console.log("No data available");
