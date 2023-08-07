@@ -32,7 +32,8 @@ main {
   border-radius: var(--border-rad-lg);
   display: flex;
   flex-direction: column;
-  padding: 1em;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .chatbot-container>* {
@@ -52,7 +53,7 @@ main {
   }
 
   .logo {
-    width: 30px;
+    width: 40px;
   }
 
   .supportId {
@@ -92,15 +93,19 @@ main {
   grid-template-areas: 'logo . .'
     'logo title supportId'
     'logo subtitle clear-btn';
+  border-bottom: 2px solid var(--light-text);
+  width: 100%;
+  padding-bottom: 15px;
 }
 
 .chatbot-header>* {
   margin: .11em;
+
 }
 
 .logo {
   grid-area: logo;
-  width: 60px;
+  width: 80px;
 }
 
 .supportId {
@@ -153,12 +158,10 @@ main {
 
 .speech-ai {
   background: #F2C2C2;
-  border-top-left-radius: 0;
 }
 
 .speech-human {
   background: #F5E4Dc;
-  border-top-right-radius: 0;
 }
 
 .chatbot-input-container {
