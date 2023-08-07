@@ -1,5 +1,5 @@
 :root {
-  --border-rad-lg: 12px;
+  --border-rad-lg: 20px;
   --medium-light-text: #586e88;
   --light-text: #fcfcfc;
 }
@@ -28,9 +28,10 @@ main {
 /* chatbot elements */
 
 .chatbot-container {
-  background-color: #16202C;
-  width: 360px;
-  min-height: 380px;
+  background-color: #738678;
+  width: 90%; /* Adjust the width as needed */
+  max-width: 600px; /* Set a maximum width if necessary */
+  min-height: 500px; /* Adjust the minimum height as needed */
   border-radius: var(--border-rad-lg);
   display: flex;
   flex-direction: column;
@@ -39,6 +40,58 @@ main {
 
 .chatbot-container>* {
   padding: .5em;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 767px) {
+  .chatbot-container {
+    width: 90%; /* Adjust the width for mobile */
+    max-width: 400px; /* Set a maximum width if necessary */
+    min-height: 500px; /* Adjust the minimum height for mobile */
+  }
+
+  /* Other responsive changes */
+  .chatbot-header {
+    text-align: center;
+  }
+
+  .logo {
+    width: 30px;
+  }
+
+  .supportId {
+    font-size: 8px;
+  }
+
+  .chatbot-conversation-container {
+    max-height: 250px;
+    min-height: 250px;
+    overflow-y: auto;
+  }
+
+  .chatbot-input-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  input[type="text"],
+  button {
+    width: 100%;
+    border-radius: 15px;
+  }
+
+  .submit-btn {
+    border-radius: 15px;
+    margin-top: 1em;
+  }
+}
+
+/* For screens larger than 768px (desktop devices) */
+@media (min-width: 768px) {
+  .chatbot-container {
+    width: 600px; /* Adjust the width for desktop */
+    min-height: 500px; /* Adjust the minimum height for desktop */
+  }
 }
 
 .chatbot-header {
@@ -54,7 +107,7 @@ main {
 
 .logo {
   grid-area: logo;
-  width: 50px;
+  width: 60px;
 }
 
 .supportId {
@@ -74,8 +127,8 @@ main {
 }
 
 .clear-btn:hover {
-  border: 1px solid #24976f;
-  color: #24976f;
+  border: 1px solid rgb(255, 255, 255);
+  color: #ffffff;
   cursor: pointer;
 }
 
@@ -99,7 +152,7 @@ main {
   padding: 1em;
   margin: 1em auto;
   max-width: 260px;
-  color: var(--light-text);
+  color: #000000;
   min-width: 100%;
   border-radius: var(--border-rad-lg);
 }
@@ -109,12 +162,12 @@ main {
 }
 
 .speech-ai {
-  background: #253b4b;
+  background: #F2C2C2;
   border-top-left-radius: 0;
 }
 
 .speech-human {
-  background: #24976f;
+  background: #F5E4Dc;
   border-top-right-radius: 0;
 }
 
@@ -126,12 +179,12 @@ input[type="text"],
 button {
   background-color: transparent;
   border: 1px solid var(--medium-light-text);
-  border-radius: 15px;
+  border-radius:15px;
   padding: 1em;
 }
 
 input[type="text"] {
-  color: #fcfcfc;
+  color: #000000;
   width: 100%;
   border-right: 0;
   border-top-right-radius: 0;
@@ -159,7 +212,7 @@ h1 {
 
 h2,
 p {
-  color: var(--medium-light-text);
+  color: var(--light-text);
 }
 
 h2 {

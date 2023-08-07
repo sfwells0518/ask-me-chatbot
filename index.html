@@ -1,56 +1,38 @@
 <!doctype html>
 <html>
 
-  <head>
-    <title>Motivate.Mate</title>
-    <link rel="stylesheet" href="index.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-  </head>
+<head>
+  <title>ParentPal</title>
+  <link rel="stylesheet" href="index.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+</head>
 
-  <body>
-    <main>
-      <section class="chatbot-container">
-        <div class="chatbot-header">
-          <img src="/robot-logo.png" class="logo">
-          <h1>Motivate.Mate</h1>
-          <h2>always here to chat</h2>
-          <p class="supportId">User ID: 2344</p>
-          <button class="clear-btn" id="clear-btn">start over</button>
+<body>
+  <main>
+    <section class="chatbot-container">
+      <div class="chatbot-header">
+        <img src="/parentpal-logo.png" class="logo">
+        <h1>Parent.Pal</h1>
+        <h2>First-Time Parenting Partner</h2>
+        <p class="supportId">User ID: 2344</p>
+        <button class="clear-btn" id="clear-btn">start over</button>
+      </div>
+      <div class="chatbot-conversation-container" id="chatbot-conversation">
+        <div class="speech speech-ai">
+          Hey there! What parenting advice can I help with?
         </div>
-        <div class="chatbot-conversation-container" id="chatbot-conversation">
-          <div class="speech speech-ai">
-            Hey, friend! How are you feeling? 
-          </div>
-        </div>
-        <form id="form" class="chatbot-input-container">
-          <input name="user-input" type="text" id="user-input" required>
-          <button id="submit-btn" class="submit-btn">
-            <img 
-            src="/send-btn-icon.png" 
-            lass="send-btn-icon"
-            >
-          </button>
-        </form>
-      </section>
-    </main>
-    <script type="module" src="index.js"></script>
-  </body>
-
-  </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
+      </div>
+      <form id="form" class="chatbot-input-container">
+        <input name="user-input" type="text" id="user-input" required>
+        <button id="submit-btn" class="submit-btn">
+          <img src="/send-btn-icon.png" class="send-btn-icon">
+        </button>
+      </form>
+    </section>
+  </main>
+  <script type="module" src="index.js"></script>
+</body>
 
 </html>
