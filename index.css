@@ -65,8 +65,8 @@ main {
   }
 
   .supportId {
-    font-size: 12px;
-    /* Increased font size for supportId */
+    font-size: 14px;
+    /* Increased font size for supportId on mobile */
   }
 
   .chatbot-conversation-container {
@@ -85,7 +85,7 @@ main {
     width: 100%;
     border-radius: 15px;
     font-size: 16px;
-    /* Increased font size for input and button */
+    /* Increased font size for input and button on mobile */
   }
 
   .submit-btn {
@@ -107,6 +107,32 @@ main {
   .chatbot-input-container {
     position: relative;
     margin-top: auto;
+  }
+
+  /* Font size changes for desktop */
+  .supportId {
+    font-size: 12px;
+    /* Decreased font size for supportId on desktop */
+  }
+
+  .clear-btn {
+    font-size: 14px;
+    /* Increased font size for clear-btn on desktop */
+  }
+
+  .speech {
+    font-size: 20px;
+    /* Increased font size for speech on desktop */
+  }
+
+  h1 {
+    font-size: 20px;
+    /* Increased font size for h1 on desktop */
+  }
+
+  h2 {
+    font-size: 16px;
+    /* Increased font size for h2 on desktop */
   }
 }
 
@@ -131,7 +157,7 @@ main {
 
 .supportId {
   font-size: 14px;
-  /* Increased font size for supportId */
+  /* Increased font size for supportId (fallback for mobile) */
   grid-area: supportId;
   text-align: center;
 }
@@ -144,7 +170,7 @@ main {
   color: #ffffff;
   border: 1px solid #ffffff;
   font-size: 14px;
-  /* Increased font size for clear-btn */
+  /* Increased font size for clear-btn (fallback for mobile) */
   margin: 0 auto;
 }
 
@@ -174,7 +200,7 @@ main {
   min-width: 100%;
   border-radius: var(--border-rad-lg);
   font-size: 18px;
-  /* Increased font size for speech */
+  /* Increased font size for speech (fallback for mobile) */
 }
 
 .speech:first-child {
@@ -201,7 +227,7 @@ button {
   padding: 1em;
   margin-bottom: .5em;
   font-size: 16px;
-  /* Increased font size for input and button */
+  /* Increased font size for input and button (fallback for mobile) */
 }
 
 input[type="text"] {
@@ -227,7 +253,7 @@ input[type="text"] {
 
 h1 {
   font-size: 18px;
-  /* Increased font size for h1 */
+  /* Increased font size for h1 (fallback for mobile) */
   font-weight: 600;
   color: #ffffff;
   grid-area: title;
@@ -240,7 +266,7 @@ p {
 
 h2 {
   font-size: 14px;
-  /* Increased font size for h2 */
+  /* Increased font size for h2 (fallback for mobile) */
   font-weight: 600;
   grid-area: subtitle;
   text-transform: uppercase;
@@ -262,3 +288,4 @@ h2 {
   content: "|";
   font-weight: 700;
 }
+
