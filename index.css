@@ -15,7 +15,8 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Trebuchet MS', sans-serif;
-  font-size: 13px;
+  font-size: 16px;
+  /* Increased base font size to 16px */
 }
 
 main {
@@ -33,20 +34,26 @@ main {
   border-radius: var(--border-rad-lg);
   display: flex;
   flex-direction: column;
-  padding-left: 0;
-  padding-right: 0;
+  padding: 0.5em;
+  width: 90%;
+  height: 90%;
+  max-width: 1250px;
+  min-height: 500px;
 }
 
-.chatbot-container>* {
-  padding: .5em;
+.chatbot-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 /* Media queries for responsiveness */
 @media (max-width: 767px) {
   .chatbot-container {
     width: 90%;
-    max-width: 400px;
     min-height: 500px;
+    height: 90%;
   }
 
   .chatbot-header {
@@ -58,7 +65,8 @@ main {
   }
 
   .supportId {
-    font-size: 8px;
+    font-size: 12px;
+    /* Increased font size for supportId */
   }
 
   .chatbot-conversation-container {
@@ -69,12 +77,15 @@ main {
   .chatbot-input-container {
     flex-direction: column;
     align-items: center;
+    margin-top: auto;
   }
 
   input[type="text"],
   button {
     width: 100%;
     border-radius: 15px;
+    font-size: 16px;
+    /* Increased font size for input and button */
   }
 
   .submit-btn {
@@ -85,7 +96,17 @@ main {
 /* For screens larger than 768px (desktop devices) */
 @media (min-width: 768px) {
   .chatbot-container {
-    width: 600px;
+    width: 90%;
+    height: 90%;
+  }
+
+  .chatbot-content {
+    height: 100%;
+  }
+
+  .chatbot-input-container {
+    position: relative;
+    margin-top: auto;
   }
 }
 
@@ -101,7 +122,6 @@ main {
 
 .chatbot-header>* {
   margin: .11em;
-
 }
 
 .logo {
@@ -110,7 +130,8 @@ main {
 }
 
 .supportId {
-  font-size: 10px;
+  font-size: 14px;
+  /* Increased font size for supportId */
   grid-area: supportId;
   text-align: center;
 }
@@ -122,7 +143,8 @@ main {
   width: 80%;
   color: #ffffff;
   border: 1px solid #ffffff;
-  font-size: 12px;
+  font-size: 14px;
+  /* Increased font size for clear-btn */
   margin: 0 auto;
 }
 
@@ -151,6 +173,8 @@ main {
   color: #000000;
   min-width: 100%;
   border-radius: var(--border-rad-lg);
+  font-size: 18px;
+  /* Increased font size for speech */
 }
 
 .speech:first-child {
@@ -176,10 +200,12 @@ button {
   border-radius: 15px;
   padding: 1em;
   margin-bottom: .5em;
+  font-size: 16px;
+  /* Increased font size for input and button */
 }
 
 input[type="text"] {
-  color: #000000;
+  color: #ffffff;
   width: 100%;
   border-right: 0;
   border-top-right-radius: 0;
@@ -200,7 +226,8 @@ input[type="text"] {
 /* text */
 
 h1 {
-  font-size: 14px;
+  font-size: 18px;
+  /* Increased font size for h1 */
   font-weight: 600;
   color: #ffffff;
   grid-area: title;
@@ -212,7 +239,8 @@ p {
 }
 
 h2 {
-  font-size: 11px;
+  font-size: 14px;
+  /* Increased font size for h2 */
   font-weight: 600;
   grid-area: subtitle;
   text-transform: uppercase;
@@ -233,6 +261,4 @@ h2 {
 .blinking-cursor::after {
   content: "|";
   font-weight: 700;
-  display: inline-block;
-  animation: cursor-blink .5s steps(2) infinite;
 }

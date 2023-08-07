@@ -19,17 +19,19 @@
         <p class="supportId">User ID: 2344</p>
         <button class="clear-btn" id="clear-btn">start over</button>
       </div>
-      <div class="chatbot-conversation-container" id="chatbot-conversation">
-        <div class="speech speech-ai">
-          Hey there! What parenting advice can I help with?
+      <div class="chatbot-content">
+        <div class="chatbot-conversation-container" id="chatbot-conversation">
+          <div class="speech speech-ai">
+            Hey there! What parenting advice can I help with?
+          </div>
         </div>
+        <form id="form" class="chatbot-input-container">
+          <input name="user-input" type="text" id="user-input" required>
+          <button id="submit-btn" class="submit-btn">
+            <img src="/send-btn-icon.png" class="send-btn-icon">
+          </button>
+        </form>
       </div>
-      <form id="form" class="chatbot-input-container">
-        <input name="user-input" type="text" id="user-input" required>
-        <button id="submit-btn" class="submit-btn">
-          <img src="/send-btn-icon.png" class="send-btn-icon">
-        </button>
-      </form>
     </section>
   </main>
   <script type="module" src="index.js"></script>
