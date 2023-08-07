@@ -61,16 +61,12 @@ main {
   }
 
   .logo {
-    width: 40px;
-  }
-
-  .supportId {
-    font-size: 14px;
-    /* Increased font size for supportId on mobile */
+    width: 7em;
+    margin-bottom: -5em;
   }
 
   .chatbot-conversation-container {
-    max-height: 250px;
+    max-height: 500px;
     overflow-y: auto;
   }
 
@@ -107,14 +103,11 @@ main {
   .chatbot-input-container {
     position: relative;
     margin-top: auto;
+    margin-bottom: 1em;
+    /* Add more space between chatbot-input-container and clear-btn */
   }
 
   /* Font size changes for desktop */
-  .supportId {
-    font-size: 12px;
-    /* Decreased font size for supportId on desktop */
-  }
-
   .clear-btn {
     font-size: 14px;
     /* Increased font size for clear-btn on desktop */
@@ -137,13 +130,10 @@ main {
 }
 
 .chatbot-header {
-  display: grid;
-  grid-template-areas: 'logo . .'
-    'logo title supportId'
-    'logo subtitle clear-btn';
+  display: nav;
   border-bottom: 2px solid #CFAD88;
   width: 100%;
-  padding-bottom: 15px;
+  padding-bottom: 1.5em;
 }
 
 .chatbot-header>* {
@@ -151,37 +141,36 @@ main {
 }
 
 .logo {
-  grid-area: logo;
-  width: 80px;
-}
-
-.supportId {
-  font-size: 14px;
-  /* Increased font size for supportId (fallback for mobile) */
-  grid-area: supportId;
-  text-align: center;
+  width: 7em;
+  margin-bottom: -5em;
 }
 
 .clear-btn {
   grid-area: clear-btn;
   height: 20px;
-  padding: 0;
-  width: 80%;
+  padding: .25em;
+  width: 12%;
+  height: 5%;
+  background-color: #000000;
   color: #ffffff;
-  border: 1px solid #ffffff;
-  font-size: 14px;
+  border: 1px solid #000000;
+  font-size: 16px;
   /* Increased font size for clear-btn (fallback for mobile) */
   margin: 0 auto;
+  margin-top: 0;
+  margin-bottom: 1em;
+  /* Add more space between chatbot-input-container and clear-btn */
 }
 
 .clear-btn:hover {
-  border: 1px solid #F5E4Dc;
+  border: 1px solid #CFAD88;
+  background-color: #CFAD88;
   color: #ffffff;
   cursor: pointer;
 }
 
 .chatbot-conversation-container {
-  max-height: 250px;
+  max-height: 815px;
   min-height: 250px;
   overflow-y: scroll;
   margin: 1em 0;
@@ -204,19 +193,25 @@ main {
 }
 
 .speech:first-child {
-  margin-top: 0;
+  margin-top: 2em;
 }
 
 .speech-ai {
   background: #79B2C5;
+  padding-top: 1.25em;
+  padding-bottom: 1.25em;
 }
 
 .speech-human {
   background: #ECE4D6;
+  padding-top: 1.25em;
+  padding-bottom: 1.25em;
 }
 
 .chatbot-input-container {
   display: flex;
+  margin-bottom: 1em;
+  /* Add more space between chatbot-input-container and clear-btn */
 }
 
 input[type="text"],
@@ -236,6 +231,7 @@ input[type="text"] {
   border-right: 0;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
+  outline: none;
 }
 
 .submit-btn {
@@ -245,18 +241,19 @@ input[type="text"] {
 }
 
 .send-btn-icon {
-  width: 20px;
+  width: 25px;
   display: block;
 }
 
 /* text */
 
 h1 {
-  font-size: 18px;
+  font-size: 24px;
+  padding-bottom: .1em;
   /* Increased font size for h1 (fallback for mobile) */
   font-weight: 600;
   color: #ffffff;
-  grid-area: title;
+  text-align: center;
 }
 
 h2,
@@ -265,11 +262,13 @@ p {
 }
 
 h2 {
-  font-size: 14px;
+  text-align: center;
+  font-style: italic;
+  font-size: 20px;
   /* Increased font size for h2 (fallback for mobile) */
-  font-weight: 600;
+  font-weight: 500;
   grid-area: subtitle;
-  text-transform: uppercase;
+
 }
 
 /* The cursor */
@@ -288,4 +287,3 @@ h2 {
   content: "|";
   font-weight: 700;
 }
-
