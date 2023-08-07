@@ -171,9 +171,10 @@ main {
 input[type="text"],
 button {
   background-color: transparent;
-  border: 1px solid var(--medium-light-text);
+  border: 1px solid var(--light-text);
   border-radius: 15px;
   padding: 1em;
+  margin-bottom: .5em;
 }
 
 input[type="text"] {
