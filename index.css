@@ -29,9 +29,6 @@ main {
 
 .chatbot-container {
   background-color: #738678;
-  width: 90%; /* Adjust the width as needed */
-  max-width: 600px; /* Set a maximum width if necessary */
-  min-height: 500px; /* Adjust the minimum height as needed */
   border-radius: var(--border-rad-lg);
   display: flex;
   flex-direction: column;
@@ -45,12 +42,11 @@ main {
 /* Media queries for responsiveness */
 @media (max-width: 767px) {
   .chatbot-container {
-    width: 90%; /* Adjust the width for mobile */
-    max-width: 400px; /* Set a maximum width if necessary */
-    min-height: 500px; /* Adjust the minimum height for mobile */
+    width: 90%;
+    max-width: 400px;
+    min-height: 500px;
   }
 
-  /* Other responsive changes */
   .chatbot-header {
     text-align: center;
   }
@@ -65,7 +61,6 @@ main {
 
   .chatbot-conversation-container {
     max-height: 250px;
-    min-height: 250px;
     overflow-y: auto;
   }
 
@@ -81,7 +76,6 @@ main {
   }
 
   .submit-btn {
-    border-radius: 15px;
     margin-top: 1em;
   }
 }
@@ -89,8 +83,7 @@ main {
 /* For screens larger than 768px (desktop devices) */
 @media (min-width: 768px) {
   .chatbot-container {
-    width: 600px; /* Adjust the width for desktop */
-    min-height: 500px; /* Adjust the minimum height for desktop */
+    width: 600px;
   }
 }
 
@@ -121,13 +114,14 @@ main {
   height: 20px;
   padding: 0;
   width: 80%;
-  color: var(--medium-light-text);
+  color: var(--light-text);
+  border: 1px solid rgb(255, 255, 255);
   font-size: 12px;
   margin: 0 auto;
 }
 
 .clear-btn:hover {
-  border: 1px solid rgb(255, 255, 255);
+  border: 1px solid #F5E4Dc;
   color: #ffffff;
   cursor: pointer;
 }
@@ -139,11 +133,7 @@ main {
   margin: 1em 0;
 }
 
-/* stop ugly scroll bar on some browsers */
-.chatbot-conversation-container::-webkit-scrollbar {
-  display: none;
-}
-
+.chatbot-conversation-container::-webkit-scrollbar,
 .chatbot-conversation-container::-moz-scrollbar {
   display: none;
 }
@@ -179,7 +169,7 @@ input[type="text"],
 button {
   background-color: transparent;
   border: 1px solid var(--medium-light-text);
-  border-radius:15px;
+  border-radius: 15px;
   padding: 1em;
 }
 
