@@ -14,7 +14,8 @@ html,
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Trebuchet MS', sans-serif;
+  font-size: 13px;
 }
 
 main {
@@ -28,7 +29,7 @@ main {
 /* chatbot elements */
 
 .chatbot-container {
-  background-color: #738678;
+  background-color: #3E799A;
   border-radius: var(--border-rad-lg);
   display: flex;
   flex-direction: column;
@@ -93,7 +94,7 @@ main {
   grid-template-areas: 'logo . .'
     'logo title supportId'
     'logo subtitle clear-btn';
-  border-bottom: 2px solid var(--light-text);
+  border-bottom: 2px solid #CFAD88;
   width: 100%;
   padding-bottom: 15px;
 }
@@ -119,8 +120,8 @@ main {
   height: 20px;
   padding: 0;
   width: 80%;
-  color: var(--light-text);
-  border: 1px solid rgb(255, 255, 255);
+  color: #ffffff;
+  border: 1px solid #ffffff;
   font-size: 12px;
   margin: 0 auto;
 }
@@ -157,11 +158,11 @@ main {
 }
 
 .speech-ai {
-  background: #F2C2C2;
+  background: #79B2C5;
 }
 
 .speech-human {
-  background: #F5E4Dc;
+  background: #ECE4D6;
 }
 
 .chatbot-input-container {
@@ -171,7 +172,7 @@ main {
 input[type="text"],
 button {
   background-color: transparent;
-  border: 1px solid var(--light-text);
+  border: 2px solid #CFAD88;
   border-radius: 15px;
   padding: 1em;
   margin-bottom: .5em;
@@ -199,19 +200,20 @@ input[type="text"] {
 /* text */
 
 h1 {
-  font-size: 15px;
-  color: var(--light-text);
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
   grid-area: title;
 }
 
 h2,
 p {
-  color: var(--light-text);
+  color: #ffffff;
 }
 
 h2 {
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 600;
   grid-area: subtitle;
   text-transform: uppercase;
 }
