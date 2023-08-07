@@ -20,7 +20,7 @@ body {
 }
 
 main {
-  background-color: rgb(230, 230, 230);
+  background-color: #eaeaea;
   height: 100vh;
   display: flex;
   align-items: center;
@@ -30,7 +30,7 @@ main {
 /* chatbot elements */
 
 .chatbot-container {
-  background-color: #3E799A;
+  background-color: #ffffff;
   border-radius: var(--border-rad-lg);
   display: flex;
   flex-direction: column;
@@ -142,7 +142,7 @@ main {
 
 .logo {
   width: 7em;
-  margin-bottom: -5em;
+  margin-bottom: -5.75em;
 }
 
 .clear-btn {
@@ -166,12 +166,12 @@ main {
 .clear-btn:hover {
   border: 1px solid #CFAD88;
   background-color: #CFAD88;
-  color: #ffffff;
+  color: #000000;
   cursor: pointer;
 }
 
 .chatbot-conversation-container {
-  max-height: 575px;
+  max-height: 500px;
   min-height: 250px;
   overflow-y: scroll;
   margin: 1em 0;
@@ -227,7 +227,7 @@ button {
 }
 
 input[type="text"] {
-  color: #ffffff;
+  color: #000000;
   width: 100%;
   border-right: 0;
   border-top-right-radius: 0;
@@ -253,13 +253,13 @@ h1 {
   padding-bottom: .1em;
   /* Increased font size for h1 (fallback for mobile) */
   font-weight: 600;
-  color: #ffffff;
+  color: #000000;
   text-align: center;
 }
 
 h2,
 p {
-  color: #ffffff;
+  color: #000000;
 }
 
 h2 {
