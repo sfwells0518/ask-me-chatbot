@@ -49,8 +49,11 @@ main {
   justify-content: space-between;
 }
 
+
 /* Media queries for responsiveness */
+
 @media (max-width: 767px) {
+
   .chatbot-container {
     width: 90%;
     min-height: 500px;
@@ -88,10 +91,13 @@ main {
   .submit-btn {
     margin-top: 1em;
   }
+
 }
 
 /* For screens larger than 768px (desktop devices) */
+
 @media (min-width: 768px) {
+
   .chatbot-container {
     width: 90%;
     height: 90%;
@@ -109,6 +115,7 @@ main {
   }
 
   /* Font size changes for desktop */
+
   .clear-btn {
     font-size: 14px;
     /* Increased font size for clear-btn on desktop */
@@ -128,7 +135,9 @@ main {
     font-size: 16px;
     /* Increased font size for h2 on desktop */
   }
+
 }
+
 
 .chatbot-header {
   display: nav;
@@ -142,15 +151,15 @@ main {
 }
 
 .logo {
-  width: 12em;
-  margin-bottom: -5.75em;
-  padding-left: 1.35em;
+  width: 11em;
+  margin-bottom: 0;
+  padding-left: 1.2em;
 }
 
 .green-dots {
   padding-left: 51em;
-  height: 12em;
-  padding-top: -5em;
+  height: 6em;
+  padding-top: -4em;
 }
 
 
@@ -182,43 +191,61 @@ main {
 }
 
 .chatbot-conversation-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px;
   max-height: auto;
   min-height: 250px;
   overflow-y: scroll;
   margin: 1em 0;
-}
-
-.chatbot-conversation-container::-webkit-scrollbar,
-.chatbot-conversation-container::-moz-scrollbar {
-  display: none;
+  width: 100%;
 }
 
 .speech {
+  display: flex;
   padding: 1em;
-  margin: 1em auto;
-  max-width: 260px;
+  margin: 5px;
+  width: 49%;
+  max-width: 70%;
   color: #ffffff;
-  min-width: 100%;
   border-radius: var(--border-rad-lg);
-  font-size: 18px;
+  font-size: 14px;
+  
   /* Increased font size for speech (fallback for mobile) */
 }
 
 .speech:first-child {
-  margin-top: 2em;
+  margin-top: 0;
+  width: 49%;
+  max-width: 100%;
+  align-self: flex-start;
 }
 
 .speech-ai {
   background: #F47575;
   padding-top: 1.25em;
   padding-bottom: 1.25em;
+  align-self: flex-start !important;
+  border-bottom-left-radius: 3%;
+  margin-bottom: auto;
+  border: none;
+  border-radius: 25px 1px;
+  
 }
 
 .speech-human {
   background: #81D3DB;
   padding-top: 1.25em;
   padding-bottom: 1.25em;
+  align-self: flex-end;
+  text-align: center;
+  border: none;
+  border-radius: 25px 1px;
+    
+
 }
+
 
 .chatbot-input-container {
   display: flex;
@@ -257,6 +284,7 @@ input[type="text"] {
   display: block;
 }
 
+
 /* text */
 
 h1 {
@@ -271,21 +299,22 @@ h1 {
 h2,
 p {
   color: #000000;
-  
+
 }
 
 h2 {
   text-align: left;
-  font-size: 22px;
+  font-size: 20px;
   /* Increased font size for h2 (fallback for mobile) */
   font-weight: 500;
   grid-area: subtitle;
-  padding-top: 4.5em;
+  padding-top: 0;
   padding-left: 1em;
   letter-spacing: .025em;
 
 
 }
+
 
 /* The cursor */
 
