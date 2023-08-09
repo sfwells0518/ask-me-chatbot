@@ -51,7 +51,7 @@ main {
 
 /* Media queries for responsiveness */
 
-@media (max-width: 767px) {
+@media (max-width: 480px) {
   .chatbot-container {
     width: 90%;
     min-height: 500px;
@@ -217,7 +217,6 @@ main {
 .speech-ai {
   background: #F47575;
   padding: 1.25em 1em;
-  /* Modified padding here */
   align-self: flex-start !important;
   border-bottom-left-radius: 3%;
   margin-bottom: auto;
@@ -318,8 +317,6 @@ h2 {
   content: "|";
   font-weight: 700;
 }
-
-
 
 /* Placeholder text styling */
 
