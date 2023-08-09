@@ -154,7 +154,7 @@ main {
   width: 12%;
   text-transform: uppercase;
   letter-spacing: .1em;
-  height: 7%;
+  height: 50px;
   background-color: #544F4F;
   color: #ffffff;
   border: 1px solid #000000;
@@ -163,6 +163,7 @@ main {
   margin: 0 auto;
   margin-top: 0;
   margin-bottom: 1em;
+  flex-shrink: 0;
 }
 
 .clear-btn:hover {
