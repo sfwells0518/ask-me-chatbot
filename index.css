@@ -17,7 +17,6 @@ body {
   font-family: 'Avenir', sans-serif;
   font-size: 16px;
   letter-spacing: .025em;
-  /* Increased base font size to 16px */
 }
 
 main {
@@ -47,13 +46,12 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  overflow-y: auto;
 }
-
 
 /* Media queries for responsiveness */
 
 @media (max-width: 767px) {
-
   .chatbot-container {
     width: 90%;
     min-height: 500px;
@@ -70,7 +68,7 @@ main {
   }
 
   .chatbot-conversation-container {
-    max-height: 300px;
+    max-height: 200px;
     overflow-y: auto;
   }
 
@@ -85,25 +83,21 @@ main {
     width: 100%;
     border-radius: 10px;
     font-size: 16px;
-    /* Increased font size for input and button on mobile */
   }
 
   .submit-btn {
     margin-top: 1em;
   }
-
 }
 
-/* For screens larger than 768px (desktop devices) */
-
 @media (min-width: 768px) {
-
   .chatbot-container {
     width: 90%;
     height: 90%;
   }
 
   .chatbot-content {
+    overflow-y: auto;
     height: 100%;
   }
 
@@ -111,33 +105,24 @@ main {
     position: relative;
     margin-top: auto;
     margin-bottom: 1em;
-    /* Add more space between chatbot-input-container and clear-btn */
   }
-
-  /* Font size changes for desktop */
 
   .clear-btn {
     font-size: 14px;
-    /* Increased font size for clear-btn on desktop */
   }
 
   .speech {
     font-size: 20px;
-    /* Increased font size for speech on desktop */
   }
 
   h1 {
     font-size: 20px;
-    /* Increased font size for h1 on desktop */
   }
 
   h2 {
     font-size: 16px;
-    /* Increased font size for h2 on desktop */
   }
-
 }
-
 
 .chatbot-header {
   display: nav;
@@ -162,7 +147,6 @@ main {
   padding-top: -4em;
 }
 
-
 .clear-btn {
   grid-area: clear-btn;
   height: 20px;
@@ -176,11 +160,9 @@ main {
   border: 1px solid #000000;
   border-radius: 10px;
   font-size: 16px;
-  /* Increased font size for clear-btn (fallback for mobile) */
   margin: 0 auto;
   margin-top: 0;
   margin-bottom: 1em;
-  /* Add more space between chatbot-input-container and clear-btn */
 }
 
 .clear-btn:hover {
@@ -195,11 +177,12 @@ main {
   flex-direction: column;
   align-items: flex-start;
   padding: 20px;
-  max-height: auto;
-  min-height: 250px;
-  overflow-y: scroll;
+  min-height: 200px;
+  max-height: 70vh;
   margin: 1em 0;
   width: 100%;
+  overflow-y: auto;
+  /* Added this property */
 }
 
 .speech,
@@ -209,58 +192,50 @@ main {
   justify-content: center;
   align-items: center;
   text-align: center;
-  /* for one-line texts */
+  max-width: 50%;
+  min-width: 25%;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 .speech {
   display: flex;
   padding: 1em;
   margin: 5px;
-  width: 49%;
-  max-width: 70%;
   color: #ffffff;
   border-radius: var(--border-rad-lg);
   font-size: 14px;
-  
-  /* Increased font size for speech (fallback for mobile) */
 }
 
 .speech:first-child {
   margin-top: 0;
-  width: 49%;
-  max-width: 100%;
   align-self: flex-start;
 }
 
 .speech-ai {
   background: #F47575;
-  padding-top: 1.25em;
-  padding-bottom: 1.25em;
+  padding: 1.25em 1em;
+  /* Modified padding here */
   align-self: flex-start !important;
   border-bottom-left-radius: 3%;
   margin-bottom: auto;
   border: none;
   border-radius: 25px 1px;
-  
 }
 
 .speech-human {
   background: #81D3DB;
-  padding-top: 1.25em;
-  padding-bottom: 1.25em;
+  padding: 1.25em 1em;
+  /* Modified padding here */
   align-self: flex-end;
   text-align: center;
   border: none;
   border-radius: 25px 1px;
-    
-
 }
-
 
 .chatbot-input-container {
   display: flex;
   margin-bottom: 1em;
-  /* Add more space between chatbot-input-container and clear-btn */
 }
 
 input[type="text"],
@@ -271,7 +246,6 @@ button {
   padding: 1em;
   margin-bottom: .5em;
   font-size: 16px;
-  /* Increased font size for input and button (fallback for mobile) */
 }
 
 input[type="text"] {
@@ -294,13 +268,9 @@ input[type="text"] {
   display: block;
 }
 
-
-/* text */
-
 h1 {
   font-size: 24px;
   padding-bottom: .1em;
-  /* Increased font size for h1 (fallback for mobile) */
   font-weight: 600;
   color: #000000;
   text-align: center;
@@ -309,24 +279,17 @@ h1 {
 h2,
 p {
   color: #000000;
-
 }
 
 h2 {
   text-align: left;
   font-size: 20px;
-  /* Increased font size for h2 (fallback for mobile) */
   font-weight: 500;
   grid-area: subtitle;
   padding-top: 0;
   padding-left: 1em;
   letter-spacing: .025em;
-
-
 }
-
-
-/* The cursor */
 
 @keyframes cursor-blink {
   0% {
