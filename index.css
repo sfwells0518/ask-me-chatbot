@@ -126,7 +126,7 @@ main {
 
 .chatbot-header {
   display: nav;
-  border-bottom: 2px solid #FFD159;
+  border-bottom: 4px solid #FFD159;
   width: 100%;
   padding-bottom: 1.5em;
 }
@@ -245,7 +245,7 @@ main {
 input[type="text"],
 button {
   background-color: transparent;
-  border: 5px solid #81D3DB;
+  border: 4px solid #81D3DB;
   border-radius: 10px;
   padding: 1em;
   margin-bottom: .5em;
@@ -267,10 +267,17 @@ input[type="text"] {
   border-left: 0;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
+  background: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #544F4F;
 }
 
 .send-btn-icon {
-  width: 25px;
+  width: 30px;
   display: block;
 }
 
