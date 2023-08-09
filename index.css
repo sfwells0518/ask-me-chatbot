@@ -235,7 +235,6 @@ main {
 
 .chatbot-input-container {
   display: flex;
-  margin-top: .25em;
   margin-bottom: 1.25em;
   padding-left: 1.3em;
   padding-right: 1.3em;
