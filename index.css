@@ -164,6 +164,7 @@ main {
   margin-top: 0;
   margin-bottom: 1em;
   flex-shrink: 0;
+  text-align: center;
 }
 
 .clear-btn:hover {
