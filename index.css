@@ -244,11 +244,12 @@ main {
 input[type="text"],
 button {
   background-color: transparent;
-  border: 4px solid #81D3DB;
+  border: 5px solid #81D3DB;
   border-radius: 10px;
   padding: 1em;
   margin-bottom: .5em;
   font-size: 16px;
+  text-align: left;
 }
 
 input[type="text"] {
@@ -259,6 +260,7 @@ input[type="text"] {
   border-bottom-right-radius: 0;
   outline: none;
 }
+
 
 .submit-btn {
   border-left: 0;
@@ -307,4 +309,49 @@ h2 {
 .blinking-cursor::after {
   content: "|";
   font-weight: 700;
+}
+
+
+
+/* Placeholder text styling */
+
+/* Chrome, Safari, and newer versions of Opera */
+#user-input::-webkit-input-placeholder {
+  color: #999;
+  /* any color you prefer */
+  font-style: italic;
+  /* just an example */
+}
+
+/* Firefox 19+ */
+#user-input::-moz-placeholder {
+  color: #999;
+  font-style: italic;
+  opacity: 1;
+  /* This is required because Firefox reduces the opacity by default */
+}
+
+/* Firefox 18- */
+#user-input:-moz-placeholder {
+  color: #999;
+  font-style: italic;
+  opacity: 1;
+}
+
+/* Internet Explorer 10-11 */
+#user-input:-ms-input-placeholder {
+  color: #999;
+  font-style: italic;
+}
+
+/* Edge */
+#user-input::-ms-input-placeholder {
+  color: #999;
+  font-style: italic;
+}
+
+/* All other browsers */
+#user-input::placeholder {
+  color: #999;
+  font-style: italic;
 }
