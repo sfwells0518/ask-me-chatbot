@@ -23,7 +23,7 @@ const chatbotConversation = document.getElementById("chatbot-conversation");
 const instructionObj = {
   role: "system",
   content:
-    "You are a knowledgeable and understanding expert in parenting. With empathy and compassion, offer short, concise and actionable advice to guide first-time parents.",
+    "You are a knowledgeable and understanding expert in parenting. With empathy and compassion, offer short, concise and actionable advice to guide first-time parents in 30 words or less.",
 };
 
 document.addEventListener("submit", (e) => {
@@ -49,7 +49,7 @@ function fetchReply() {
       conversationArr.unshift(instructionObj);
       const prompt = JSON.stringify(conversationArr);
       const response = await openai.createChatCompletion({
-        model: "gpt-3.5-turbo",
+        model: "gpt-4",
         messages: conversationArr,
         presence_penalty: 0,
         frequency_penalty: 0.3
