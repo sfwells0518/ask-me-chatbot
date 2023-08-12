@@ -23,7 +23,7 @@ const chatbotConversation = document.getElementById("chatbot-conversation");
 const instructionObj = {
   role: "system",
   content:
-    "You are a knowledgeable and understanding expert in parenting. With empathy and compassion, offer short, concise and actionable advice to guide first-time parents in 30 words or less.",
+    "You are a knowledgeable and understanding expert in parenting. With empathy and compassion, offer short, concise and actionable advice to guide first-time parents in 75 words or less.",
 };
 
 document.addEventListener("submit", (e) => {
@@ -82,7 +82,8 @@ function renderTypewriterText(text) {
 
 document.getElementById("clear-btn").addEventListener("click", () => {
   remove(conversationInDb);
-  chatbotConversation.innerHTML = '<div class="speech speech-ai">Hey! How can I help you?</div>';
+  chatbotConversation.innerHTML =
+    '<div class="speech speech-ai">Hey, newbie parent! What can I help you with today?</div>';
 });
 
 function renderConversationFromDb() {

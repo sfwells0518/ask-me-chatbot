@@ -1,0 +1,389 @@
+:root {
+  --border-rad-lg: 10px;
+  --light-text: #fcfcfc;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Avenir', sans-serif;
+  font-size: 16px;
+  letter-spacing: .025em;
+}
+
+.layout-container {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  /* Preventing any overflow */
+}
+
+/* Sidebar styles */
+.sidebar {
+  width: 20%;
+  background-color: #ffffff;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  border-right: 4px solid #544F4F;
+}
+
+.clear-btn {
+  position: relative;
+  background: #81D3DB;
+  border: 2px solid #FFD159;
+  color: #ffffff;
+  margin-top: .5em;
+  width: 22em;
+  text-align: center;
+  font-size: 1em;
+}
+
+.clear-btn:hover {
+  background: #FFD159;
+  border: 2px solid #81D3DB;
+  color: #ffffff;
+}
+
+.new-chat {
+  width: 1.5em;
+  position: absolute;
+  left: 7em;
+  top: 1.2em;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 15em;
+}
+
+.sidebar ul li {
+  margin-bottom: 2em;
+  text-align: center;
+  font-family: 'Avenir', sans-serif;
+}
+
+.sidebar ul li a {
+  text-decoration: none;
+
+  color: #544F4F;
+  font-weight: 300;
+  font-size: 1.5em;
+  padding: 0.5em 1em;
+  border-radius: var(--border-rad-lg);
+  transition: background-color 0.3s ease;
+}
+
+.sidebar ul li a:hover {
+  text-decoration: underline;
+  text-underline-offset: 10px;
+  text-decoration-color: #F47575;
+  text-decoration-thickness: 5px;
+}
+
+.footer-bg {
+  margin-top: auto;
+  text-align: center;
+  padding: 7px 0;
+  background-color: #fcfcfc;
+  font-family: 'Avenir', sans-serif;
+  font-weight: 500;
+}
+
+
+main {
+  flex: 1;
+  background-color: #ededed;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Adjusting chatbot styles */
+.chatbot-container {
+  flex: none;
+  background-color: #ffffff;
+  border-radius: var(--border-rad-lg);
+  display: flex;
+  flex-direction: column;
+  padding: .5em;
+  height: 100%;
+  width: 80%;
+}
+
+.chatbot-header {
+  display: block;
+  border-bottom: 4px solid #FFD159;
+  width: 100%;
+  padding-bottom: 1em;
+  margin-top: -4.5em;
+}
+
+.chatbot-header>* {
+  margin: .11em;
+}
+
+h2 {
+  text-align: center;
+  font-size: 1.25em;
+  padding-bottom: 1.5em;
+  position: relative;
+}
+
+h2::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 110%;
+  /* Adjust the width to control the extension */
+  height: 4px;
+  background: linear-gradient(to right, transparent, #F47575, transparent);
+}
+
+
+.logo {
+  width: 12em;
+  margin-bottom: .25em;
+}
+
+
+.green-dots {
+  width: 375px;
+  height: 10em;
+  margin-top: 8em;
+}
+
+.chatbot-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow-y: auto;
+  position: relative;
+  /* Add this */
+}
+
+.chatbot-conversation-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px;
+  padding-bottom: 5px;
+  /* Adjust this value as needed */
+  min-height: 200px;
+  max-height: 65vh;
+  margin: 1em 0;
+  width: 100%;
+  overflow-y: auto;
+}
+
+.speech,
+.speech-ai,
+.speech-human {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  max-width: 50%;
+  min-width: 25%;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+.speech {
+  display: flex;
+  padding: 1em;
+  margin: 5px;
+  color: #ffffff;
+  border-radius: var(--border-rad-lg);
+  font-size: 14px;
+}
+
+.speech:first-child {
+  margin-top: 2em;
+  align-self: flex-start;
+  height: 7em;
+}
+
+.speech-ai {
+  background: #F47575;
+  padding: 1.25em 1em;
+  align-self: flex-start !important;
+  border-bottom-left-radius: 3%;
+  margin-bottom: auto;
+  border: none;
+  border-radius: 25px 1px;
+}
+
+.speech-human {
+  background: #81D3DB;
+  padding: 1.25em 1em;
+  align-self: flex-end;
+  text-align: center;
+  border: none;
+  border-radius: 25px 1px;
+}
+
+.chatbot-input-container {
+  display: flex;
+  margin-bottom: 1.25em;
+  padding-left: 1.3em;
+  padding-right: 1.3em;
+}
+
+input[type="text"],
+button {
+  background-color: transparent;
+  border: 4px solid #81D3DB;
+  border-radius: 10px;
+  padding: 1.5em;
+  margin-bottom: .5em;
+  font-size: 16px;
+  text-align: left;
+}
+
+input[type="text"] {
+  color: #000000;
+  flex: 1;
+  padding-left: 15px;
+  margin-right: .5em;
+}
+
+.suggested-prompts {
+  display: grid;
+  grid-template-columns: 887px 887px;
+  gap: .5em;
+  justify-content: center;
+  align-content: center;
+  position: absolute;
+  bottom: 140px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 40px);
+}
+
+.suggestion-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #FFD159;
+  align-items: center;
+  border: 4px solid #81D3DB;
+  color: #544F4F;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 887px;
+  margin-right: .25em;
+  margin-bottom: 0;
+  text-align: center;
+  font-size: 1em;
+  font-family: 'Avenir', sans-serif;
+  height: 7em;
+}
+
+.suggestion-btn h3,
+.suggestion-btn h4 {
+  margin: .25em;
+  /* This will remove the default margin from h3 and h4. */
+}
+
+h3 {
+  font-weight: bolder;
+}
+
+h4 {
+  font-weight: 200;
+}
+
+.suggestion-btn:hover {
+  background-color: #544F4F;
+  border: 4px solid #81D3DB;
+  color: #ffffff;
+}
+
+/* To target the send button icon */
+.suggestion-btn .send-btn-icon {
+  width: 20px;
+  height: 20px;
+  margin-left: 700px;
+}
+
+button {
+  color: var(--light-text);
+  background-color: #81D3DB;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #544F4F;
+}
+
+button:active {
+  background-color: #81D3DB;
+}
+
+button:focus {
+  outline: none;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  .layout-container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #544F4F;
+    padding: 0.5em;
+  }
+
+  .chatbot-container {
+    margin-left: 0;
+    width: 100%;
+    height: calc(100vh - 250px);
+    /* Assuming that the mobile sidebar is roughly 250px high, adjust as needed */
+  }
+
+  .green-dots {
+    display: none;
+    /* Hide the .green-dots on mobile */
+  }
+}
+
+@media (max-width: 480px) {
+
+  input[type="text"],
+  button {
+    padding: 0.5em;
+    font-size: 14px;
+  }
+
+  .chatbot-conversation-container {
+    padding: 10px;
+  }
+
+  .speech {
+    font-size: 12px;
+    padding: 0.5em;
+  }
+}
