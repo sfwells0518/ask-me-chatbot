@@ -121,7 +121,7 @@ main {
   }
 
   h2 {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 100;
   }
 }
@@ -260,6 +260,7 @@ button {
   margin-bottom: .5em;
   font-size: 16px;
   text-align: left;
+  
 }
 
 input[type="text"] {
@@ -309,7 +310,7 @@ p {
 
 h2 {
   text-align: left;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 100;
   grid-area: subtitle;
   padding-top: 0;
