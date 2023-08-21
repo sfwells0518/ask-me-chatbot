@@ -427,16 +427,45 @@ button:focus {
     align-items: stretch;
   }
 
+  .suggested-prompts {
+    display: none;
+  }
+
+  .suggestion-btn {
+    display: none;
+  }
+
+  .new-chat {
+    width: 1.25em;
+    position: absolute;
+    left: 1.4em;
+    top: .45em;
+    }
+
   main {
     flex: 1 1 auto;
     /* This will make sure that main takes up the available space */
+  }
+
+  .chatbot-conversation-container {
+    padding: 0.5em;
+    max-height: none;
+  }
+
+  .speech:first-child {
+    top: 35px;
+    margin-bottom: 3em;
+    height: auto;
   }
 
   .sidebar {
     width: 100%;
     border-right: none;
     border-bottom: 1px solid #544F4F;
-    padding: 0.5em;
+    padding: 1em;
+    position: sticky;
+    top: 0;
+    z-index: 10;
   }
 
   .sidebar ul {
@@ -487,7 +516,8 @@ button:focus {
   }
 
   .chatbot-conversation-container {
-    padding: 0.5em;
+    padding: 1.5em;
+   
   }
 
   .speech {
@@ -505,6 +535,7 @@ button:focus {
     bottom: 0;
     left: 0;
     right: 0;
+    transform: none;
   }
 }
 
