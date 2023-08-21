@@ -181,9 +181,9 @@ h2::after {
 }
 
 .handprints {
-  width: 12em;
+  width: 14em;
   height: auto;
-  margin-top: 6.75em;
+  margin-top: auto;
 }
 
 .chatbot-content {
@@ -426,6 +426,11 @@ button:focus {
     min-height: 100vh;
     align-items: stretch;
   }
+  
+  .logo {
+    width: 8em;
+    margin-top: .25em;
+  }
 
   .suggested-prompts {
     display: none;
@@ -486,7 +491,6 @@ button:focus {
 
   main {
     flex: 1;
-    /* Make sure this main content area takes up all available space, pushing the footer down */
   }
 
   .chatbot-container {
@@ -499,14 +503,14 @@ button:focus {
     flex-direction: column;
     padding: 0.5em;
     height: 9em;
-    margin-bottom: 5em;
+    margin-bottom: 4em;
     display: flex;
     width: 100%;
   }
   
   input[type="text"] {
-    margin: .7em 0;
-    margin-bottom: .75em;
+    margin: 1em 0;
+    margin-bottom: .9em;
     padding-top: 6em;  
   }
 
@@ -534,7 +538,7 @@ button:focus {
   /* To ensure the footer stays at the bottom */
   .footer-bg {
     position: sticky;
-    bottom: 0;
+    margin-bottom: .5em;
     left: 0;
     right: 0;
     transform: none;
