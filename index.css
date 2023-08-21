@@ -434,6 +434,14 @@ button:focus {
     display: none;
   }
 
+  .sidebar ul li {
+    display: none;
+  }
+
+  .sidebar ul li a {
+    display: none;
+  }
+
   main {
     flex: 1;
     /* Make sure this main content area takes up all available space, pushing the footer down */
@@ -511,7 +519,6 @@ button:focus {
     padding: 0.5em;
   }
 }
-
 
 /* Submit/Send Button */
 .submit-btn {
