@@ -1,41 +1,87 @@
-<!doctype html>
+
 <html>
 
 <head>
-  <title>NewB</title>
+  <title>newB</title>
   <link rel="stylesheet" href="index.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="https://fonts.googleapis.com/css2?family=Amstelvar:wght&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Avenir:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
   <main>
-    <section class="chatbot-container">
-      <div class="chatbot-header">
-        <div className="underline"></div>
-        <img src="/newb-logo.png" class="logo">
-
-        <img src="/green-dots.png" class="green-dots">
-        <h2>A virtual partner for newbie parents, from</h2>
-        <h2><em>newborn and beyond</em></h2>
-      </div>
-      <div class="chatbot-content">
-        <div class="chatbot-conversation-container" id="chatbot-conversation">
-          <div class="speech speech-ai">
-            Hey, newbie parent! What can I help you with today?
-          </div>
+    <div class="layout-container">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="logo">
+          <img src="/newb-logo.png" class="logo">
         </div>
-        <form id="form" class="chatbot-input-container">
-          <input name="user-input" type="text" id="user-input"
-            placeholder="Ex: How can I set up a consistent bedtime routine for my toddler?" required>
-          <button id="submit-btn" class="submit-btn">
-            <img src="/send-btn-icon.png" class="send-btn-icon">
-          </button>
-        </form>
-        <button class="clear-btn" id="clear-btn">+ New Chat</button>
-      </div>
-    </section>
+        <h2>A virtual partner for newbie parents, from <em>newborn and beyond</em></h2>
+        <button class="clear-btn" id="clear-btn">New Chat
+          <img src="/new-chat.png" class="new-chat">
+        </button>
+        <ul>
+          
+          <li><a href="#">Chat History</a></li>
+          <li><a href="#">NewB Community</a></li>
+          <li><a href="#">Nutrition + Sleep Guide</a></li>
+          
+          
+        </ul>
+        <div class="handprints">
+          <img src="/handprints.png" class="handprints">
+        </div>
+
+        <div class="footer-bg">
+          <h5>NewB Disclaimer</h5>
+          <h6>Our chatbot offers parenting advice based on ChatGPT's general knowledge. Remember, every family is unique. Consult professionals for tailored assistance.</h6>
+        </div>
+      </aside>
+      <section class="chatbot-container">
+        <div class="chatbot-header">
+          <div class="underline"></div>
+        </div>
+
+
+        <div class="chatbot-content">
+          <div class="chatbot-conversation-container" id="chatbot-conversation">
+            <div class="speech speech-ai">
+              <h4>Hey, newbie parent! What can I help you with today?</h4>
+            </div>
+          </div>
+
+          <div class="suggested-prompts">
+            <button id="suggestion1-btn" class="suggestion-btn">
+              <h3>Bedtime routines</h3>
+              <h4>How can I set up a consistent bedtime routine for my toddler?</h4>
+
+            </button>
+            <button id="suggestion2-btn" class="suggestion-btn">
+              <h3>Picky eaters</h3>
+              <h4>How can I encourage my child to try new foods?</h4>
+
+            </button>
+            <button id="suggestion3-btn" class="suggestion-btn">
+              <h3>Temper tantrums</h3>
+              <h4>Strategies for effectively managing and reducing meltdowns</h4>
+
+            </button>
+            <button id="suggestion4-btn" class="suggestion-btn">
+              <h3>Screen time</h3>
+              <h4>Finding the right balance for my preschooler's digital exposure</h4>
+            </button>
+          </div>
+          <form id="form" class="chatbot-input-container">
+            <input name="user-input" type="text" id="user-input" placeholder="Send a message..." autocomplete="off" required>
+            <button id="submit-btn" class="submit-btn">
+              <img src="/send-btn-icon.png" class="send-btn-icon">
+            </button>
+          </form>
+        </div>
+      </section>
+    </div>
   </main>
   <script type="module" src="index.js"></script>
 </body>

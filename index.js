@@ -26,6 +26,31 @@ const instructionObj = {
     "You are a knowledgeable and understanding expert in parenting. With empathy and compassion, offer short, concise and actionable advice to guide first-time parents in 75 words or less.",
 };
 
+const userInput = document.getElementById('user-input');
+const suggestionButtons = document.querySelector('.suggested-prompts');
+const clearButton = document.getElementById('clear-btn');
+
+
+userInput.addEventListener("input", () => {
+  const trimmedInput = userInput.value.trim();
+
+  if (trimmedInput !== "") {
+    suggestionButtons.style.display = "none";
+  } else {
+    suggestionButtons.style.display = "grid";
+  }
+});
+
+function resetConversation() {
+  chatbotConversation.innerHTML = '';
+  userInput.value = '';
+  suggestionButtons.style.display = 'grid';
+}
+
+clearButton.addEventListener('click', () => {
+  resetConversation();
+});
+
 document.addEventListener("submit", (e) => {
   e.preventDefault();
   const userInput = document.getElementById("user-input");
@@ -66,6 +91,8 @@ function renderTypewriterText(text) {
   const newSpeechBubble = document.createElement("div");
   newSpeechBubble.classList.add("speech", "speech-ai", "blinking-cursor");
   chatbotConversation.appendChild(newSpeechBubble);
+
+
   let i = 0;
   function animate() {
     newSpeechBubble.textContent = newSpeechBubble.textContent + text.slice(i - 1, i);
