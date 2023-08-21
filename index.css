@@ -428,8 +428,8 @@ button:focus {
     padding: 0.5em;
   }
 
-  .sidebar ul li a {
-    font-size: 1.2em;
+  .sidebar ul {
+    display: none;
   }
 
   .chatbot-container {
