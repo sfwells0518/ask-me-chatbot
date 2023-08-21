@@ -96,12 +96,17 @@ body {
   margin-top: auto;
   text-align: center;
   width: 100%;
-  background-color: #eeeeee;
-  border: #eeeeee;
+  height: 2em;
+  background-color: #ffffff;
+  border-color: #ffffff;
   border-radius: var(--border-rad-lg);
   font-family: 'Avenir', sans-serif;
   font-weight: 100;
-  line-height: 1em;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(3%);
 }
 
 h5 {
