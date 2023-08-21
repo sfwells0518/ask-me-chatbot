@@ -315,7 +315,7 @@ h2::after {
   margin-bottom: 0;
   padding-left: 1.3em;
   padding-right: 1.3em;
-  height: 4.5em;
+  height: 4.7em;
 }
 
 input[type="text"],
@@ -461,8 +461,8 @@ button:focus {
   .sidebar {
     width: 100%;
     border-right: none;
-    border-bottom: 1px solid #544F4F;
-    padding: 1em;
+    border-bottom: 1.5px solid #544F4F;
+    padding: .5em;
     position: sticky;
     top: 0;
     z-index: 10;
@@ -492,32 +492,34 @@ button:focus {
   .chatbot-container {
     margin-left: 0;
     width: 100%;
-    height: calc(100vh - 250px);
-    /* adjust this value accordingly */
+    height: calc(100vh - 150px);
   }
 
   .chatbot-input-container {
     flex-direction: column;
     padding: 0.5em;
-  }
-
-  input[type="text"] {
-    margin: 0.5em 0;
-  }
-
-  .suggested-prompts {
-    grid-template-columns: 1fr;
-    gap: 1em;
-  }
-
-  .suggestion-btn {
+    height: 7em;
+    margin-bottom: 2;
+    display: flex;
     width: 100%;
-    margin-right: 0;
+  }
+  
+  input[type="text"] {
+    margin: .7em 0;
+    margin-bottom: .6em;
+    padding-top: 6em;  
   }
 
+  input[type="text"]:focus {
+    outline: none;
+  }
+
+  .submit-btn {
+    margin: 0 8em;
+  }
+  
   .chatbot-conversation-container {
     padding: 1.5em;
-   
   }
 
   .speech {
@@ -536,6 +538,9 @@ button:focus {
     left: 0;
     right: 0;
     transform: none;
+    background-color: #ffffff;
+    color: #544F4F;
+    font-size: 1em;
   }
 }
 
