@@ -442,6 +442,10 @@ button:focus {
     display: none;
   }
 
+  .sidebar ul li a:hover {
+    display: none;
+  }
+
   main {
     flex: 1;
     /* Make sure this main content area takes up all available space, pushing the footer down */
@@ -488,7 +492,7 @@ button:focus {
 
   /* To ensure the footer stays at the bottom */
   .footer-bg {
-    position: absolute;
+    position: sticky;
     bottom: 0;
     left: 0;
     right: 0;
