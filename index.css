@@ -498,15 +498,15 @@ button:focus {
   .chatbot-input-container {
     flex-direction: column;
     padding: 0.5em;
-    height: 7em;
-    margin-bottom: 2;
+    height: 9em;
+    margin-bottom: 2em;
     display: flex;
     width: 100%;
   }
   
   input[type="text"] {
     margin: .7em 0;
-    margin-bottom: .6em;
+    margin-bottom: .75em;
     padding-top: 6em;  
   }
 
@@ -517,7 +517,7 @@ button:focus {
   .submit-btn {
     margin: 0 8em;
   }
-  
+
   .chatbot-conversation-container {
     padding: 1.5em;
   }
