@@ -229,7 +229,7 @@ h2::after {
   line-height: 1.5em;
   font-weight: 100;
   max-width: 50%;
-  min-width: 35%;
+  min-width: 30%;
   overflow-wrap: break-word;
   word-wrap: break-word;
 }
@@ -469,6 +469,22 @@ button:focus {
     flex-direction: column;
     min-height: 100vh;
     align-items: stretch;
+  }
+
+  .speech,
+  .speech-ai,
+  .speech-human {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    align-items: center;
+    text-align: center;
+    line-height: 1.5em;
+    font-weight: 100;
+    max-width: 50%;
+    min-width: 40%;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
   }
   
   .logo {
