@@ -229,7 +229,7 @@ h2::after {
   line-height: 1.5em;
   font-weight: 100;
   max-width: 50%;
-  min-width: 30%;
+  min-width: 33%;
   overflow-wrap: break-word;
   word-wrap: break-word;
 }
@@ -484,7 +484,6 @@ button:focus {
     display: none;
   }
 
-
   .clear-btn {
     margin-bottom: .5em;
     margin-top: .1em;
@@ -552,17 +551,23 @@ button:focus {
 
   .chatbot-input-container {
     flex-direction: column;
-    padding: 0.5em;
+    padding: .5em;
     height: 9em;
-    margin-bottom: 0em;
+    margin-bottom: -0.2em;
     display: flex;
     width: 100%;
   }
   
   input[type="text"] {
     margin: 1em 0;
-    margin-bottom: .9em;
-    padding-top: 6em;  
+    margin-bottom: .6em;
+    padding-top: 6em;
+    padding: 1.5em;
+    background-color: transparent;
+    border: 3px solid #81D3DB;
+    border-radius: 10px;
+    font-size: 14px;
+    text-align: left;
   }
 
   input[type="text"]:focus {
