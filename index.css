@@ -186,6 +186,7 @@ h2::after {
   margin-top: auto;
 }
 
+
 .chatbot-content {
   flex: 1;
   display: flex;
@@ -420,6 +421,13 @@ button:focus {
 }
 
 /* Media queries for responsiveness */
+
+@media (min-width: 769px) {
+  .handprints-mobile {
+      display: none;
+    }
+}
+
 @media (max-width: 768px) {
   .layout-container {
     flex-direction: column;
@@ -503,7 +511,7 @@ button:focus {
     flex-direction: column;
     padding: 0.5em;
     height: 9em;
-    margin-bottom: 4em;
+    margin-bottom: 0em;
     display: flex;
     width: 100%;
   }
@@ -519,7 +527,7 @@ button:focus {
   }
 
   .submit-btn {
-    margin: 0 8em;
+    margin: 0 4em;
   }
 
   .chatbot-conversation-container {
@@ -527,7 +535,7 @@ button:focus {
   }
 
   .speech {
-    font-size: 1em;
+    font-size: .75em;
     padding: 0.7em;
   }
 
@@ -535,16 +543,24 @@ button:focus {
     display: none;
   }
 
-  /* To ensure the footer stays at the bottom */
+  .handprints-mobile {
+    width: 13em;
+    height: 6em;
+    align-self: center;
+  }
+
+  /* Styling to ensure the footer stays at the bottom on mobile */
   .footer-bg {
     position: sticky;
-    margin-bottom: .5em;
+    margin-bottom: .6em;
     left: 0;
     right: 0;
     transform: none;
-    background-color: #ffffff;
+    background-color: #eeeeee;;
     color: #544F4F;
     font-size: 1em;
+    padding-top: .25em;
+    
   }
 }
 
