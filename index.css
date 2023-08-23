@@ -40,8 +40,8 @@ body {
 
 
 .chat-history-container {
-  background-color: #eeeeee;
-  margin-top: .75em;
+  background-color: #ffffff;
+  margin-top: 0;
   height: 100%;
   width: 103%;
   border-radius: var(--border-rad-lg);
