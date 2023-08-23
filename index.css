@@ -528,7 +528,7 @@ button:focus {
   }
 
   .clear-btn {
-    margin-bottom: -0.5em;
+    margin-bottom: 0.5em;
     margin-top: .1em;
     background-color: #FFD159;
   }
