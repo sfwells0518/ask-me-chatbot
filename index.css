@@ -592,15 +592,15 @@ button:focus {
   .chatbot-input-container {
     flex-direction: column;
     padding: .5em;
-    height: 10em;
+    height: 7.15em;
     margin-bottom: 6em;
     display: flex;
     width: 100%;
   }
   
   input[type="text"] {
-    margin: 0 0;
-    margin-bottom: 0.75em;
+    margin: -0.1em 0;
+    margin-bottom: 0.8em;
     padding-top: 6em;
     padding: 1.5em;
     background-color: transparent;
