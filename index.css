@@ -593,7 +593,7 @@ button:focus {
     flex-direction: column;
     padding: .5em;
     height: 10em;
-    margin-bottom: 4em;
+    margin-bottom: 5em;
     display: flex;
     width: 100%;
   }
