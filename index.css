@@ -211,12 +211,12 @@ h2::after {
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  padding-top: 6.5em;
+  padding-top: 6em;
   /* Adjust this value if necessary */
   min-height: 400px;
   max-height: calc(100vh - 50px);
   /* Adjust this value based on the space you want to allocate */
-  margin: 1.25em 0;
+  margin: 1em 0;
   width: 100%;
   overflow-y: auto;
   /* Provides a scrollbar when content overflows */
@@ -593,7 +593,7 @@ button:focus {
     flex-direction: column;
     padding: .5em;
     height: 10em;
-    margin-bottom: 5em;
+    margin-bottom: 6em;
     display: flex;
     width: 100%;
   }
