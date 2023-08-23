@@ -197,7 +197,6 @@ h2::after {
   margin-top: 10.25em;
 }
 
-
 .chatbot-content {
   flex: 1;
   display: flex;
@@ -214,7 +213,7 @@ h2::after {
   padding: 20px;
   padding-top: 6.5em;
   /* Adjust this value if necessary */
-  min-height: 460px;
+  min-height: 450px;
   max-height: calc(100vh - 50px);
   /* Adjust this value based on the space you want to allocate */
   margin: 1.25em 0;
@@ -594,7 +593,7 @@ button:focus {
     flex-direction: column;
     padding: .5em;
     height: 9em;
-    margin-bottom: -0.2em;
+    margin-bottom: 1em;
     display: flex;
     width: 100%;
   }
