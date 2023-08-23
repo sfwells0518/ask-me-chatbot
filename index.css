@@ -436,8 +436,8 @@ button:focus {
   /* This is 16" Macbook Pro Specific --> 3456 physical pixels ÷ 2 = 1728 CSS pixels */ 
   
   .chat-history-container {
-      background-color: #eeeeee;
-      margin-top: 1em;
+      background-color: #ffffff;
+      margin-top: 0;
       height: 100%;
       width: 102%;
       border-radius: var(--border-rad-lg);
