@@ -644,7 +644,7 @@ button:focus {
   /* Styling to ensure the footer stays at the bottom on mobile */
   .footer-bg {
     position: sticky;
-    margin-bottom: 1.1em;
+    margin-bottom: 1.2em;
     left: 0;
     right: 0;
     transform: none;
