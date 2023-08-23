@@ -599,8 +599,8 @@ button:focus {
   }
   
   input[type="text"] {
-    margin: -0.1em 0;
-    margin-bottom: 0.8em;
+    margin: 2em 0;
+    margin-bottom: 1em;
     padding-top: 6em;
     padding: 1.5em;
     background-color: transparent;
@@ -638,7 +638,7 @@ button:focus {
   /* Styling to ensure the footer stays at the bottom on mobile */
   .footer-bg {
     position: sticky;
-    margin-bottom: .5em;
+    margin-bottom: 0.5em;
     left: 0;
     right: 0;
     transform: none;
