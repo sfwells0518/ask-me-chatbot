@@ -516,7 +516,7 @@ button:focus {
   
   .logo {
     width: 8em;
-    margin-top: .25em;
+    margin-top: 0em;
   }
 
   .suggested-prompts {
@@ -586,7 +586,7 @@ button:focus {
   .chatbot-container {
     margin-left: 0;
     width: 100%;
-    height: calc(100vh - 158px);
+    height: calc(100vh - 150px);
   }
 
   .chatbot-input-container {
