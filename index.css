@@ -637,16 +637,15 @@ button:focus {
 
   /* Styling to ensure the footer stays at the bottom on mobile */
   .footer-bg {
-    display: none;
-    /*position: sticky;
-    margin-bottom: .6em;
+    position: sticky;
+    margin-bottom: .5em;
     left: 0;
     right: 0;
     transform: none;
     background-color: #eeeeee;;
     color: #544F4F;
     font-size: 1em;
-    padding-top: .25em; */
+    padding-top: .25em; 
     
   }
 }
