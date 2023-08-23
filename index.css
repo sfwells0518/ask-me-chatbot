@@ -38,13 +38,22 @@ body {
   border-right: 4px solid #544F4F;
 }
 
+
+.chat-history-container {
+  background-color: #eeeeee;
+  margin-top: .75em;
+  height: 100%;
+  width: 103%;
+  border-radius: var(--border-rad-lg);
+}
+
 .clear-btn {
   position: relative;
   background: #81D3DB;
   border: none !important;
   color: #ffffff;
-  margin-top: .25em;
-  width: 10em;
+  margin-top: .5em;
+  width: 12em;
   text-align: center;
   font-size: .75em;
 }
@@ -57,16 +66,18 @@ body {
 .new-chat {
   width: 1.4em;
   position: absolute;
-  left: 1.4em;
+  left: 2.4em;
   top: 1.3em;
 }
 
 .sidebar ul {
   list-style-type: none;
   padding: 0;
-  margin-top: 8em;
+  margin-top: 10em;
   position: relative;
-  top: 50px;
+  align-self: center;
+  top: 90px;
+
 }
 
 .sidebar ul li {
@@ -183,7 +194,7 @@ h2::after {
 .handprints {
   width: 14em;
   height: auto;
-  margin-top: auto;
+  margin-top: 10.25em;
 }
 
 
@@ -424,6 +435,23 @@ button:focus {
 
 @media (min-width: 1728px) { 
   /* This is 16" Macbook Pro Specific --> 3456 physical pixels ÷ 2 = 1728 CSS pixels */ 
+  
+  .chat-history-container {
+      background-color: #eeeeee;
+      margin-top: 1em;
+      height: 100%;
+      width: 102%;
+      border-radius: var(--border-rad-lg);
+    }
+  
+  .handprints {
+      width: 16em;
+      height: auto;
+      margin-top: 10.5em;
+      margin-left: .8em;
+      margin-right: 2em;
+  }
+  
   .suggested-prompts {
       display: grid;
       grid-template-columns: 655px 655px;
@@ -509,7 +537,7 @@ button:focus {
   .new-chat {
     width: 1.25em;
     position: absolute;
-    left: 1.4em;
+    left: 2.5em;
     top: .45em;
     }
 
@@ -616,7 +644,7 @@ button:focus {
   /* Styling to ensure the footer stays at the bottom on mobile */
   .footer-bg {
     position: sticky;
-    margin-bottom: .6em;
+    margin-bottom: 1.1em;
     left: 0;
     right: 0;
     transform: none;
