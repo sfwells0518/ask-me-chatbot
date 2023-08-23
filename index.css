@@ -213,7 +213,7 @@ h2::after {
   padding: 20px;
   padding-top: 6.5em;
   /* Adjust this value if necessary */
-  min-height: 438px;
+  min-height: 420px;
   max-height: calc(100vh - 50px);
   /* Adjust this value based on the space you want to allocate */
   margin: 1.25em 0;
@@ -593,7 +593,7 @@ button:focus {
     flex-direction: column;
     padding: .5em;
     height: 9em;
-    margin-bottom: 1em;
+    margin-bottom: 2em;
     display: flex;
     width: 100%;
   }
