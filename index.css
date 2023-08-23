@@ -529,7 +529,7 @@ button:focus {
   }
 
   .clear-btn {
-    margin-bottom: .5em;
+    margin-bottom: -0.5em;
     margin-top: .1em;
     background-color: #FFD159;
   }
@@ -644,7 +644,7 @@ button:focus {
   /* Styling to ensure the footer stays at the bottom on mobile */
   .footer-bg {
     position: sticky;
-    margin-bottom: 1.2em;
+    margin-bottom: .6em;
     left: 0;
     right: 0;
     transform: none;
