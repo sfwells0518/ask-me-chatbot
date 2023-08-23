@@ -214,10 +214,10 @@ h2::after {
   padding: 20px;
   padding-top: 6.5em;
   /* Adjust this value if necessary */
-  min-height: 200px;
+  min-height: 460px;
   max-height: calc(100vh - 50px);
   /* Adjust this value based on the space you want to allocate */
-  margin: 1em 0;
+  margin: 1.25em 0;
   width: 100%;
   overflow-y: auto;
   /* Provides a scrollbar when content overflows */
@@ -509,8 +509,8 @@ button:focus {
     text-align: center;
     line-height: 1.5em;
     font-weight: 100;
-    max-width: 50%;
-    min-width: 40%;
+    max-width: 55%;
+    min-width: 52%;
     overflow-wrap: break-word;
     word-wrap: break-word;
   }
@@ -552,7 +552,7 @@ button:focus {
   }
 
   .speech:first-child {
-    top: 35px;
+    top: 33px;
     margin-bottom: 3em;
     height: auto;
   }
@@ -583,14 +583,11 @@ button:focus {
     display: none;
   }
 
-  main {
-    flex: 1;
-  }
 
   .chatbot-container {
     margin-left: 0;
     width: 100%;
-    height: calc(100vh - 150px);
+    height: calc(100vh - 158px);
   }
 
   .chatbot-input-container {
@@ -636,14 +633,13 @@ button:focus {
   }
 
   .handprints-mobile {
-    width: 13em;
-    height: 6em;
-    align-self: center;
+    display: none;
   }
 
   /* Styling to ensure the footer stays at the bottom on mobile */
   .footer-bg {
-    position: sticky;
+    display: none;
+    /*position: sticky;
     margin-bottom: .6em;
     left: 0;
     right: 0;
@@ -651,7 +647,7 @@ button:focus {
     background-color: #eeeeee;;
     color: #544F4F;
     font-size: 1em;
-    padding-top: .25em;
+    padding-top: .25em; */
     
   }
 }
