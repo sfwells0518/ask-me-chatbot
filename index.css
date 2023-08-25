@@ -374,7 +374,7 @@ input[type="text"]:focus {
 }
 
 .suggested-prompts, .prompt-toggle {
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
 }
 
 .prompt-toggle h5 {

@@ -1,6 +1,6 @@
 import { Configuration, OpenAIApi } from "openai";
-import { initializeApp } from 'firebase/app'; 
-import { getDatabase, ref, push, get, remove } from 'firebase/database';
+import { initializeApp } from "firebase/app";
+import { getDatabase, ref, push, get, remove } from "firebase/database";
 
 const configuration = new Configuration({
   apiKey: import.meta.env.VITE_OpenAI_API_KEY,
@@ -26,11 +26,10 @@ const instructionObj = {
     "You are both a pediatrician and a parent. Engage in a back-and-forth conversation with the user, paying close attention to the user's questions and context. Offer warm, actionable and concise advice in 50 words or less, ensuring your responses are relevant to the user's query.",
 };
 
-const userInput = document.getElementById('user-input');
-const suggestionButtons = document.querySelector('.suggested-prompts');
-const promptToggle = document.getElementById('prompt-toggle');
-const clearButton = document.getElementById('clear-btn');
-
+const userInput = document.getElementById("user-input");
+const suggestionButtons = document.querySelector(".suggested-prompts");
+const promptToggle = document.getElementById("prompt-toggle");
+const clearButton = document.getElementById("clear-btn");
 
 userInput.addEventListener("input", () => {
   const trimmedInput = userInput.value.trim();
@@ -45,13 +44,17 @@ userInput.addEventListener("input", () => {
 });
 
 function resetConversation() {
-  chatbotConversation.innerHTML = '';
-  userInput.value = '';
-  suggestionButtons.style.display = 'grid';
+  chatbotConversation.innerHTML = "";
+  userInput.value = "";
+  suggestionButtons.style.display = "grid";
+  promptToggle.style.display = "flex";
 }
 
-clearButton.addEventListener('click', () => {
+clearButton.addEventListener("click", () => {
+  // Reset the conversation
   resetConversation();
+  // Additional operations
+  remove(conversationInDb);
 });
 
 document.addEventListener("submit", (e) => {
@@ -59,10 +62,10 @@ document.addEventListener("submit", (e) => {
   const userInput = document.getElementById("user-input");
   push(conversationInDb, {
     role: "user",
-    content: userInput.value
+    content: userInput.value,
   });
   fetchReply();
-  const newSpeechBubble = document.createElement('div');
+  const newSpeechBubble = document.createElement("div");
   newSpeechBubble.classList.add("speech", "speech-human");
   chatbotConversation.appendChild(newSpeechBubble);
   newSpeechBubble.textContent = userInput.value;
@@ -80,7 +83,7 @@ function fetchReply() {
         model: "gpt-4",
         messages: conversationArr,
         presence_penalty: 0,
-        frequency_penalty: 0.3
+        frequency_penalty: 0.3,
       });
       push(conversationInDb, response.data.choices[0].message);
       renderTypewriterText(response.data.choices[0].message.content);
@@ -94,7 +97,6 @@ function renderTypewriterText(text) {
   const newSpeechBubble = document.createElement("div");
   newSpeechBubble.classList.add("speech", "speech-ai", "blinking-cursor");
   chatbotConversation.appendChild(newSpeechBubble);
-
 
   let i = 0;
   function animate() {
@@ -110,23 +112,25 @@ function renderTypewriterText(text) {
   requestAnimationFrame(animate);
 }
 
-document.getElementById("clear-btn").addEventListener("click", () => {
-  remove(conversationInDb);
-  chatbotConversation.innerHTML =
-    '<div class="speech speech-ai">Hey, newbie parent! What can I help you with today?</div>';
-});
+let suggestionHidden = true; // Initial State
 
-let suggestionHidden = false; // Initial State
-suggestionButtons.style.opacity = "1";
+suggestionButtons.style.opacity = "0";
 suggestionButtons.style.transform = "translateX(-50%) translateY(0)";
-promptToggle.style.transform = "translateY(0)";
+suggestionButtons.style.visibility = "hidden";
+promptToggle.style.transform = "translateY(185px)";
+
 const promptToggleText = document.querySelector("#prompt-toggle h5");
+promptToggleText.textContent = "Show Suggested Prompts";
+
 const hideIcon = document.querySelector(".hide-icon");
 const showIcon = document.querySelector(".show-icon");
 
+hideIcon.style.display = "none";
+showIcon.style.display = "inline-block";
+
 document.getElementById("prompt-toggle").addEventListener("click", () => {
   if (suggestionHidden) {
-    // Showing the suggestionButtons
+    // Show the suggestionButtons
     suggestionButtons.style.opacity = "1";
     suggestionButtons.style.visibility = "visible";
     suggestionButtons.style.transform = "translateX(-50%) translateY(0)";
@@ -136,7 +140,7 @@ document.getElementById("prompt-toggle").addEventListener("click", () => {
     hideIcon.style.display = "inline-block";
     showIcon.style.display = "none";
   } else {
-    // Hiding the suggestionButtons
+    // Hide the suggestionButtons
     suggestionButtons.style.opacity = "0";
     suggestionButtons.style.transform = "translateX(-50%) translateY(100%)"; // Move it downwards
     suggestionButtons.style.transitionDelay = "0s, 0s, 0.3s"; // Delay visibility
@@ -151,8 +155,6 @@ document.getElementById("prompt-toggle").addEventListener("click", () => {
   suggestionHidden = !suggestionHidden; // Toggle the state
 });
 
-
-
 function renderConversationFromDb() {
   get(conversationInDb).then((snapshot) => {
     if (snapshot.exists()) {
@@ -164,10 +166,10 @@ function renderConversationFromDb() {
       });
       chatbotConversation.scrollTop = chatbotConversation.scrollHeight;
 
-      suggestionButtons.style.display = 'none';
+      suggestionButtons.style.display = "none";
       promptToggle.style.display = "none";
     } else {
-      suggestionButtons.style.display = 'grid';
+      suggestionButtons.style.display = "grid";
       promptToggle.style.display = "flex";
     }
   });
