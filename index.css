@@ -352,6 +352,53 @@ input[type="text"]:focus {
   outline: none;
 }
 
+.prompt-display-toggle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  width: 400px;
+  margin: 0 auto;
+  
+}
+
+.prompt-toggle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 10%;
+  background: #FFD159 !important;
+  border: #FFD159 !important;
+  margin-bottom: -1.75em;
+}
+
+.suggested-prompts, .prompt-toggle {
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.prompt-toggle h5 {
+  margin: 0;
+  padding-top: 5px;
+  font-size: 1.25em;
+  color: #544F4F;
+  text-decoration: none !important;
+  font-family: Avenir;
+  font-weight: 500 !important;
+}
+
+.hide-icon {
+  height: 20px;
+  margin-top: 0.15em;
+  margin-left: 0.35em;
+}
+
+.show-icon {
+  height: 20px;
+  margin-top: 0.15em;
+  margin-left: 0.35em;
+}
+
 .suggested-prompts {
   display: grid;
   grid-template-columns: 475px 475px;

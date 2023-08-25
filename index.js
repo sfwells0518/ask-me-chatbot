@@ -28,6 +28,7 @@ const instructionObj = {
 
 const userInput = document.getElementById('user-input');
 const suggestionButtons = document.querySelector('.suggested-prompts');
+const promptToggle = document.getElementById('prompt-toggle');
 const clearButton = document.getElementById('clear-btn');
 
 
@@ -36,8 +37,10 @@ userInput.addEventListener("input", () => {
 
   if (trimmedInput !== "") {
     suggestionButtons.style.display = "none";
+    promptToggle.style.display = "none";
   } else {
     suggestionButtons.style.display = "grid";
+    promptToggle.style.display = "flex";
   }
 });
 
@@ -113,6 +116,34 @@ document.getElementById("clear-btn").addEventListener("click", () => {
     '<div class="speech speech-ai">Hey, newbie parent! What can I help you with today?</div>';
 });
 
+let suggestionHidden = false; // Initial State
+suggestionButtons.style.opacity = "1";
+suggestionButtons.style.transform = "translateX(-50%) translateY(0)";
+promptToggle.style.transform = "translateY(0)";
+const promptToggleText = document.querySelector("#prompt-toggle h5");
+const hideIcon = document.querySelector(".hide-icon");
+const showIcon = document.querySelector(".show-icon");
+
+document.getElementById("prompt-toggle").addEventListener("click", () => {
+  if (suggestionHidden) {
+    suggestionButtons.style.opacity = "1";
+    suggestionButtons.style.transform = "translateX(-50%) translateY(0)";
+    promptToggle.style.transform = "translateY(0)";
+    promptToggleText.textContent = "Hide Suggested Prompts";
+    hideIcon.style.display = "inline-block";
+    showIcon.style.display = "none";
+  } else {
+    suggestionButtons.style.opacity = "0";
+    suggestionButtons.style.transform = "translateX(-50%) translateY(100%)"; // Move it downwards
+    promptToggle.style.transform = "translateY(185px)"; // Move it half the height downwards
+    promptToggleText.textContent = "Show Suggested Prompts";
+    hideIcon.style.display = "none";
+    showIcon.style.display = "inline-block";
+  }
+  suggestionHidden = !suggestionHidden; // Toggle the state
+});
+
+
 function renderConversationFromDb() {
   get(conversationInDb).then((snapshot) => {
     if (snapshot.exists()) {
@@ -125,8 +156,10 @@ function renderConversationFromDb() {
       chatbotConversation.scrollTop = chatbotConversation.scrollHeight;
 
       suggestionButtons.style.display = 'none';
+      promptToggle.style.display = "none";
     } else {
       suggestionButtons.style.display = 'grid';
+      promptToggle.style.display = "flex";
     }
   });
 }
