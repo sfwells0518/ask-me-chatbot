@@ -123,6 +123,10 @@ function renderConversationFromDb() {
         newSpeechBubble.textContent = dbObj.content;
       });
       chatbotConversation.scrollTop = chatbotConversation.scrollHeight;
+
+      suggestionButtons.style.display = 'none';
+    } else {
+      suggestionButtons.style.display = 'grid';
     }
   });
 }
