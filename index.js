@@ -23,7 +23,7 @@ const chatbotConversation = document.getElementById("chatbot-conversation");
 const instructionObj = {
   role: "system",
   content:
-    "You are a knowledgeable and understanding expert in parenting. With empathy and compassion, offer short, concise and actionable advice to guide first-time parents in 50 words or less.",
+    "You are both a pediatrician and a parent. Engage in a back-and-forth conversation with the user, paying close attention to the user's questions and context. Offer warm, actionable and concise advice in 50 words or less, ensuring your responses are relevant to the user's query.",
 };
 
 const userInput = document.getElementById('user-input');
