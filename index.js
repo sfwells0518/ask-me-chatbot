@@ -126,22 +126,31 @@ const showIcon = document.querySelector(".show-icon");
 
 document.getElementById("prompt-toggle").addEventListener("click", () => {
   if (suggestionHidden) {
+    // Showing the suggestionButtons
     suggestionButtons.style.opacity = "1";
+    suggestionButtons.style.visibility = "visible";
     suggestionButtons.style.transform = "translateX(-50%) translateY(0)";
+    suggestionButtons.style.transitionDelay = "0s"; // No delay
     promptToggle.style.transform = "translateY(0)";
     promptToggleText.textContent = "Hide Suggested Prompts";
     hideIcon.style.display = "inline-block";
     showIcon.style.display = "none";
   } else {
+    // Hiding the suggestionButtons
     suggestionButtons.style.opacity = "0";
     suggestionButtons.style.transform = "translateX(-50%) translateY(100%)"; // Move it downwards
+    suggestionButtons.style.transitionDelay = "0s, 0s, 0.3s"; // Delay visibility
     promptToggle.style.transform = "translateY(185px)"; // Move it half the height downwards
     promptToggleText.textContent = "Show Suggested Prompts";
     hideIcon.style.display = "none";
     showIcon.style.display = "inline-block";
+    setTimeout(() => {
+      suggestionButtons.style.visibility = "hidden"; // Apply visibility hidden after a delay
+    }, 300); // This delay should match the transition duration
   }
   suggestionHidden = !suggestionHidden; // Toggle the state
 });
+
 
 
 function renderConversationFromDb() {

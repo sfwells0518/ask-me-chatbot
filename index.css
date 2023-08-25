@@ -374,7 +374,7 @@ input[type="text"]:focus {
 }
 
 .suggested-prompts, .prompt-toggle {
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .prompt-toggle h5 {
@@ -509,6 +509,7 @@ button:focus {
       left: 50%;
       transform: translateX(-50%);
       width: calc(100% - 40px);
+      transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
     }
   
     .suggestion-btn {
