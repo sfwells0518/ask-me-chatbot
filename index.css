@@ -53,8 +53,8 @@ body {
 }
 #newb-arrows {
   width: 65px;
-  height: 138px;
-  margin-top: 1.5em;
+  height: 140px;
+  margin-top: 2em;
 }
 
 .ml6 {
@@ -66,7 +66,7 @@ body {
 
 .ml6 .text-wrapper {
   position: absolute;
-  top: 50%;
+  top: 51%;
   left: 50%;
   transform: translate(-50%, -50%);
   display: flex;
@@ -175,6 +175,8 @@ hr {
   height: 4px;
   background: linear-gradient(to right, transparent, #F47575, transparent);
 }
+
+
 
 #authForm input[type="email"],
 #authForm input[type="password"] {
