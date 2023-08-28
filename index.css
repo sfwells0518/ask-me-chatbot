@@ -178,6 +178,7 @@ hr {
 
 #authForm input[type="email"],
 #authForm input[type="password"] {
+  resize: none;
   width: 100%;
   max-width: 300px;
   margin-bottom: 1.25em;
@@ -190,6 +191,7 @@ hr {
 
 #authForm input[type="email"]:focus,
 #authForm input[type="password"]:focus {
+  border-color: #83BF6A;
   outline: none;
 }
 
@@ -198,6 +200,32 @@ hr {
   color: #bbbbbb;
   font-family: Avenir;
   /* adjust this value as needed */
+}
+
+.show-icon-auth {
+  position: absolute;
+  top: 54%;
+  right: 50px;
+  /* Adjust as needed */
+  transform: translateY(-50%);
+  cursor: pointer;
+  /* Indicate it's clickable */
+  height: 20px;
+  margin-top: 0.15em;
+  
+}
+
+.hide-icon-auth {
+  position: absolute;
+  top: 54%;
+  right: 50px;
+  /* Adjust as needed */
+  transform: translateY(-50%);
+  cursor: pointer;
+  /* Indicate it's clickable */
+  height: 20px;
+  margin-top: 0.15em;
+
 }
 
 .button-container {

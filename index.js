@@ -91,6 +91,33 @@ const checkAuthState = async () => {
   });
 };
 
+document.querySelector(".show-icon-auth").addEventListener("click", function () {
+  const passwordInput = document.getElementById("userPassword");
+  const showIcon = document.querySelector(".show-icon-auth");
+  const hideIcon = document.querySelector(".hide-icon-auth");
+
+  if (passwordInput.type === "password") {
+    passwordInput.type = "text";
+    showIcon.style.display = "none";
+    hideIcon.style.display = "block";
+  } else {
+    passwordInput.type = "password";
+    showIcon.style.display = "block";
+    hideIcon.style.display = "none";
+  }
+});
+
+document.querySelector(".hide-icon-auth").addEventListener("click", function () {
+  const passwordInput = document.getElementById("userPassword");
+  const showIcon = document.querySelector(".show-icon-auth");
+  const hideIcon = document.querySelector(".hide-icon-auth");
+
+  passwordInput.type = "password";
+  showIcon.style.display = "block";
+  hideIcon.style.display = "none";
+});
+
+
 const userSignOut = async () => {
   await signOut(auth);
   window.location.pathname = "/";
