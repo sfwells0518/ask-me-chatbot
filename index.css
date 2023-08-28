@@ -1,5 +1,5 @@
 :root {
-  --border-rad-lg: 10px;
+  --border-rad-lg: 5px;
   --light-text: #fcfcfc;
 }
 
@@ -16,6 +16,212 @@ body {
   font-family: 'Avenir', sans-serif;
   font-size: 16px;
   letter-spacing: .025em;
+}
+
+.welcome-container {
+  display: flex;
+  width: 65%;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  justify-content: center;
+  margin-bottom: auto;
+}
+
+#welcome-logo {
+  width: 200px;
+  margin-bottom: -1em;
+}
+
+.welcome-subtitle {
+  text-align: center;
+  
+}
+.welcome-subtitle h2 {
+  margin-top: 2em;
+}
+
+.newb-arrows-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  justify-content: center;
+  margin-bottom: auto;
+  margin-bottom: 25em;
+}
+#newb-arrows {
+  width: 65px;
+  height: 140px;
+  margin-top: 1.5em;
+}
+
+.ml6 {
+  display: flex;
+  font-weight: 100 !important;
+  font-family: Avenir;
+  font-size: 2.25em;
+}
+
+.ml6 .text-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  padding-top: 0.5em;
+  padding-right: 1em;
+  padding-bottom: 0.5em;
+  padding-left: 1em;
+  border-radius: var(--border-rad-lg);
+  border: 1px solid #FFD159;
+  background-color: #FFD159;
+  
+}
+
+.ml6 .letter {
+  display: inline-block;
+  line-height: 1em;
+}
+
+.ml6 .letters {
+  white-space: nowrap;
+}
+
+.welcome-handprints {
+  position: absolute;
+  top: 85%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  padding-top: 0.2em;
+  padding-right: 0.05em;
+  padding-bottom: 0.1em;
+}
+
+#welcome-handprints {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 550px;
+  height: 250px;
+  margin-top: 0;
+}
+
+.userAuth-container {
+  display: flex;
+  width: 35%;
+  height: 100%;
+  border-left: 5px solid #F47575;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  margin-left: auto;
+  /* pushes the container to the right */
+  align-self: flex-start;
+  /* ensures it starts at the top */
+}
+
+#authForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+}
+
+.auth-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  margin-bottom: -0.5em;
+  color: #544F4F;
+}
+
+.auth-title h1 {
+  font-family: Avenir;
+  font-size: 1.75em;
+  font-weight: 100;
+}
+
+hr {
+  width: 75%;
+  height: 5px;
+  background: linear-gradient(to right, transparent, #FFD159, transparent);
+  border: none;
+  margin-top: 0;
+  margin-bottom: 1.25em;
+}
+
+
+#authForm h2 {
+  margin-bottom: 0;
+  font-size: 1.5em !important;
+  text-underline-offset: 2px !important;
+}
+
+#authForm h2::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 1em;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 110%;
+  height: 4px;
+  background: linear-gradient(to right, transparent, #F47575, transparent);
+}
+
+#authForm input[type="email"],
+#authForm input[type="password"] {
+  width: 100%;
+  max-width: 300px;
+  margin-bottom: 1.25em;
+  height: 50px;
+  border: 1px solid #544F4F;
+  border-radius: var(--border-rad-lg);
+  padding-left: 5px;
+  
+}
+
+#authForm input[type="email"]:focus,
+#authForm input[type="password"]:focus {
+  outline: none;
+}
+
+#userEmail::placeholder,
+#userPassword::placeholder {
+  color: #bbbbbb;
+  font-family: Avenir;
+  /* adjust this value as needed */
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+}
+
+#authForm button {
+  background-color: #81D3DB;
+  border-radius: var(--border-rad-lg);
+  border: #81D3DB;
+  color: #ffffff;
+  font-weight: 500;
+  width: 110px;
+  margin-bottom: 0.65em;
+  text-align: center;
+  margin-right: 0.5em;
+  
+}
+
+#authForm button:last-child {
+  margin-right: 0;
 }
 
 .layout-container {
@@ -137,11 +343,12 @@ h6 {
 
 main {
   flex: 1;
-  background-color: #ededed;
+  background-color: #ffffff;
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 
 /* Adjusting chatbot styles */
@@ -540,11 +747,22 @@ button:focus {
 }
 
 @media (max-width: 768px) {
+  
+  .welcome-container {
+    display: none;
+  }
+
+  .userAuth-container {
+    display: none;
+  }
+  
   .layout-container {
     flex-direction: column;
     min-height: 100vh;
     align-items: stretch;
   }
+
+
 
   .speech,
   .speech-ai,
@@ -703,6 +921,15 @@ button:focus {
 }
 
 @media (max-width: 480px) {
+  
+  .welcome-container {
+      display: none;
+  }
+
+  .userAuth-container {
+      display: none;
+  }
+  
   .sidebar ul li a {
     font-size: 1.5em;
   }

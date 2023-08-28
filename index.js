@@ -1,16 +1,103 @@
 import { Configuration, OpenAIApi } from "openai";
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, push, get, remove } from "firebase/database";
+import {  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut,} from 'firebase/auth';
+
 
 const configuration = new Configuration({
   apiKey: import.meta.env.VITE_OpenAI_API_KEY,
 });
 
 const firebaseConfig = {
-  databaseURL: "https://askme-openai-default-rtdb.firebaseio.com/",
+  apiKey: import.meta.env.VITE_Firebase_API_KEY,
+  authDomain: "askme-openai.firebaseapp.com",
+  databaseURL: "https://askme-openai-default-rtdb.firebaseio.com",
+  projectId: "askme-openai",
+  storageBucket: "askme-openai.appspot.com",
+  messagingSenderId: "490077676557",
+  appId: "1:490077676557:web:e4b0a3ed202c6bd408e144",
 };
 
 const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+const userEmail = document.querySelector("#userEmail");
+const userPassword = document.querySelector("#userPassword");
+const authForm = document.querySelector("#authForm");
+const signUpButton = document.querySelector("#signUpButton");
+const signInButton = document.querySelector("#signInButton");
+const signOutButton = document.querySelector("#signOutButton");
+const newBMain = document.querySelector(".layout-container");
+const userAuthContainer = document.querySelector(".userAuth-container");
+const welcomeContainer = document.querySelector(".welcome-container");
+
+const userSignUp = async () => {
+  const signUpEmail = userEmail.value;
+  const signUpPassword = userPassword.value;
+  
+  try {
+    const userCredential = await createUserWithEmailAndPassword(auth, signUpEmail, signUpPassword);
+    const user = userCredential.user;
+    console.log(user);
+    alert("Welcome to NewB! Your account has successfully been created!");
+  } catch (error) {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    console.log(errorCode + errorMessage);
+  }
+};
+
+const userSignIn = async () => {
+  const signInEmail = userEmail.value;
+  const signInPassword = userPassword.value;
+
+  try {
+    const userCredential = await signInWithEmailAndPassword(auth, signInEmail, signInPassword);
+    const user = userCredential.user;
+    console.log(user);
+    alert("Welcome to NewB! You have logged in successfully!");
+  } catch (error) {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    console.log(errorCode + errorMessage);
+  }
+};
+
+const checkAuthState = async () => {
+  onAuthStateChanged(auth, user => {
+    if (user) {
+      /* User is signed in */
+      authForm.style.display = "none";
+      userAuthContainer.style.display = "none";
+      welcomeContainer.style.display = "none";
+      signOutButton.style.display = "block";
+      newBMain.style.display = "flex";
+
+      
+    } else {
+      /* No user is signed in */
+      userAuthContainer.style.display = "flex";
+      authForm.style.display = "block";
+      welcomeContainer.style.display = "flex";
+      signOutButton.style.display = "none";
+      newBMain.style.display = "none";
+    }
+  });
+};
+
+const userSignOut = async () => {
+  await signOut(auth);
+};
+
+checkAuthState();
+
+signUpButton.addEventListener("click", userSignUp,);
+signInButton.addEventListener("click", userSignIn);
+signOutButton.addEventListener("click", userSignOut);
 
 const database = getDatabase(app);
 
@@ -175,3 +262,23 @@ function renderConversationFromDb() {
   });
 }
 renderConversationFromDb();
+
+
+// Wrap every letter in a span
+const textWrapper = document.querySelector('.ml6 .letters');
+textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+anime.timeline({loop: true})
+  .add({
+    targets: '.ml6 .letter',
+    translateY: ["1.1em", 0],
+    translateZ: 0,
+    duration: 750,
+    delay: (el, i) => 50 * i
+  }).add({
+    targets: '.ml6',
+    opacity: 0,
+    duration: 1000,
+    easing: "easeOutExpo",
+    delay: 1000
+  });
