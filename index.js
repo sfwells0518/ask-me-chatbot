@@ -44,6 +44,8 @@ const userSignUp = async () => {
     const user = userCredential.user;
     console.log(user);
     alert("Welcome to NewB! Your account has successfully been created!");
+    await signOut(auth);
+    checkAuthState();
   } catch (error) {
     const errorCode = error.code;
     const errorMessage = error.message;
@@ -60,6 +62,7 @@ const userSignIn = async () => {
     const user = userCredential.user;
     console.log(user);
     alert("Welcome to NewB! You have logged in successfully!");
+    window.location.href = "/chat";
   } catch (error) {
     const errorCode = error.code;
     const errorMessage = error.message;
@@ -91,6 +94,7 @@ const checkAuthState = async () => {
 
 const userSignOut = async () => {
   await signOut(auth);
+  window.location.pathname = "/";
 };
 
 checkAuthState();
