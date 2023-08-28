@@ -179,7 +179,8 @@ hr {
 
 
 #authForm input[type="email"],
-#authForm input[type="password"] {
+#authForm input[type="password"],
+#authForm input[type="text"]{
   resize: none;
   width: 100%;
   max-width: 300px;
