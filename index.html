@@ -30,8 +30,18 @@
           <span class="letters">A virtual partner for newbie parents</span> 
         </span>
       </h1>
-     
+      <div class="get-started-container">
+        <div class="get-started-title">
+          <h1>Get started</h1>
+        </div>
+        <hr>
+        <div class="button-container">
+          <button id="signInButton">Log In</button>
+          <button id="signUpButton">Sign Up</button>
+        </div>
+      </div>
     </div>
+
     <div class="userAuth-container">
       <div class="auth-title">
         <h1>Get started</h1>
@@ -39,6 +49,7 @@
       <hr>
       
       <div id="authForm">
+        <input type="text" placeholder="Name" id="userName" required >
         <input type="email" placeholder="Email Address" id="userEmail" required>
         <input type="password" placeholder="Password" id="userPassword" required> 
         <img src="/show-icon.png" alt="show-icon" class="show-icon-auth">
@@ -48,9 +59,13 @@
           <button id="signInButton">Log In</button>
           <button id="signUpButton">Sign Up</button>
         </div>
-
+        <div class="auth-footer" style="display:none;">
+          <h6>*Our chatbot offers parenting advice based on ChatGPT's general knowledge. Remember, every family is unique.
+            Consult professionals for tailored assistance.*</h6>
+        </div>
       </div>
     </div>
+    
     <div class="layout-container">
       <!-- Sidebar -->
       <aside class="sidebar">

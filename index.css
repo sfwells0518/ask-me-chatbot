@@ -20,7 +20,7 @@ body {
 
 .welcome-container {
   display: flex;
-  width: 65%;
+  width: 70%;
   height: 100%;
   flex-direction: column;
   align-items: center;
@@ -52,9 +52,9 @@ body {
   margin-bottom: 25em;
 }
 #newb-arrows {
-  width: 65px;
-  height: 140px;
-  margin-top: 2em;
+  width: 70px;
+  height: 160px;
+  margin-top: 1.5em;
 }
 
 .ml6 {
@@ -113,13 +113,13 @@ body {
 
 .userAuth-container {
   display: flex;
-  width: 35%;
+  width: 30%;
   height: 100%;
-  border-left: 5px solid #F47575;
+  border-left: 5px solid #eeeeee;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #ffffff;
+  background-color: #eeeeee;
   margin-left: auto;
   /* pushes the container to the right */
   align-self: flex-start;
@@ -130,7 +130,9 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 1em;
+  width: 80%;
 }
 
 .auth-title {
@@ -151,10 +153,10 @@ body {
 hr {
   width: 75%;
   height: 5px;
-  background: linear-gradient(to right, transparent, #FFD159, transparent);
+  background: linear-gradient(to right, transparent, #81D3DB, transparent);
   border: none;
   margin-top: 0;
-  margin-bottom: 1.25em;
+  margin-bottom: 1em;
 }
 
 
@@ -176,38 +178,41 @@ hr {
   background: linear-gradient(to right, transparent, #F47575, transparent);
 }
 
-
-
 #authForm input[type="email"],
 #authForm input[type="password"],
 #authForm input[type="text"]{
   resize: none;
-  width: 100%;
-  max-width: 300px;
+  width: 80%;
+  width: 300px;
   margin-bottom: 1.25em;
   height: 50px;
   border: 1px solid #544F4F;
   border-radius: var(--border-rad-lg);
-  padding-left: 5px;
-  
+  padding-left: 6px;
+  background-color: #ffffff;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: Avenir;
 }
 
+#authForm input[type="text"]:focus,
 #authForm input[type="email"]:focus,
 #authForm input[type="password"]:focus {
-  border-color: #83BF6A;
+  border-color: #544F4F;
   outline: none;
 }
 
 #userEmail::placeholder,
-#userPassword::placeholder {
-  color: #bbbbbb;
+#userPassword::placeholder,
+#userName::placeholder {
+  color: #544F4F;
   font-family: Avenir;
   /* adjust this value as needed */
 }
 
 .show-icon-auth {
   position: absolute;
-  top: 54%;
+  top: 58%;
   right: 50px;
   /* Adjust as needed */
   transform: translateY(-50%);
@@ -220,7 +225,7 @@ hr {
 
 .hide-icon-auth {
   position: absolute;
-  top: 54%;
+  top: 58%;
   right: 50px;
   /* Adjust as needed */
   transform: translateY(-50%);
@@ -239,20 +244,32 @@ hr {
 }
 
 #authForm button {
-  background-color: #81D3DB;
+  background-color: #F47575;
   border-radius: var(--border-rad-lg);
-  border: #81D3DB;
+  border: #F47575;
   color: #ffffff;
-  font-weight: 500;
-  width: 110px;
+  font-weight: 800;
+  width: 150px;
   margin-bottom: 0.65em;
+  padding-top: 1em;
+  padding-bottom: 1em;
   text-align: center;
   margin-right: 0.5em;
-  
+}
+
+#authForm button:hover {
+  background-color: #c85959;
+  border: #c85959;
 }
 
 #authForm button:last-child {
   margin-right: 0;
+}
+
+.auth-footer {
+  margin-top: auto;
+  /* Ensures the footer takes up the full width */
+  /* Add any other styles you want for the footer here */
 }
 
 .layout-container {
