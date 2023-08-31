@@ -53,13 +53,12 @@ const userSignUp = async () => {
     const updatedUser = auth.currentUser; // Fetch the updated user
     console.log(updatedUser); // Log the updated user
 
-    alert("Welcome to NewB, " + displayName + "! Your account has successfully been created!");
-
     await signOut(auth); // sign out the user after sign up
-    setTimeout(() => {
-      checkAuthState();
-    }, 500);
+    checkAuthState(); // Update the UI first
 
+    setTimeout(() => {
+      alert("Welcome to NewB, " + displayName + "! Your account has successfully been created!");
+    }, 500);
   } catch (error) {
     const errorCode = error.code;
     const errorMessage = error.message;
@@ -67,6 +66,7 @@ const userSignUp = async () => {
     alert("Whoops! There was an issue creating your account. Please try again!"); // Friendly user message
   }
 };
+
 
 
 const userSignIn = async () => {
