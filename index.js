@@ -7,6 +7,7 @@ import {
   signInWithEmailAndPassword,
   onAuthStateChanged,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 
 const configuration = new Configuration({
@@ -40,26 +41,33 @@ const welcomeContainer = document.querySelector(".welcome-container");
 const userSignUp = async () => {
   const signUpEmail = userEmail.value;
   const signUpPassword = userPassword.value;
-
   const displayName = document.getElementById("userName").value;
 
   try {
     const userCredential = await createUserWithEmailAndPassword(auth, signUpEmail, signUpPassword);
     const user = userCredential.user;
-    await user.updateProfile({
-      displayName: displayName,
-    });
-    console.log(user);
+    console.log(user); // Log the newly created user
 
-    alert("Welcome to NewB! Your account has successfully been created!");
-    await signOut(auth);
-    checkAuthState();
+    await updateProfile(user, { displayName: displayName });
+
+    const updatedUser = auth.currentUser; // Fetch the updated user
+    console.log(updatedUser); // Log the updated user
+
+    alert("Welcome to NewB, " + displayName + "! Your account has successfully been created!");
+
+    await signOut(auth); // sign out the user after sign up
+    setTimeout(() => {
+      checkAuthState();
+    }, 500);
+
   } catch (error) {
     const errorCode = error.code;
     const errorMessage = error.message;
-    console.log(errorCode + errorMessage);
+    console.error(errorCode, errorMessage); // Logging the error and message separately
+    alert("Whoops! There was an issue creating your account. Please try again!"); // Friendly user message
   }
 };
+
 
 const userSignIn = async () => {
   const signInEmail = userEmail.value;
