@@ -1,12 +1,13 @@
 import { Configuration, OpenAIApi } from "openai";
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, push, get, remove } from "firebase/database";
-import {  getAuth,
+import {
+  getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   onAuthStateChanged,
-  signOut,} from 'firebase/auth';
-
+  signOut,
+} from "firebase/auth";
 
 const configuration = new Configuration({
   apiKey: import.meta.env.VITE_OpenAI_API_KEY,
@@ -28,6 +29,7 @@ const auth = getAuth(app);
 const userEmail = document.querySelector("#userEmail");
 const userPassword = document.querySelector("#userPassword");
 const authForm = document.querySelector("#authForm");
+
 const signUpButton = document.querySelector("#signUpButton");
 const signInButton = document.querySelector("#signInButton");
 const signOutButton = document.querySelector("#signOutButton");
@@ -38,11 +40,17 @@ const welcomeContainer = document.querySelector(".welcome-container");
 const userSignUp = async () => {
   const signUpEmail = userEmail.value;
   const signUpPassword = userPassword.value;
-  
+
+  const displayName = document.getElementById("userName").value;
+
   try {
     const userCredential = await createUserWithEmailAndPassword(auth, signUpEmail, signUpPassword);
     const user = userCredential.user;
+    await user.updateProfile({
+      displayName: displayName,
+    });
     console.log(user);
+
     alert("Welcome to NewB! Your account has successfully been created!");
     await signOut(auth);
     checkAuthState();
@@ -70,7 +78,7 @@ const userSignIn = async () => {
 };
 
 const checkAuthState = async () => {
-  onAuthStateChanged(auth, user => {
+  onAuthStateChanged(auth, (user) => {
     if (user) {
       /* User is signed in */
       authForm.style.display = "none";
@@ -78,8 +86,6 @@ const checkAuthState = async () => {
       welcomeContainer.style.display = "none";
       signOutButton.style.display = "block";
       newBMain.style.display = "flex";
-
-      
     } else {
       /* No user is signed in */
       userAuthContainer.style.display = "flex";
@@ -117,7 +123,6 @@ document.querySelector(".hide-icon-auth").addEventListener("click", function () 
   hideIcon.style.display = "none";
 });
 
-
 const userSignOut = async () => {
   await signOut(auth);
   window.location.pathname = "/";
@@ -125,9 +130,17 @@ const userSignOut = async () => {
 
 checkAuthState();
 
-signUpButton.addEventListener("click", userSignUp,);
-signInButton.addEventListener("click", userSignIn);
-signOutButton.addEventListener("click", userSignOut);
+if (signUpButton) {
+  signUpButton.addEventListener("click", userSignUp);
+}
+
+if (signInButton) {
+  signInButton.addEventListener("click", userSignIn);
+}
+
+if (signOutButton) {
+  signOutButton.addEventListener("click", userSignOut);
+}
 
 const database = getDatabase(app);
 
@@ -293,22 +306,22 @@ function renderConversationFromDb() {
 }
 renderConversationFromDb();
 
-
-// Wrap every letter in a span
-const textWrapper = document.querySelector('.ml6 .letters');
+const textWrapper = document.querySelector(".ml6 .letters");
 textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 
-anime.timeline({loop: true})
+anime
+  .timeline({ loop: true })
   .add({
-    targets: '.ml6 .letter',
+    targets: ".ml6 .letter",
     translateY: ["1.1em", 0],
     translateZ: 0,
     duration: 750,
-    delay: (el, i) => 50 * i
-  }).add({
-    targets: '.ml6',
+    delay: (el, i) => 50 * i,
+  })
+  .add({
+    targets: ".ml6",
     opacity: 0,
     duration: 1000,
     easing: "easeOutExpo",
-    delay: 1000
+    delay: 1000,
   });
