@@ -41,6 +41,50 @@ const userAuthContainer = document.querySelector(".userAuth-container");
 const welcomeContainer = document.querySelector(".welcome-container");
 let justSignedUp = false;
 
+const loginButton = document.querySelector("#logInButton");
+const signupButton = document.querySelector("#registerButton");
+
+
+function openAuth(action) {
+  welcomeContainer.style.width = "70%";
+  userAuthContainer.style.width = "30%";
+  userAuthContainer.style.opacity = "1";
+  userAuthContainer.style.visibility = "visible";
+
+
+  // Depending on the action, show the corresponding form/content
+  if (action === "login") {
+    // display login form/content
+  } else if (action === "signup") {
+    // display signup form/content
+  }
+}
+
+function closeAuth() {
+  welcomeContainer.style.width = "100%";
+  userAuthContainer.style.width = "0";
+  userAuthContainer.style.opacity = "0";
+  userAuthContainer.style.visibility = "hidden";
+
+}
+
+loginButton.addEventListener("click", function () {
+  if (welcomeContainer.style.width !== "70%") {
+    openAuth("login");
+  } else {
+    closeAuth();
+  }
+});
+
+signupButton.addEventListener("click", function () {
+  if (welcomeContainer.style.width !== "70%") {
+    openAuth("signup");
+  } else {
+    closeAuth();
+  }
+});
+
+
 const showLoggedInUI = () => {
   authForm.style.display = "none";
   userAuthContainer.style.display = "none";
