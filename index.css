@@ -146,7 +146,7 @@ body {
 
 .auth-title h1 {
   font-family: Avenir;
-  font-size: 1.75em;
+  font-size: 1.31em;
   font-weight: 100;
 }
 
@@ -212,7 +212,7 @@ hr {
 
 .show-icon-auth {
   position: absolute;
-  top: 58%;
+  top: 57%;
   right: 50px;
   /* Adjust as needed */
   transform: translateY(-50%);
@@ -225,7 +225,7 @@ hr {
 
 .hide-icon-auth {
   position: absolute;
-  top: 58%;
+  top: 57%;
   right: 50px;
   /* Adjust as needed */
   transform: translateY(-50%);
@@ -273,7 +273,7 @@ hr {
 }
 
 .layout-container {
-  display: flex;
+  display: none; /* Meant to initially be hidden and then only shown once user logs in */
   justify-content: flex-start;
   width: 100%;
   height: 100vh;

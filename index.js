@@ -30,44 +30,66 @@ const auth = getAuth(app);
 const userEmail = document.querySelector("#userEmail");
 const userPassword = document.querySelector("#userPassword");
 const authForm = document.querySelector("#authForm");
-
+const authTitle = document.querySelector(".auth-title h1");
 const signUpButton = document.querySelector("#signUpButton");
 const signInButton = document.querySelector("#signInButton");
+signInButton.style.display = "none";
 const signOutButton = document.querySelector("#signOutButton");
 const newBMain = document.querySelector(".layout-container");
+newBMain.style.display = "none";
 const userAuthContainer = document.querySelector(".userAuth-container");
 const welcomeContainer = document.querySelector(".welcome-container");
+let justSignedUp = false;
+
+const showLoggedInUI = () => {
+  authForm.style.display = "none";
+  userAuthContainer.style.display = "none";
+  welcomeContainer.style.display = "none";
+  signOutButton.style.display = "block";
+  newBMain.style.display = "flex";
+};
+
+const showLoggedOutUI = () => {
+  userAuthContainer.style.display = "flex";
+  authForm.style.display = "block";
+  welcomeContainer.style.display = "flex";
+  newBMain.style.display = "none";
+  signOutButton.style.display = "none";
+};
 
 const userSignUp = async () => {
   const signUpEmail = userEmail.value;
   const signUpPassword = userPassword.value;
-  const displayName = document.getElementById("userName").value;
+  const userNameInput = document.getElementById("userName");
+  const displayName = userNameInput.value;
 
   try {
+    justSignedUp = true; // flag is set to true before begging the sign up and profile update process
     const userCredential = await createUserWithEmailAndPassword(auth, signUpEmail, signUpPassword);
     const user = userCredential.user;
-    console.log(user); // Log the newly created user
 
     await updateProfile(user, { displayName: displayName });
 
-    const updatedUser = auth.currentUser; // Fetch the updated user
-    console.log(updatedUser); // Log the updated user
-
-    await signOut(auth); // sign out the user after sign up
-    checkAuthState(); // Update the UI first
+    await signOut(auth);
+    justSignedUp = false; // Reset the flag after signing out
+    showLoggedOutUI();
 
     setTimeout(() => {
       alert("Welcome to NewB, " + displayName + "! Your account has successfully been created!");
     }, 500);
+
+    authTitle.innerHTML = "Welcome, Newbie!";
+    userNameInput.style.display = "none";
+    signUpButton.style.display = "none";
+    signInButton.style.display = "block";
   } catch (error) {
+    justSignedUp = false; // Ensure justSignedUp is reset even on error
     const errorCode = error.code;
     const errorMessage = error.message;
-    console.error(errorCode, errorMessage); // Logging the error and message separately
-    alert("Whoops! There was an issue creating your account. Please try again!"); // Friendly user message
+    console.error(errorCode, errorMessage);
+    alert("Whoops! There was an issue creating your account. Please try again!");
   }
 };
-
-
 
 const userSignIn = async () => {
   const signInEmail = userEmail.value;
@@ -76,31 +98,23 @@ const userSignIn = async () => {
   try {
     const userCredential = await signInWithEmailAndPassword(auth, signInEmail, signInPassword);
     const user = userCredential.user;
-    console.log(user);
+    showLoggedInUI();
     alert("Welcome to NewB! You have logged in successfully!");
   } catch (error) {
     const errorCode = error.code;
     const errorMessage = error.message;
-    console.log(errorCode + errorMessage);
+    console.error(errorCode, errorMessage);
+    showLoggedOutUI();
+    alert("Failed to sign in. Please try again.");
   }
 };
 
-const checkAuthState = async () => {
+const checkAuthState = () => {
   onAuthStateChanged(auth, (user) => {
-    if (user) {
-      /* User is signed in */
-      authForm.style.display = "none";
-      userAuthContainer.style.display = "none";
-      welcomeContainer.style.display = "none";
-      signOutButton.style.display = "block";
-      newBMain.style.display = "flex";
+    if (user && !justSignedUp) {
+      showLoggedInUI();
     } else {
-      /* No user is signed in */
-      userAuthContainer.style.display = "flex";
-      authForm.style.display = "block";
-      welcomeContainer.style.display = "flex";
-      signOutButton.style.display = "none";
-      newBMain.style.display = "none";
+      showLoggedOutUI();
     }
   });
 };
@@ -133,7 +147,7 @@ document.querySelector(".hide-icon-auth").addEventListener("click", function () 
 
 const userSignOut = async () => {
   await signOut(auth);
-  window.location.pathname = "/";
+  showLoggedOutUI();
 };
 
 checkAuthState();
