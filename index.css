@@ -1,6 +1,7 @@
 :root {
   --border-rad-lg: 5px;
   --light-text: #fcfcfc;
+  
 }
 
 *,
@@ -29,6 +30,8 @@ body {
   position: relative;
   justify-content: center;
   margin-bottom: auto;
+  background-image: url('main-gradient.png');
+  background-size: cover;
 }
 
 #welcome-logo {
@@ -81,8 +84,7 @@ body {
   padding-bottom: 0.5em;
   padding-left: 1em;
   border-radius: var(--border-rad-lg);
-  border: 1px solid #FFD159;
-  background-color: #FFD159;
+  color: #544F4F;
   letter-spacing: .025em;
   
 }
@@ -104,14 +106,14 @@ body {
 }
 
 .get-started-container a {
-  color: #81D3DB;
+  color: #F47575;
   text-decoration: underline;
   text-underline-offset: 2px;
   cursor: pointer;
 }
 
 .get-started-container a:hover {
-  color: #6eb6bd;
+  color: #c85959;
   text-decoration: none;
 }
 
@@ -164,18 +166,17 @@ body {
 .userAuth-container {
   display: none;
   transition: width 0.3s ease, opacity 0.3s, visibility 0.3s;
-  ;
   /* For a sliding effect */
   max-height: 100%;
   opacity: 0;
   overflow: hidden;
   width: 0;
   height: 100%;
-  border-left: 5px solid #eeeeee;
+  border-left: 5px solid #ffffff;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #eeeeee;
+  background-color: #ffffff;
   margin-left: auto;
   /* pushes the container to the right */
   align-self: flex-start;
@@ -195,7 +196,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 50%;
+  width: 100%;
   margin-bottom: -0.5em;
   color: #544F4F;
 }
@@ -207,9 +208,9 @@ body {
 }
 
 hr {
-  width: 50%;
+  width: 75%;
   height: 5px;
-  background: linear-gradient(to right, transparent, #81D3DB, transparent);
+  background: linear-gradient(to right, transparent, #FFD159, transparent);
   border: none;
   margin-top: 0;
   margin-bottom: 1em;
@@ -334,18 +335,18 @@ hr {
 /* Sidebar styles */
 .sidebar {
   width: 20%;
-  background-color: #ffffff;
+  background-color: #eeeeee;
   padding: 1em;
   display: flex;
   flex-direction: column;
   justify-content: start;
   align-items: center;
-  border-right: 4px solid #544F4F;
+  border-right: 4px solid #eeeeee;
 }
 
 
 .chat-history-container {
-  background-color: #ffffff;
+  background-color: #eeeeee;
   margin-top: 0;
   height: 100%;
   width: 103%;
@@ -442,7 +443,6 @@ h6 {
 
 main {
   flex: 1;
-  background-color: #ffffff;
   height: 100vh;
   display: flex;
   align-items: center;
@@ -490,7 +490,7 @@ h2::after {
   transform: translateX(-50%);
   width: 110%;
   height: 4px;
-  background: linear-gradient(to right, transparent, #F47575, transparent);
+  background: linear-gradient(to right, transparent, #FFD159, transparent);
 }
 
 .logo {
