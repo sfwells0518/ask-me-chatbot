@@ -39,9 +39,11 @@ body {
 .welcome-subtitle {
   text-align: center;
   
+  
 }
 .welcome-subtitle h2 {
   margin-top: 2em;
+  
 }
 
 .newb-arrows-container {
@@ -64,11 +66,12 @@ body {
   font-weight: 100 !important;
   font-family: Avenir;
   font-size: 2.25em;
+  margin-top: 0.25em;
 }
 
 .ml6 .text-wrapper {
   position: absolute;
-  top: 51%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   display: flex;
@@ -80,6 +83,7 @@ body {
   border-radius: var(--border-rad-lg);
   border: 1px solid #FFD159;
   background-color: #FFD159;
+  letter-spacing: .025em;
   
 }
 
@@ -90,6 +94,50 @@ body {
 
 .ml6 .letters {
   white-space: nowrap;
+}
+
+.get-started-button-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+}
+
+.get-started-container a {
+  color: #81D3DB;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+
+.get-started-container a:hover {
+  color: #6eb6bd;
+  text-decoration: none;
+}
+
+#logInButton {
+  background-color: #83BF6A;
+  border-radius: var(--border-rad-lg);
+  border: #83BF6A;
+  color: #ffffff;
+  font-weight: 800;
+  width: 100%;
+  margin-bottom: 0.65em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  text-align: center;
+  margin-right: 0.5em;
+  letter-spacing: .025em;
+}
+
+#logInButton:hover {
+  background-color: #6d9f57;
+  border: #6d9f57;
+}
+
+.get-started-container h4 {
+  letter-spacing: .025em;
+  padding-right: 0.4em;
 }
 
 .welcome-handprints {
@@ -115,8 +163,9 @@ body {
 
 .userAuth-container {
   display: none;
-  transition: width 0.5s ease, opacity 0.5s, visibility 0.5s;;
-    /* For a sliding effect */
+  transition: width 0.3s ease, opacity 0.3s, visibility 0.3s;
+  ;
+  /* For a sliding effect */
   max-height: 100%;
   opacity: 0;
   overflow: hidden;
@@ -153,12 +202,12 @@ body {
 
 .auth-title h1 {
   font-family: Avenir;
-  font-size: 1.31em;
+  font-size: 1.5em;
   font-weight: 100;
 }
 
 hr {
-  width: 75%;
+  width: 50%;
   height: 5px;
   background: linear-gradient(to right, transparent, #81D3DB, transparent);
   border: none;
@@ -187,7 +236,7 @@ hr {
 
 #authForm input[type="email"],
 #authForm input[type="password"],
-#authForm input[type="text"]{
+#authForm input[type="text"] {
   resize: none;
   width: 80%;
   width: 300px;
@@ -227,7 +276,7 @@ hr {
   /* Indicate it's clickable */
   height: 20px;
   margin-top: 0.15em;
-  
+
 }
 
 .hide-icon-auth {
@@ -434,6 +483,7 @@ h2 {
   font-size: .75em;
   padding-bottom: 1.5em;
   position: relative;
+  margin-bottom: 10em;
 }
 
 h2::after {

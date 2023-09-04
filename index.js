@@ -29,11 +29,11 @@ const auth = getAuth(app);
 
 const userEmail = document.querySelector("#userEmail");
 const userPassword = document.querySelector("#userPassword");
+const userNameInput = document.getElementById("userName");
 const authForm = document.querySelector("#authForm");
 const authTitle = document.querySelector(".auth-title h1");
 const signUpButton = document.querySelector("#signUpButton");
 const signInButton = document.querySelector("#signInButton");
-signInButton.style.display = "none";
 const signOutButton = document.querySelector("#signOutButton");
 const newBMain = document.querySelector(".layout-container");
 newBMain.style.display = "none";
@@ -41,9 +41,8 @@ const userAuthContainer = document.querySelector(".userAuth-container");
 const welcomeContainer = document.querySelector(".welcome-container");
 let justSignedUp = false;
 
-const loginButton = document.querySelector("#logInButton");
-const signupButton = document.querySelector("#registerButton");
-
+const logInButton = document.querySelector("#logInButton");
+const signUpLink = document.querySelector(".get-started-container a");
 
 function openAuth(action) {
   welcomeContainer.style.width = "70%";
@@ -51,12 +50,19 @@ function openAuth(action) {
   userAuthContainer.style.opacity = "1";
   userAuthContainer.style.visibility = "visible";
 
-
   // Depending on the action, show the corresponding form/content
   if (action === "login") {
     // display login form/content
+    userNameInput.style.display = "none";
+    signUpButton.style.display = "none";
+    signInButton.style.display = "block";
+    authTitle.innerHTML = "Welcome back";
   } else if (action === "signup") {
     // display signup form/content
+    userNameInput.style.display = "block";
+    signUpButton.style.display = "block";
+    signInButton.style.display = "none";
+    authTitle.innerHTML = "Create account";
   }
 }
 
@@ -65,25 +71,22 @@ function closeAuth() {
   userAuthContainer.style.width = "0";
   userAuthContainer.style.opacity = "0";
   userAuthContainer.style.visibility = "hidden";
-
 }
 
-loginButton.addEventListener("click", function () {
+logInButton.addEventListener("click", function () {
   if (welcomeContainer.style.width !== "70%") {
     openAuth("login");
+    userNameInput.style.display = "none";
+    signUpButton.style.display = "none";
   } else {
     closeAuth();
   }
 });
 
-signupButton.addEventListener("click", function () {
-  if (welcomeContainer.style.width !== "70%") {
-    openAuth("signup");
-  } else {
-    closeAuth();
-  }
+signUpLink.addEventListener("click", function (e) {
+  e.preventDefault(); // prevent the default link behavior
+  openAuth("signup");
 });
-
 
 const showLoggedInUI = () => {
   authForm.style.display = "none";
@@ -372,9 +375,32 @@ function renderConversationFromDb() {
 }
 renderConversationFromDb();
 
-const textWrapper = document.querySelector(".ml6 .letters");
-textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+// 1. Define the wrapLetters function
+function wrapLetters(element) {
+  if (element.nodeType === 3) {
+    // Text node
+    const wrapped = Array.from(element.textContent)
+      .map((char) => {
+        if (/\S/.test(char)) {
+          return `<span class='letter'>${char}</span>`;
+        } else {
+          return char;
+        }
+      })
+      .join("");
+    element.replaceWith(...Array.from(new DOMParser().parseFromString(wrapped, "text/html").body.childNodes));
+  } else if (element.nodeType === 1) {
+    // Element node
+    Array.from(element.childNodes).forEach((child) => wrapLetters(child));
+  }
+}
 
+const textWrapper = document.querySelector(".ml6 .letters");
+
+// 2. Replace the innerHTML modification with a call to wrapLetters
+wrapLetters(textWrapper);
+
+// Now the animation code
 anime
   .timeline({ loop: true })
   .add({
