@@ -30,8 +30,7 @@ body {
   position: relative;
   justify-content: center;
   margin-bottom: auto;
-  background-image: url('main-gradient.png');
-  background-size: cover;
+ 
 }
 
 #welcome-logo {
@@ -172,11 +171,11 @@ body {
   overflow: hidden;
   width: 0;
   height: 100%;
-  border-left: 5px solid #ffffff;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #ffffff;
+  background-image: url('main-gradient.png');
+  background-size: cover;
   margin-left: auto;
   /* pushes the container to the right */
   align-self: flex-start;
