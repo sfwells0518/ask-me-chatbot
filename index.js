@@ -98,7 +98,7 @@ const showLoggedInUI = () => {
 
 const showLoggedOutUI = () => {
   userAuthContainer.style.display = "flex";
-  authForm.style.display = "block";
+  authForm.style.display = "flex";
   welcomeContainer.style.display = "flex";
   newBMain.style.display = "none";
   signOutButton.style.display = "none";

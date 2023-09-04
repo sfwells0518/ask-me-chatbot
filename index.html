@@ -46,9 +46,11 @@
       <form id="authForm">
         <input type="text" placeholder="First Name" id="userName" required >
         <input type="email" placeholder="Email Address" id="userEmail" required>
-        <input type="password" placeholder="Password" id="userPassword" required> 
-        <img src="/show-icon.png" alt="show-icon" class="show-icon-auth">
-        <img src="/hide-icon.png" alt="hide-icon" class="hide-icon-auth" style="display: none;">
+        <div class="password-container">
+          <input type="password" placeholder="Password" id="userPassword" required> 
+          <img src="/show-icon.png" alt="show-icon" class="show-icon-auth">
+          <img src="/hide-icon.png" alt="hide-icon" class="hide-icon-auth" style="display: none;">
+        </div>
         <br>
         <div class="button-container">
           <button id="signInButton">Log In</button>
