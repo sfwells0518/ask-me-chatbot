@@ -329,11 +329,28 @@ function renderConversationFromDb() {
 }
 renderConversationFromDb();
 
-var textWrapper = document.querySelector(".ml6 .letters");
+
+// Tag line animation on Welcome Page //
+
+const colors = ["#83BF6A", "#E8766C", "#81D3DB", "#FFD159", "#544F4F"];
+let colorIndex = 0;
+
+const textWrapper = document.querySelector(".ml6 .letters");
 textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 
 anime
-  .timeline({ loop: true })
+  .timeline({
+    loop: true,
+    update: function (anim) {
+      // Check if a loop iteration has completed
+      if (anim.progress >= 100) {
+        // Increment the color index
+        colorIndex = (colorIndex + 1) % colors.length;
+        // Update the color
+        document.querySelector(".ml6 .text-wrapper").style.color = colors[colorIndex];
+      }
+    },
+  })
   .add({
     targets: ".ml6 .letter",
     translateY: ["1.1em", 0],
