@@ -27,14 +27,6 @@
           <span class="letters">A virtual partner for <em>newbie parents</em></span> 
         </span>
       </h1>
-      <div class="get-started-container">
-        <div class="get-started-button-container">
-          <button id="logInButton">Log In</button>
-        </div>
-        <h4>
-          Don't have an account? <a>Sign up</a>
-        </h4>
-      </div>
     </div>
 
     <div class="userAuth-container">
@@ -44,7 +36,7 @@
       <hr>
       
       <form id="authForm">
-        <input type="text" placeholder="First Name" id="userName" required >
+        <input type="text" placeholder="First Name" id="userName" required  style="display: none;">
         <input type="email" placeholder="Email Address" id="userEmail" required>
         <div class="password-container">
           <input type="password" placeholder="Password" id="userPassword" required> 
@@ -54,9 +46,21 @@
         <br>
         <div class="button-container">
           <button id="signInButton">Log In</button>
-          <button id="signUpButton">Sign Up</button>
+          <button id="signUpButton" style="display: none;">Sign Up</button>
+        </div>
+        <div class="auth-alt-container">
+          <div class="or-container">
+            <hr>
+            <h5>OR</h5>
+            <hr>
+          </div>
+          <h4>
+            Need an account? <a>Sign up</a>
+          </h4>
         </div>
 
+        
+        
       </form>
     </div>
     

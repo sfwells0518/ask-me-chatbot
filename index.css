@@ -21,16 +21,13 @@ body {
 
 .welcome-container {
   display: flex;
-  width: 100%;
-  transition: width 0.5s ease;
-    /* For width change effect */
+  width: 70%;
   height: 100%;
   flex-direction: column;
   align-items: center;
   position: relative;
   justify-content: center;
   margin-bottom: auto;
- 
 }
 
 #welcome-logo {
@@ -68,7 +65,7 @@ body {
   font-weight: 100 !important;
   font-family: Avenir;
   font-size: 2.25em;
-  margin-top: 0.25em;
+  margin-top: 2em;
 }
 
 .ml6 .text-wrapper {
@@ -97,49 +94,7 @@ body {
   white-space: nowrap;
 }
 
-.get-started-button-container {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  align-items: center;
-}
 
-.get-started-container a {
-  color: #F47575;
-  text-decoration: underline;
-  text-underline-offset: 2px;
-  cursor: pointer;
-}
-
-.get-started-container a:hover {
-  color: #c85959;
-  text-decoration: none;
-}
-
-#logInButton {
-  background-color: #83BF6A;
-  border-radius: var(--border-rad-lg);
-  border: #83BF6A;
-  color: #ffffff;
-  font-weight: 800;
-  width: 100%;
-  margin-bottom: 0.65em;
-  padding-top: 1em;
-  padding-bottom: 1em;
-  text-align: center;
-  margin-right: 0.5em;
-  letter-spacing: .025em;
-}
-
-#logInButton:hover {
-  background-color: #6d9f57;
-  border: #6d9f57;
-}
-
-.get-started-container h4 {
-  letter-spacing: .025em;
-  padding-right: 0.4em;
-}
 
 .welcome-handprints {
   position: absolute;
@@ -163,23 +118,15 @@ body {
 }
 
 .userAuth-container {
-  display: none;
-  transition: width 0.3s ease, opacity 0.3s, visibility 0.3s;
-  /* For a sliding effect */
+  display: flex;
+  width: 30%;
   max-height: 100%;
-  opacity: 0;
-  overflow: hidden;
-  width: 0;
   height: 100%;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   background-image: url('main-gradient.png');
   background-size: cover;
-  margin-left: auto;
-  /* pushes the container to the right */
-  align-self: flex-start;
-  /* ensures it starts at the top */
 }
 
 #authForm {
@@ -207,9 +154,9 @@ body {
 }
 
 hr {
-  width: 75%;
-  height: 5px;
-  background: linear-gradient(to right, transparent, #FFD159, transparent);
+  width: 80%;
+  height: 4px;
+  background: linear-gradient(to right, transparent, #F47575, transparent);
   border: none;
   margin-top: 0;
   margin-bottom: 1em;
@@ -295,27 +242,70 @@ hr {
 }
 
 #authForm button {
-  background-color: #F47575;
+  background-color: #83BF6A;
   border-radius: var(--border-rad-lg);
-  border: #F47575;
+  border: #83BF6A;
   color: #ffffff;
   font-weight: 800;
-  width: 150px;
-  margin-bottom: 0.25em;
+  width: 300px;
+  margin-bottom: 0;
   padding-top: 1em;
   padding-bottom: 1em;
   text-align: center;
-  margin-right: 0.5em;
+  margin-right: 0;
 }
 
 #authForm button:hover {
-  background-color: #c85959;
-  border: #c85959;
+  background-color: #72a55c;
+  border: #72a55c;
 }
 
 #authForm button:last-child {
   margin-right: 0;
 }
+
+.auth-alt-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.or-container {
+  display: flex;
+  align-items: center;
+}
+
+.auth-alt-container h5 {
+  text-decoration: none;
+  border: 1px solid #FFD159;
+  border-radius: var(--border-rad-lg);
+  padding-top: 0.25em;
+  padding-bottom: 0;
+  margin-top: 2em;
+  margin-bottom: 0em;
+  width: 30px;
+}
+
+.auth-alt-container hr {
+  flex-grow: 1;
+  /* this will make the hr expand to fill available space */
+  height: 0px;
+  background-color: #eeeeee;
+  border: 1px solid #eeeeee;
+  /* remove default border */
+  margin: 0;
+  width: 135px;
+  margin-top: 1.5em;
+}
+
+.auth-alt-container a {
+  color: #F47575;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 
 .auth-footer {
   margin-top: auto;
@@ -334,13 +324,14 @@ hr {
 /* Sidebar styles */
 .sidebar {
   width: 20%;
-  background-color: #eeeeee;
+  background-image: url('main-gradient.png');
+  background-size: cover;
   padding: 1em;
   display: flex;
   flex-direction: column;
   justify-content: start;
   align-items: center;
-  border-right: 4px solid #eeeeee;
+  
 }
 
 

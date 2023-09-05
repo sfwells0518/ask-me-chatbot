@@ -44,44 +44,7 @@ let justSignedUp = false;
 const logInButton = document.querySelector("#logInButton");
 const signUpLink = document.querySelector(".get-started-container a");
 
-function openAuth(action) {
-  welcomeContainer.style.width = "70%";
-  userAuthContainer.style.width = "30%";
-  userAuthContainer.style.opacity = "1";
-  userAuthContainer.style.visibility = "visible";
 
-  // Depending on the action, show the corresponding form/content
-  if (action === "login") {
-    // display login form/content
-    userNameInput.style.display = "none";
-    signUpButton.style.display = "none";
-    signInButton.style.display = "block";
-    authTitle.innerHTML = "Welcome back, Newbie!";
-  } else if (action === "signup") {
-    // display signup form/content
-    userNameInput.style.display = "block";
-    signUpButton.style.display = "block";
-    signInButton.style.display = "none";
-    authTitle.innerHTML = "Create account";
-  }
-}
-
-function closeAuth() {
-  welcomeContainer.style.width = "100%";
-  userAuthContainer.style.width = "0";
-  userAuthContainer.style.opacity = "0";
-  userAuthContainer.style.visibility = "hidden";
-}
-
-logInButton.addEventListener("click", function () {
-  if (welcomeContainer.style.width !== "70%") {
-    openAuth("login");
-    userNameInput.style.display = "none";
-    signUpButton.style.display = "none";
-  } else {
-    closeAuth();
-  }
-});
 
 signUpLink.addEventListener("click", function (e) {
   e.preventDefault(); // prevent the default link behavior
