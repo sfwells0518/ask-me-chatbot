@@ -52,7 +52,7 @@ function openAuth(action) {
     userNameInput.style.display = "none";
     signUpButton.style.display = "none";
     signInButton.style.display = "block";
-    authTitle.innerHTML = "Welcome back";
+    authTitle.innerHTML = "Welcome back, Newbie";
     authAltContainerH4.innerHTML = 'Need an account? <a class="signup-link">Sign Up</a>';
   } else if (action === "signup") {
     // display signup form/content
