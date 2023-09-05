@@ -41,15 +41,6 @@ const userAuthContainer = document.querySelector(".userAuth-container");
 const welcomeContainer = document.querySelector(".welcome-container");
 let justSignedUp = false;
 
-const logInButton = document.querySelector("#logInButton");
-const signUpLink = document.querySelector(".get-started-container a");
-
-
-
-signUpLink.addEventListener("click", function (e) {
-  e.preventDefault(); // prevent the default link behavior
-  openAuth("signup");
-});
 
 const showLoggedInUI = () => {
   authForm.style.display = "none";
@@ -338,32 +329,9 @@ function renderConversationFromDb() {
 }
 renderConversationFromDb();
 
-// 1. Define the wrapLetters function
-function wrapLetters(element) {
-  if (element.nodeType === 3) {
-    // Text node
-    const wrapped = Array.from(element.textContent)
-      .map((char) => {
-        if (/\S/.test(char)) {
-          return `<span class='letter'>${char}</span>`;
-        } else {
-          return char;
-        }
-      })
-      .join("");
-    element.replaceWith(...Array.from(new DOMParser().parseFromString(wrapped, "text/html").body.childNodes));
-  } else if (element.nodeType === 1) {
-    // Element node
-    Array.from(element.childNodes).forEach((child) => wrapLetters(child));
-  }
-}
+var textWrapper = document.querySelector(".ml6 .letters");
+textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 
-const textWrapper = document.querySelector(".ml6 .letters");
-
-// 2. Replace the innerHTML modification with a call to wrapLetters
-wrapLetters(textWrapper);
-
-// Now the animation code
 anime
   .timeline({ loop: true })
   .add({

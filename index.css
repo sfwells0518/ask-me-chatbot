@@ -17,31 +17,38 @@ body {
   font-family: 'Avenir', sans-serif;
   font-size: 16px;
   letter-spacing: .025em;
+  scroll-behavior: smooth;
 }
 
 .welcome-container {
+  position: absolute;
   display: flex;
+  top: 0;
+  left: 0;
   width: 70%;
   height: 100%;
+  min-height: 100vh;
   flex-direction: column;
-  align-items: center;
-  position: relative;
-  justify-content: center;
-  margin-bottom: auto;
+  align-items: flex-start;
+  margin: 0;
 }
 
 #welcome-logo {
-  width: 200px;
-  margin-bottom: -1em;
+  width: 150px;
+  margin: 0.5em;
+  margin-left: 0.5em;
+
 }
 
 .welcome-subtitle {
-  text-align: center;
-  
+  margin: 0em;
+  align-self: flex-start;
+  margin-left: 0.7em;
   
 }
 .welcome-subtitle h2 {
   margin-top: 2em;
+  margin: 0;
   
 }
 
@@ -62,27 +69,22 @@ body {
 
 .ml6 {
   display: flex;
+  position: absolute;
+  top: 43%;
+  left: 0;
   font-weight: 100 !important;
   font-family: Avenir;
   font-size: 2.25em;
-  margin-top: 2em;
 }
 
 .ml6 .text-wrapper {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  align-items: center;
-  padding-top: 0.5em;
-  padding-right: 1em;
-  padding-bottom: 0.5em;
-  padding-left: 1em;
-  border-radius: var(--border-rad-lg);
+  position: relative;
+  display: block;
+  align-items: flex-start;
+  padding: 0.5em 0.35em;
+  border: none;
   color: #544F4F;
   letter-spacing: .025em;
-  
 }
 
 .ml6 .letter {
@@ -93,8 +95,6 @@ body {
 .ml6 .letters {
   white-space: nowrap;
 }
-
-
 
 .welcome-handprints {
   position: absolute;
@@ -118,15 +118,19 @@ body {
 }
 
 .userAuth-container {
-  display: flex;
+  position: absolute;
+  right: 0;
+  top: 0;
   width: 30%;
   max-height: 100%;
   height: 100%;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   background-image: url('main-gradient.png');
   background-size: cover;
+  margin-top: 2.5em;
 }
 
 #authForm {
@@ -275,6 +279,7 @@ hr {
 .or-container {
   display: flex;
   align-items: center;
+  font-family: Avenir;
 }
 
 .auth-alt-container h5 {
@@ -286,14 +291,15 @@ hr {
   margin-top: 2em;
   margin-bottom: 0em;
   width: 30px;
+  font-family: Avenir;
 }
 
 .auth-alt-container hr {
   flex-grow: 1;
   /* this will make the hr expand to fill available space */
   height: 0px;
-  background-color: #eeeeee;
-  border: 1px solid #eeeeee;
+  background-color: #FFD159;
+  border: 1px solid #FFD159;
   /* remove default border */
   margin: 0;
   width: 135px;
@@ -304,6 +310,13 @@ hr {
   color: #F47575;
   text-decoration: underline;
   text-underline-offset: 2px;
+  font-family: Avenir;
+}
+
+.auth-alt-container a:hover {
+  color: #d56666;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 
