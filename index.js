@@ -40,6 +40,42 @@ newBMain.style.display = "none";
 const userAuthContainer = document.querySelector(".userAuth-container");
 const welcomeContainer = document.querySelector(".welcome-container");
 let justSignedUp = false;
+const signUpLink = document.querySelector(".signup-link");
+const authAltContainerH4 = document.querySelector(".auth-alt-container h4");
+const logInLink = document.querySelector(".login-link");
+
+function openAuth(action) {
+
+  // Depending on the action, show the corresponding form/content
+  if (action === "login") {
+    // display login form/content
+    userNameInput.style.display = "none";
+    signUpButton.style.display = "none";
+    signInButton.style.display = "block";
+    authTitle.innerHTML = "Welcome back";
+    authAltContainerH4.innerHTML = 'Need an account? <a class="signup-link">Sign Up</a>';
+  } else if (action === "signup") {
+    // display signup form/content
+    userNameInput.style.display = "block";
+    signUpButton.style.display = "block";
+    signInButton.style.display = "none";
+    authTitle.innerHTML = "Create account";
+    authAltContainerH4.innerHTML = 'Already have an account? <a class="login-link">Log In</a>';
+  }
+}
+
+// Attach the event listener to the parent container
+authAltContainerH4.addEventListener("click", function (e) {
+// Check if the clicked element has the class 'login-link'
+  if (e.target.classList.contains("login-link")) {
+    e.preventDefault();
+    openAuth("login");
+  } else if (e.target.classList.contains("signup-link")) {
+    e.preventDefault();
+    openAuth("signup");
+  }  
+});
+
 
 
 const showLoggedInUI = () => {
