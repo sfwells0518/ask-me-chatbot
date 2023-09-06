@@ -101,7 +101,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-image: url('newb-gradient-darker.png');
+  background-image: url('/newb-gradient-darker.png');
   background-size: cover;
   margin-top: 2.5em;
 }
@@ -314,7 +314,7 @@ hr {
 /* Sidebar styles */
 .sidebar {
   width: 20%;
-  background-image: url('newb-gradient-darker.png');
+  background-image: url('/newb-gradient-darker.png');
   background-size: cover;
   padding: 1em;
   display: flex;
