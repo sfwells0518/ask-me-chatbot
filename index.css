@@ -21,66 +21,36 @@ body {
 }
 
 .welcome-container {
-  position: absolute;
+  float: left;
   display: flex;
-  top: 0;
-  left: 0;
   width: 65%;
   height: 100%;
   min-height: 100vh;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
+  /* Horizontally center children */
+  justify-content: center;
+  /* Vertically center children */
   margin: 0;
 }
 
 #welcome-logo {
   width: 150px;
-  margin: 0.5em;
-  margin-left: 0.5em;
-
+  margin: 0.5em 0;
 }
 
-.welcome-subtitle {
-  margin: 0em;
-  align-self: flex-start;
-  margin-left: 0.7em;
-  
-}
+.welcome-subtitle,
 .welcome-subtitle h2 {
-  margin-top: 2em;
   margin: 0;
-  
-}
-
-.newb-arrows-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  justify-content: center;
-  margin-bottom: auto;
-  margin-bottom: 25em;
-}
-#newb-arrows {
-  width: 70px;
-  height: 160px;
-  margin-top: 1.5em;
 }
 
 .ml6 {
-  display: flex;
-  position: absolute;
-  top: 43%;
-  left: 0;
   font-weight: 100 !important;
   font-family: Avenir;
   font-size: 2.25em;
 }
 
 .ml6 .text-wrapper {
-  position: relative;
-  display: block;
-  align-items: flex-start;
   padding: 0.5em 0.35em;
   border: none;
   color: #544F4F;
@@ -447,10 +417,12 @@ main {
   flex: 1;
   height: 100vh;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-start;
   overflow: hidden;
 }
+
+
 
 /* Adjusting chatbot styles */
 .chatbot-container {
