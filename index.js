@@ -153,7 +153,7 @@ const userSignIn = async () => {
 const checkAuthState = () => {
   onAuthStateChanged(auth, (user) => {
     if (user && !justSignedUp) {
-      userConversationsRef = ref(database, "users" + user.uid + "/conversations");
+      userConversationsRef = ref(database, "users/" + user.uid + "/conversations");
 
       window.history.pushState({ page: "chat" }, "Chat", "/chat");
       showLoggedInUI();
