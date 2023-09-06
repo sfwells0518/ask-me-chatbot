@@ -59,7 +59,7 @@ function openAuth(action) {
     userNameInput.style.display = "block";
     signUpButton.style.display = "block";
     signInButton.style.display = "none";
-    authTitle.innerHTML = "Create account";
+    authTitle.innerHTML = "Create Account";
     authAltContainerH4.innerHTML = 'Already have an account? <a class="login-link">Log In</a>';
   }
 }
