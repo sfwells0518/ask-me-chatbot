@@ -362,11 +362,18 @@ hr {
 
 .clear-btn {
   position: relative;
-  background: #81D3DB;
+  background-color: #81D3DB;
+  border-radius: var(--border-rad-lg);
+  border: #81D3DB ;
+  color: #ffffff;
+  font-weight: 800;
+  width: 200px;
+  padding-top: 1em;
+  padding-bottom: 1em;
   border: none !important;
   color: #ffffff;
   margin-top: .5em;
-  width: 12em;
+  margin-bottom: 2.25em;
   text-align: center;
   font-size: .75em;
 }
@@ -379,8 +386,8 @@ hr {
 .new-chat {
   width: 1.4em;
   position: absolute;
-  left: 2.4em;
-  top: 1.3em;
+  left: 4.5em;
+  top: 0.8em;
 }
 
 .sidebar ul {
