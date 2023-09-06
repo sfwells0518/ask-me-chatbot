@@ -155,12 +155,14 @@ const checkAuthState = () => {
     if (user && !justSignedUp) {
       userConversationsRef = ref(database, "users/" + user.uid + "/conversations");
 
-      window.history.pushState({ page: "chat" }, "Chat", "/chat");
+      // Using hash-based routing for "chat"
+      window.location.hash = "chat";
       showLoggedInUI();
     } else {
       userConversationsRef = null;
 
-      window.history.pushState({ page: "/" }, "Home", "/");
+      // Clearing hash to represent the "Home" state
+      window.location.hash = "";
       showLoggedOutUI();
     }
   });
