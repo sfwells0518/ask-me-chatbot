@@ -153,9 +153,13 @@ const userSignIn = async () => {
 const checkAuthState = () => {
   onAuthStateChanged(auth, (user) => {
     if (user && !justSignedUp) {
+      userConversationsRef = ref(database, "users" + user.uid + "/conversations");
+
       window.history.pushState({ page: "chat" }, "Chat", "/chat");
       showLoggedInUI();
     } else {
+      userConversationsRef = null;
+
       window.history.pushState({ page: "/" }, "Home", "/");
       showLoggedOutUI();
     }
@@ -209,6 +213,8 @@ if (signOutButton) {
 
 const database = getDatabase(app);
 
+let userConversationsRef = null;
+
 const conversationInDb = ref(database);
 
 const openai = new OpenAIApi(configuration);
@@ -248,18 +254,25 @@ function resetConversation() {
 clearButton.addEventListener("click", () => {
   // Reset the conversation
   resetConversation();
+  if (userConversationsRef) { //Ensure it's not null
+    remove(userConversationsRef);
+  }
   // Additional operations
   remove(conversationInDb);
 });
 
 document.addEventListener("submit", (e) => {
   e.preventDefault();
-  const userInput = document.getElementById("user-input");
-  push(conversationInDb, {
+  if (!userConversationsRef) {
+    console.error("No user specific database references available");
+    return;
+  }
+  push(userConversationsRef, {
     role: "user",
     content: userInput.value,
   });
   fetchReply();
+
   const newSpeechBubble = document.createElement("div");
   newSpeechBubble.classList.add("speech", "speech-human");
   chatbotConversation.appendChild(newSpeechBubble);
@@ -269,7 +282,11 @@ document.addEventListener("submit", (e) => {
 });
 
 function fetchReply() {
-  get(conversationInDb).then(async (snapshot) => {
+  if (!userConversationsRef) {
+    console.error("No user specific database reference available");
+    return;
+  }
+  get(userConversationsRef).then(async (snapshot) => {
     if (snapshot.exists()) {
       const conversationArr = Object.values(snapshot.val());
       conversationArr.unshift(instructionObj);
@@ -280,7 +297,7 @@ function fetchReply() {
         presence_penalty: 0,
         frequency_penalty: 0.3,
       });
-      push(conversationInDb, response.data.choices[0].message);
+      push(userConversationsRef, response.data.choices[0].message);
       renderTypewriterText(response.data.choices[0].message.content);
     } else {
       console.log("No data available");
@@ -351,23 +368,27 @@ document.getElementById("prompt-toggle").addEventListener("click", () => {
 });
 
 function renderConversationFromDb() {
-  get(conversationInDb).then((snapshot) => {
-    if (snapshot.exists()) {
-      Object.values(snapshot.val()).forEach((dbObj) => {
-        const newSpeechBubble = document.createElement("div");
-        newSpeechBubble.classList.add("speech", `speech-${dbObj.role === "user" ? "human" : "ai"}`);
-        chatbotConversation.appendChild(newSpeechBubble);
-        newSpeechBubble.textContent = dbObj.content;
-      });
-      chatbotConversation.scrollTop = chatbotConversation.scrollHeight;
+  if (userConversationsRef) {
+    
+  
+    get(userConversationsRef).then((snapshot) => {
+      if (snapshot.exists()) {
+        Object.values(snapshot.val()).forEach((dbObj) => {
+          const newSpeechBubble = document.createElement("div");
+          newSpeechBubble.classList.add("speech", `speech-${dbObj.role === "user" ? "human" : "ai"}`);
+          chatbotConversation.appendChild(newSpeechBubble);
+          newSpeechBubble.textContent = dbObj.content;
+        });
+        chatbotConversation.scrollTop = chatbotConversation.scrollHeight;
 
-      suggestionButtons.style.display = "none";
-      promptToggle.style.display = "none";
-    } else {
-      suggestionButtons.style.display = "grid";
-      promptToggle.style.display = "flex";
-    }
-  });
+        suggestionButtons.style.display = "none";
+        promptToggle.style.display = "none";
+      } else {
+        suggestionButtons.style.display = "grid";
+        promptToggle.style.display = "flex";
+      }
+    });
+  }  
 }
 renderConversationFromDb();
 

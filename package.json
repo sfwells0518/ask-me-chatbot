@@ -15,5 +15,6 @@
   },
   "dependencies": {
     "firebase": "^9.23.0"
+
   }
 }
