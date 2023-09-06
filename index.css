@@ -42,6 +42,7 @@ body {
 .welcome-subtitle,
 .welcome-subtitle h2 {
   margin: 0;
+  font-weight: 300;
 }
 
 .ml6 {
