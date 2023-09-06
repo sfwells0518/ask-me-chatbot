@@ -92,6 +92,12 @@ const showLoggedOutUI = () => {
   signOutButton.style.display = "none";
 };
 
+const routes = {
+  "/": showLoggedOutUI,
+  "/chat": showLoggedInUI
+};
+
+
 const userSignUp = async () => {
   const signUpEmail = userEmail.value;
   const signUpPassword = userPassword.value;
@@ -147,8 +153,10 @@ const userSignIn = async () => {
 const checkAuthState = () => {
   onAuthStateChanged(auth, (user) => {
     if (user && !justSignedUp) {
+      window.history.pushState({ page: "chat" }, "Chat", "/chat");
       showLoggedInUI();
     } else {
+      window.history.pushState({ page: "/" }, "Home", "/");
       showLoggedOutUI();
     }
   });
