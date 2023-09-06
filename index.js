@@ -27,6 +27,10 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
+const database = getDatabase(app);
+
+let userConversationsRef = null;
+
 const userEmail = document.querySelector("#userEmail");
 const userPassword = document.querySelector("#userPassword");
 const userNameInput = document.getElementById("userName");
@@ -152,7 +156,7 @@ const userSignIn = async () => {
 
 const checkAuthState = () => {
   onAuthStateChanged(auth, (user) => {
-    if (user && !justSignedUp) {
+    if (user && user.uid && !justSignedUp) { // Ensure user has a valid UID
       userConversationsRef = ref(database, "users/" + user.uid + "/conversations");
 
       // Using hash-based routing for "chat"
@@ -167,6 +171,7 @@ const checkAuthState = () => {
     }
   });
 };
+checkAuthState();
 
 document.querySelector(".show-icon-auth").addEventListener("click", function () {
   const passwordInput = document.getElementById("userPassword");
@@ -212,10 +217,6 @@ if (signInButton) {
 if (signOutButton) {
   signOutButton.addEventListener("click", userSignOut);
 }
-
-const database = getDatabase(app);
-
-let userConversationsRef = null;
 
 const conversationInDb = ref(database);
 
@@ -393,7 +394,6 @@ function renderConversationFromDb() {
   }  
 }
 renderConversationFromDb();
-
 
 // Tag line animation on Welcome Page //
 
