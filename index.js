@@ -76,8 +76,6 @@ authAltContainerH4.addEventListener("click", function (e) {
   }  
 });
 
-
-
 const showLoggedInUI = () => {
   authForm.style.display = "none";
   userAuthContainer.style.display = "none";
@@ -136,7 +134,7 @@ const userSignIn = async () => {
     const userCredential = await signInWithEmailAndPassword(auth, signInEmail, signInPassword);
     const user = userCredential.user;
     showLoggedInUI();
-    alert("Welcome to NewB! You have logged in successfully!");
+    // alert("Welcome to NewB! You have logged in successfully!"); //
   } catch (error) {
     const errorCode = error.code;
     const errorMessage = error.message;
