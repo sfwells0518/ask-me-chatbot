@@ -81,6 +81,10 @@ authAltContainerH4.addEventListener("click", function (e) {
 });
 
 const showLoggedInUI = () => {
+  /*if (!auth.currentUser) {
+    alert("Please log in to access the chat");
+    return;
+  }*/
   authForm.style.display = "none";
   userAuthContainer.style.display = "none";
   welcomeContainer.style.display = "none";
@@ -156,6 +160,8 @@ const userSignIn = async () => {
 
 const checkAuthState = () => {
   onAuthStateChanged(auth, (user) => {
+    console.log("onAuthStateChanged triggered", user); // Logging the user object
+    
     if (user && user.uid && !justSignedUp) { // Ensure user has a valid UID
       userConversationsRef = ref(database, "users/" + user.uid + "/conversations");
 
@@ -268,6 +274,7 @@ document.addEventListener("submit", (e) => {
   e.preventDefault();
   if (!userConversationsRef) {
     console.error("No user specific database references available");
+    // alert("Please log in again to continue the conversation");
     return;
   }
   push(userConversationsRef, {
@@ -372,18 +379,21 @@ document.getElementById("prompt-toggle").addEventListener("click", () => {
 
 function renderConversationFromDb() {
   if (userConversationsRef) {
-    
-  
     get(userConversationsRef).then((snapshot) => {
       if (snapshot.exists()) {
-        Object.values(snapshot.val()).forEach((dbObj) => {
-          const newSpeechBubble = document.createElement("div");
-          newSpeechBubble.classList.add("speech", `speech-${dbObj.role === "user" ? "human" : "ai"}`);
-          chatbotConversation.appendChild(newSpeechBubble);
-          newSpeechBubble.textContent = dbObj.content;
-        });
-        chatbotConversation.scrollTop = chatbotConversation.scrollHeight;
-
+        const chatHistoryList = document.getElementById("chat-history-list");
+        chatHistoryList.innerHTML = ""; // Clear any previous chat history
+        
+        const messages = Object.values(snapshot.val());
+        // Find the first user message adn use it as a title
+        const firstUserMessage = messages.find(msg => msg.role === "user");
+        if (firstUserMessage) {
+          const title = firstUserMessage.content.split(" ").slice(0, 5).join(" ") + "...";
+          // ^ Take the first 5 words
+          const listItem = document.createElement("li");
+          listItem.textContent = title;
+          chatHistoryList.appendChild(listItem);
+        }
         suggestionButtons.style.display = "none";
         promptToggle.style.display = "none";
       } else {

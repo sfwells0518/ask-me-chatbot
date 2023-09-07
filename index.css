@@ -329,13 +329,18 @@ hr {
   margin-top: 0;
   height: 100%;
   width: 103%;
-  border: 1px solid black;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-  
+  flex-direction: column;  
 }
+
+#chat-history-list {
+  font-weight: 100;
+  margin: 5px 0;
+}
+
+
 
 .chat-history-container .handprints{
   margin-top: 10.5em;
