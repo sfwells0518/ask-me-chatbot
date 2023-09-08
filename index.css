@@ -333,6 +333,8 @@ hr {
   justify-content: center;
   flex-direction: column;
   background-color: #d5d5d5;
+  border-radius: var(--border-rad-lg);
+  width: 100%;
 }
 
 #chat-history-list {
@@ -351,6 +353,7 @@ hr {
   /* Add margin to the bottom of the li for spacing */
   padding-right: 2em;
   padding-left: 0;
+  width: 50%;
 }
 
 .sidebar-handprints {
