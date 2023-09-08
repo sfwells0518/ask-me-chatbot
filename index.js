@@ -1,6 +1,6 @@
 import { Configuration, OpenAIApi } from "openai";
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, push, get, remove } from "firebase/database";
+import { getDatabase, ref, set, push, get, remove, onValue } from "firebase/database";
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -30,6 +30,7 @@ const auth = getAuth(app);
 const database = getDatabase(app);
 
 let userConversationsRef = null;
+let currentConversationID = null;
 
 const userEmail = document.querySelector("#userEmail");
 const userPassword = document.querySelector("#userPassword");
@@ -47,6 +48,7 @@ let justSignedUp = false;
 const signUpLink = document.querySelector(".signup-link");
 const authAltContainerH4 = document.querySelector(".auth-alt-container h4");
 const logInLink = document.querySelector(".login-link");
+const chatHistoryList = document.getElementById("chat-history-list");
 
 function openAuth(action) {
 
@@ -158,6 +160,14 @@ const userSignIn = async () => {
   }
 };
 
+function setupRealtimeListener() {
+  if (userConversationsRef) {
+    onValue(userConversationsRef, (snapshot) => {
+      renderConversationFromDb(snapshot);
+    });
+  }
+}
+
 const checkAuthState = () => {
   onAuthStateChanged(auth, (user) => {
     console.log("onAuthStateChanged triggered", user); // Logging the user object
@@ -165,6 +175,15 @@ const checkAuthState = () => {
     if (user && user.uid && !justSignedUp) { // Ensure user has a valid UID
       userConversationsRef = ref(database, "users/" + user.uid + "/conversations");
 
+      // Set up the real-time listener here
+      setupRealtimeListener();
+
+      // Explicitly fetch and render the chat history once when the page loads
+      if (userConversationsRef) {
+        get(userConversationsRef).then((snapshot) => {
+          renderConversationFromDb(snapshot);
+        });
+      }
       // Using hash-based routing for "chat"
       window.location.hash = "chat";
       showLoggedInUI();
@@ -255,19 +274,21 @@ userInput.addEventListener("input", () => {
 
 function resetConversation() {
   chatbotConversation.innerHTML = "";
+  const starterMessage = document.createElement("div");
+  starterMessage.className = "speech speech-ai";
+  starterMessage.innerHTML = "<h4>Hey, newbie parent! What can I help you with today?</h4>";
+  chatbotConversation.appendChild(starterMessage);
   userInput.value = "";
   suggestionButtons.style.display = "grid";
   promptToggle.style.display = "flex";
 }
 
 clearButton.addEventListener("click", () => {
-  // Reset the conversation
+  // Reset the conversation in the UI
   resetConversation();
-  if (userConversationsRef) { //Ensure it's not null
-    remove(userConversationsRef);
-  }
-  // Additional operations
-  remove(conversationInDb);
+
+  // Reset the currentConversationID so a new one is generated for the next chat session
+  currentConversationID = null;
 });
 
 document.addEventListener("submit", (e) => {
@@ -277,10 +298,25 @@ document.addEventListener("submit", (e) => {
     // alert("Please log in again to continue the conversation");
     return;
   }
-  push(userConversationsRef, {
+  // If there's no current conversation, create a new one //
+  if (!currentConversationID) {
+    currentConversationID = push(userConversationsRef).key; // this generates a new unique ID
+  }
+  
+  // Use the unique ID to store messages
+  const messageRef = ref(database, `users/${auth.currentUser.uid}/conversations/${currentConversationID}`);
+  console.log("Attempting to push user message");
+  console.log("User's message:", { role: "user", content: userInput.value });
+  push(messageRef, {
     role: "user",
     content: userInput.value,
   });
+
+  // Call the render function here:
+  get(messageRef).then((snapshot) => {
+    renderConversationFromDb(snapshot);
+  });
+
   fetchReply();
 
   const newSpeechBubble = document.createElement("div");
@@ -296,19 +332,56 @@ function fetchReply() {
     console.error("No user specific database reference available");
     return;
   }
+
   get(userConversationsRef).then(async (snapshot) => {
     if (snapshot.exists()) {
-      const conversationArr = Object.values(snapshot.val());
-      conversationArr.unshift(instructionObj);
-      const prompt = JSON.stringify(conversationArr);
+      const rawMessages = snapshot.val();
+
+      // Create a flattened array of messages from the Firebase data
+      let conversationArr = [];
+      conversationArr.push(instructionObj); // Insert the instruction message
+      for (let key in rawMessages) {
+        if (rawMessages[key].role && rawMessages[key].content) {
+          conversationArr.push({ role: rawMessages[key].role, content: rawMessages[key].content });
+        } else {
+          for (let innerKey in rawMessages[key]) {
+            if (rawMessages[key][innerKey].role && rawMessages[key][innerKey].content) {
+              conversationArr.push({
+                role: rawMessages[key][innerKey].role,
+                content: rawMessages[key][innerKey].content,
+              });
+            }
+          }
+        }
+      }
+
+      // Log the entire conversation that will be sent to OpenAI
+      console.log("Entire conversation being sent to OpenAI", JSON.stringify(conversationArr, null, 2));
+
+      // Send the updated conversation array to OpenAI
+      console.log("Sending the following payload to OpenAI:", conversationArr);
       const response = await openai.createChatCompletion({
         model: "gpt-4",
         messages: conversationArr,
         presence_penalty: 0,
         frequency_penalty: 0.3,
       });
-      push(userConversationsRef, response.data.choices[0].message);
-      renderTypewriterText(response.data.choices[0].message.content);
+
+      const botResponse = response.data.choices[0].message.content.replace(/^(User|Assistant): /, ""); // Remove the role prefix from the bot's response
+
+      console.log("Bot response data:", botResponse);
+      console.log("Current user UID:", auth.currentUser.uid);
+      const responseRef = ref(database, `users/${auth.currentUser.uid}/conversations/${currentConversationID}`);
+      push(responseRef, {
+        role: "assistant",
+        content: botResponse,
+      });
+
+      // Ensure chat history list remains visible
+      if (chatHistoryList) {
+        chatHistoryList.style.display = "block";
+      }
+      renderTypewriterText(botResponse);
     } else {
       console.log("No data available");
     }
@@ -377,33 +450,39 @@ document.getElementById("prompt-toggle").addEventListener("click", () => {
   suggestionHidden = !suggestionHidden; // Toggle the state
 });
 
-function renderConversationFromDb() {
-  if (userConversationsRef) {
-    get(userConversationsRef).then((snapshot) => {
-      if (snapshot.exists()) {
-        const chatHistoryList = document.getElementById("chat-history-list");
+let lastRenderedUserMessage = ""; // Store the last rendered user message outside function
+let previousConversations = [];
+
+function renderConversationFromDb(snapshot) {
+  if (snapshot && snapshot.exists()) {
+    const messages = Object.values(snapshot.val());
+    // Find the first user message and use it as a title
+    const userMessages = messages.filter((msg) => msg.role === "user");
+    // If there are user messages, only add the first one to the chatHistorylist
+    if (userMessages.length > 0) {
+      const firstUserMsgContent = userMessages[0].content.split(" ").slice(0, 10).join(" ");
+      // ^ Take the first 5-10 words
+
+      // Only re-render if the user message has changed
+      if (firstUserMsgContent !== lastRenderedUserMessage) {
+        previousConversations.push(firstUserMsgContent);
+        lastRenderedUserMessage = firstUserMsgContent; // Update the stored value
         chatHistoryList.innerHTML = ""; // Clear any previous chat history
-        
-        const messages = Object.values(snapshot.val());
-        // Find the first user message adn use it as a title
-        const firstUserMessage = messages.find(msg => msg.role === "user");
-        if (firstUserMessage) {
-          const title = firstUserMessage.content.split(" ").slice(0, 5).join(" ") + "...";
-          // ^ Take the first 5 words
+        previousConversations.forEach((msgContent) => {
           const listItem = document.createElement("li");
-          listItem.textContent = title;
+          listItem.textContent = msgContent;
           chatHistoryList.appendChild(listItem);
-        }
-        suggestionButtons.style.display = "none";
-        promptToggle.style.display = "none";
-      } else {
-        suggestionButtons.style.display = "grid";
-        promptToggle.style.display = "flex";
+        });
       }
-    });
-  }  
+    }
+    // Ensuring that the chat history list visibility remains the same
+    if (suggestionButtons.style.display !== "none" || promptToggle.style.display !== "none") {
+      suggestionButtons.style.display = "grid";
+      promptToggle.style.display = "flex";
+    }
+  }
 }
-renderConversationFromDb();
+
 
 // Tag line animation on Welcome Page //
 
