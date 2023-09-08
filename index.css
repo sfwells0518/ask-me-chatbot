@@ -334,7 +334,7 @@ hr {
   flex-direction: column;
   background-color: #d5d5d5;
   border-radius: var(--border-rad-lg);
-  width: 100%;
+ 
 }
 
 #chat-history-list {
@@ -343,6 +343,7 @@ hr {
   list-style: none;
   white-space: nowrap;
   overflow-x: auto;
+  text-align: center;
 }
 
 #chat-history-list li {
@@ -351,9 +352,8 @@ hr {
   /* Center the text within the li */
   margin-bottom: 1.5em;
   /* Add margin to the bottom of the li for spacing */
-  padding-right: 2em;
-  padding-left: 0;
   width: 50%;
+  font-size: 0.75em;
 }
 
 .sidebar-handprints {

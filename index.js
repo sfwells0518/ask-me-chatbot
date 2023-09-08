@@ -450,6 +450,29 @@ document.getElementById("prompt-toggle").addEventListener("click", () => {
   suggestionHidden = !suggestionHidden; // Toggle the state
 });
 
+// Function to save chat history to local storage
+function saveChatHistoryToStorage(historyData) {
+  localStorage.setItem("chatHistory", JSON.stringify(historyData));
+}
+
+// Function to retrieve chat history from local storage
+function getChatHistoryFromStorage() {
+  const chatHistoryData = localStorage.getItem("chatHistory");
+  return chatHistoryData ? JSON.parse(chatHistoryData) : [];
+}
+
+// Function to render chat history from storage
+function renderChatHistoryFromStorage() {
+  const historyData = getChatHistoryFromStorage();
+  chatHistoryList.innerHTML = " "; // Clear the existing list
+
+  historyData.forEach((msgContent) => {
+    const listItem = document.createElement('li');
+    listItem.textContent = msgContent; // Set the text content to the message content
+    chatHistoryList.appendChild(listItem);
+  });
+}
+
 let lastRenderedUserMessage = ""; // Store the last rendered user message outside function
 let previousConversations = [];
 
@@ -473,6 +496,9 @@ function renderConversationFromDb(snapshot) {
           listItem.textContent = msgContent;
           chatHistoryList.appendChild(listItem);
         });
+
+        // Save chat history to storage
+        saveChatHistoryToStorage(previousConversations);
       }
     }
     // Ensuring that the chat history list visibility remains the same
@@ -483,6 +509,10 @@ function renderConversationFromDb(snapshot) {
   }
 }
 
+// Check for chat history in storage when the page loads
+window.addEventListener("load", () => {
+  renderChatHistoryFromStorage();
+});
 
 // Tag line animation on Welcome Page //
 
