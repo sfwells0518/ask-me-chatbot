@@ -51,7 +51,6 @@ const logInLink = document.querySelector(".login-link");
 const chatHistoryList = document.getElementById("chat-history-list");
 
 function openAuth(action) {
-
   // Depending on the action, show the corresponding form/content
   if (action === "login") {
     // display login form/content
@@ -72,14 +71,14 @@ function openAuth(action) {
 
 // Attach the event listener to the parent container
 authAltContainerH4.addEventListener("click", function (e) {
-// Check if the clicked element has the class 'login-link'
+  // Check if the clicked element has the class 'login-link'
   if (e.target.classList.contains("login-link")) {
     e.preventDefault();
     openAuth("login");
   } else if (e.target.classList.contains("signup-link")) {
     e.preventDefault();
     openAuth("signup");
-  }  
+  }
 });
 
 const showLoggedInUI = () => {
@@ -104,9 +103,8 @@ const showLoggedOutUI = () => {
 
 const routes = {
   "/": showLoggedOutUI,
-  "/chat": showLoggedInUI
+  "/chat": showLoggedInUI,
 };
-
 
 const userSignUp = async () => {
   const signUpEmail = userEmail.value;
@@ -171,8 +169,9 @@ function setupRealtimeListener() {
 const checkAuthState = () => {
   onAuthStateChanged(auth, (user) => {
     console.log("onAuthStateChanged triggered", user); // Logging the user object
-    
-    if (user && user.uid && !justSignedUp) { // Ensure user has a valid UID
+
+    if (user && user.uid && !justSignedUp) {
+      // Ensure user has a valid UID
       userConversationsRef = ref(database, "users/" + user.uid + "/conversations");
 
       // Set up the real-time listener here
@@ -302,7 +301,7 @@ document.addEventListener("submit", (e) => {
   if (!currentConversationID) {
     currentConversationID = push(userConversationsRef).key; // this generates a new unique ID
   }
-  
+
   // Use the unique ID to store messages
   const messageRef = ref(database, `users/${auth.currentUser.uid}/conversations/${currentConversationID}`);
   console.log("Attempting to push user message");
@@ -450,29 +449,6 @@ document.getElementById("prompt-toggle").addEventListener("click", () => {
   suggestionHidden = !suggestionHidden; // Toggle the state
 });
 
-// Function to save chat history to local storage
-function saveChatHistoryToStorage(historyData) {
-  localStorage.setItem("chatHistory", JSON.stringify(historyData));
-}
-
-// Function to retrieve chat history from local storage
-function getChatHistoryFromStorage() {
-  const chatHistoryData = localStorage.getItem("chatHistory");
-  return chatHistoryData ? JSON.parse(chatHistoryData) : [];
-}
-
-// Function to render chat history from storage
-function renderChatHistoryFromStorage() {
-  const historyData = getChatHistoryFromStorage();
-  chatHistoryList.innerHTML = " "; // Clear the existing list
-
-  historyData.forEach((msgContent) => {
-    const listItem = document.createElement('li');
-    listItem.textContent = msgContent; // Set the text content to the message content
-    chatHistoryList.appendChild(listItem);
-  });
-}
-
 let lastRenderedUserMessage = ""; // Store the last rendered user message outside function
 let previousConversations = [];
 
@@ -496,9 +472,6 @@ function renderConversationFromDb(snapshot) {
           listItem.textContent = msgContent;
           chatHistoryList.appendChild(listItem);
         });
-
-        // Save chat history to storage
-        saveChatHistoryToStorage(previousConversations);
       }
     }
     // Ensuring that the chat history list visibility remains the same
@@ -508,11 +481,6 @@ function renderConversationFromDb(snapshot) {
     }
   }
 }
-
-// Check for chat history in storage when the page loads
-window.addEventListener("load", () => {
-  renderChatHistoryFromStorage();
-});
 
 // Tag line animation on Welcome Page //
 
