@@ -322,31 +322,42 @@ hr {
   flex-direction: column;
   justify-content: start;
   align-items: center;
+  height: 100%;
   
 }
 
 .chat-history-container {
   margin-top: 0;
-  height: 100%;
-  width: 103%;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;  
+  flex-direction: column;
+  background-color: #d5d5d5;
 }
 
 #chat-history-list {
   font-weight: 100;
-  margin: 7.25em 0;
+  margin-top: 1em;
+  list-style: none;
+  white-space: nowrap;
+  overflow-x: auto;
 }
 
-
-
-.chat-history-container .handprints{
-  margin-top: 10.5em;
+#chat-history-list li {
+  list-style: none;
+  text-align: center;
+  /* Center the text within the li */
+  margin-bottom: 1.5em;
+  /* Add margin to the bottom of the li for spacing */
+  padding-right: 2em;
+  padding-left: 0;
 }
 
-.chat-history-container #signOutButton {
+.sidebar-handprints {
+  margin-top: auto;
+}
+
+#signOutForm #signOutButton {
   background-color: #83BF6A;
   border-radius: var(--border-rad-lg);
   border: #83BF6A;
@@ -359,7 +370,8 @@ hr {
   text-align: center;
   margin-right: 0;
 }
-.chat-history-container #signOutButton:hover {
+
+#signOutForm #signOutButton:hover {
   background-color: #72a55c;
   border: #72a55c;
 }
@@ -394,39 +406,6 @@ hr {
   position: absolute;
   left: 4.5em;
   top: 0.8em;
-}
-
-.sidebar ul {
-  list-style-type: none;
-  padding: 0;
-  margin-top: 10em;
-  position: relative;
-  align-self: center;
-  top: 90px;
-
-}
-
-.sidebar ul li {
-  margin-bottom: 2em;
-  text-align: center;
-  font-family: 'Avenir', sans-serif;
-}
-
-.sidebar ul li a {
-  text-decoration: none;
-  color: #544F4F;
-  font-weight: 300;
-  font-size: 1em;
-  padding: 0.5em 1em;
-  border-radius: var(--border-rad-lg);
-  transition: background-color 0.3s ease;
-}
-
-.sidebar ul li a:hover {
-  text-decoration: underline;
-  text-underline-offset: 10px;
-  text-decoration-color: #F47575;
-  text-decoration-thickness: 5px;
 }
 
 .footer-bg {
@@ -815,7 +794,6 @@ button:focus {
       background-color: #ffffff;
       margin-top: 0;
       height: 100%;
-      width: 102%;
       border-radius: var(--border-rad-lg);
     }
   
