@@ -140,6 +140,36 @@ const userSignUp = async () => {
   }
 };
 
+// Function to save conversation history to local storage
+function saveConversationToLocalStorage(conversation) {
+  localStorage.setItem("userConversation", JSON.stringify(conversation));
+}
+
+// Function to load conversation history from local storage
+function loadConversationFromLocalStorage() {
+  const storedConversation = localStorage.getItem("userConversation");
+  return storedConversation ? JSON.parse(storedConversation) : [];
+}
+
+// Define a function to load chat history when the user logs in
+const loadChatHistoryOnLogIn = () => {
+  const storedConversation = loadConversationFromLocalStorage();
+
+  // Load chat history from the chatHistory array
+  storedConversation.forEach((msgContent) => {
+    const listItem = document.createElement("li");
+    listItem.textContent = msgContent;
+    chatHistoryList.appendChild(listItem);
+  });
+};
+
+// When a user sends a message, save the conversation to local storage
+function saveMessageToLocalStorage(message) {
+  const storedConversation = loadConversationFromLocalStorage();
+  storedConversation.push(message);
+  saveConversationToLocalStorage(storedConversation);
+}
+
 const userSignIn = async () => {
   const signInEmail = userEmail.value;
   const signInPassword = userPassword.value;
@@ -148,7 +178,12 @@ const userSignIn = async () => {
     const userCredential = await signInWithEmailAndPassword(auth, signInEmail, signInPassword);
     const user = userCredential.user;
     showLoggedInUI();
-    // alert("Welcome to NewB! You have logged in successfully!"); //
+
+
+
+    // Call the function to load chat history on login
+    loadChatHistoryOnLogIn();
+
   } catch (error) {
     const errorCode = error.code;
     const errorMessage = error.message;
@@ -181,6 +216,8 @@ const checkAuthState = () => {
       if (userConversationsRef) {
         get(userConversationsRef).then((snapshot) => {
           renderConversationFromDb(snapshot);
+          loadChatHistory(); // Load chat history when the user is authenticated
+
         });
       }
       // Using hash-based routing for "chat"
@@ -195,7 +232,7 @@ const checkAuthState = () => {
     }
   });
 };
-checkAuthState();
+
 
 document.querySelector(".show-icon-auth").addEventListener("click", function () {
   const passwordInput = document.getElementById("userPassword");
@@ -314,6 +351,7 @@ document.addEventListener("submit", (e) => {
   // Call the render function here:
   get(messageRef).then((snapshot) => {
     renderConversationFromDb(snapshot);
+    saveMessageToLocalStorage(userInput.value); // Save the user's message
   });
 
   fetchReply();
@@ -453,34 +491,97 @@ let lastRenderedUserMessage = ""; // Store the last rendered user message outsid
 let previousConversations = [];
 
 function renderConversationFromDb(snapshot) {
+  let messages = [];
+  
   if (snapshot && snapshot.exists()) {
-    const messages = Object.values(snapshot.val());
-    // Find the first user message and use it as a title
-    const userMessages = messages.filter((msg) => msg.role === "user");
-    // If there are user messages, only add the first one to the chatHistorylist
-    if (userMessages.length > 0) {
-      const firstUserMsgContent = userMessages[0].content.split(" ").slice(0, 10).join(" ");
-      // ^ Take the first 5-10 words
+    messages = Object.values(snapshot.val());
 
-      // Only re-render if the user message has changed
-      if (firstUserMsgContent !== lastRenderedUserMessage) {
-        previousConversations.push(firstUserMsgContent);
-        lastRenderedUserMessage = firstUserMsgContent; // Update the stored value
-        chatHistoryList.innerHTML = ""; // Clear any previous chat history
-        previousConversations.forEach((msgContent) => {
-          const listItem = document.createElement("li");
-          listItem.textContent = msgContent;
-          chatHistoryList.appendChild(listItem);
-        });
+    // Initialize a variable to keep track of the initial user message
+    let initialUserMessage = null;
+
+    // Iterate through the messages and find the initial user message
+    messages.forEach((msg, index) => {
+      if (msg.role === "user" && !initialUserMessage) {
+        initialUserMessage = msg.content;
+
+        // Display only the first 5 words of the initial user message
+        const first5Words = initialUserMessage.split(" ").slice(0, 5).join(" ");
+        const initialUserMessageListItem = document.createElement("li");
+        initialUserMessageListItem.textContent = first5Words;
+        chatHistoryList.appendChild(initialUserMessageListItem);
       }
-    }
-    // Ensuring that the chat history list visibility remains the same
-    if (suggestionButtons.style.display !== "none" || promptToggle.style.display !== "none") {
-      suggestionButtons.style.display = "grid";
-      promptToggle.style.display = "flex";
-    }
+
+      if (msg.role === "user" && index === 0) {
+        // Skip adding the user's message to the chat history list
+        return;
+      }
+
+      if (msg.role === "assistant") {
+        // Skip adding chatbot responses to the chat history list
+        return;
+      }
+
+      // Determine the class for styling based on the role
+      const listItem = document.createElement("li");
+      if (msg.role === "user") {
+        listItem.classList.add("user-message");
+      } else if (msg.role === "assistant") {
+        listItem.classList.add("assistant-message");
+      }
+
+      listItem.textContent = msg.content;
+      chatHistoryList.appendChild(listItem);
+    });
+
+    // Scroll to the bottom of the chat history list
+    chatHistoryList.scrollTop = chatHistoryList.scrollHeight;
+  }
+
+  // Ensuring that the chat history list visibility remains the same
+  if (messages.length > 0 || suggestionButtons.style.display !== "none" || promptToggle.style.display !== "none") {
+    suggestionButtons.style.display = "grid";
+    promptToggle.style.display = "flex";
+  } else {
+    suggestionButtons.style.display = "none";
+    promptToggle.style.display = "none";
   }
 }
+
+
+const chatHistory = []; // Initialize an empty array for chat history
+
+function loadChatHistory() {
+  if (userConversationsRef) {
+    get(userConversationsRef)
+      .then((snapshot) => {
+        if (snapshot.exists()) {
+          renderConversationFromDb(snapshot);
+          const messages = Object.values(snapshot.val());
+          messages.forEach((msg) => {
+            if (msg.role === "user") {
+              chatHistory.push(msg.content);
+            } else if (msg.role === "assistant") {
+              chatHistory.push(msg.content);
+            }
+          });
+          // Render chat history list from the chatHistory array
+          chatHistoryList.innerHTML = "";
+          chatHistory.forEach((msgContent) => {
+            const listItem = document.createElement("li");
+            listItem.textContent = msgContent;
+            chatHistoryList.appendChild(listItem);
+          });
+        } else {
+          console.log("No data available in the snapshot.");
+        }
+      })
+      .catch((error) => {
+        console.error("Error loading chat history:", error);
+      });
+  }
+}
+
+
 
 // Tag line animation on Welcome Page //
 
