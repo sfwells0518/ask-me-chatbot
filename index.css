@@ -323,19 +323,16 @@ hr {
   justify-content: start;
   align-items: center;
   height: 100%;
-  
 }
 
 .chat-history-container {
   margin-top: 0;
   width: 100%;
   display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
-  background-color: #d5d5d5;
+  /* Remove justify-content: center; */
+  background-color: #eeeeee;
   border-radius: var(--border-rad-lg);
- 
 }
 
 #chat-history-list {
@@ -344,17 +341,17 @@ hr {
   margin-top: 1em;
   list-style: none;
   white-space: nowrap;
-  overflow-x:scroll;
+  overflow-x: scroll;
   text-align: center;
+  /* Center-align the text within each li */
 }
 
 #chat-history-list li {
   list-style: none;
-  text-align: center;
+  text-align: left;
   /* Center the text within the li */
   margin-bottom: 1.5em;
-  /* Add margin to the bottom of the li for spacing */
-  width: 50%;
+  width: 100%;
   font-size: 0.75em;
 }
 
