@@ -571,7 +571,7 @@ h2::after {
   padding-bottom: 1em;
   display: flex;
   position: relative;
-  top: -50px;
+  top: -45px;
   height: 4em;
   border: none;
   border-radius: 20px 20px 20px 10px;

@@ -179,11 +179,8 @@ const userSignIn = async () => {
     const user = userCredential.user;
     showLoggedInUI();
 
-
-
     // Call the function to load chat history on login
     loadChatHistoryOnLogIn();
-
   } catch (error) {
     const errorCode = error.code;
     const errorMessage = error.message;
@@ -217,7 +214,6 @@ const checkAuthState = () => {
         get(userConversationsRef).then((snapshot) => {
           renderConversationFromDb(snapshot);
           loadChatHistory(); // Load chat history when the user is authenticated
-
         });
       }
       // Using hash-based routing for "chat"
@@ -232,7 +228,6 @@ const checkAuthState = () => {
     }
   });
 };
-
 
 document.querySelector(".show-icon-auth").addEventListener("click", function () {
   const passwordInput = document.getElementById("userPassword");
@@ -492,7 +487,7 @@ let previousConversations = [];
 
 function renderConversationFromDb(snapshot) {
   let messages = [];
-  
+
   if (snapshot && snapshot.exists()) {
     messages = Object.values(snapshot.val());
 
@@ -547,7 +542,6 @@ function renderConversationFromDb(snapshot) {
   }
 }
 
-
 const chatHistory = []; // Initialize an empty array for chat history
 
 function loadChatHistory() {
@@ -580,8 +574,6 @@ function loadChatHistory() {
       });
   }
 }
-
-
 
 // Tag line animation on Welcome Page //
 
