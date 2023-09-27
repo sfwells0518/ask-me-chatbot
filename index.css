@@ -325,38 +325,43 @@ hr {
   height: 100%;
 }
 
-.chat-history-container {
-  margin-top: 0;
-  width: 100%;
+.sidebar-prompts {
+  text-decoration: 4px underline;
+  text-decoration-color: #83BF6A;
+  text-underline-offset: 10px;
+  margin-bottom: 1em;
+}
+
+.sidebar-content {
   display: flex;
   flex-direction: column;
-  /* Remove justify-content: center; */
-  background-color: #eeeeee;
-  border-radius: var(--border-rad-lg);
+  justify-content: center;
+  margin-bottom: auto;
+  align-items: center;
 }
 
-#chat-history-list {
-  font-weight: 100;
-  width: 100%;
-  margin-top: 1em;
-  list-style: none;
-  white-space: nowrap;
-  overflow-x: scroll;
+.sidebar-btn {
+  background-color: #FFD159;
+  border-radius: 30px;
+  border: 1px;
+  border-color: #544F4F;
   text-align: center;
-  /* Center-align the text within each li */
+  padding-top: 3px;
+  padding-bottom: 3px;
+  margin-bottom: 0.5em;
+  margin-top: 0.5em;
+  color: #544F4F;
+  cursor: default;
+  height: 20%;
+  width: 90%;
 }
 
-#chat-history-list li {
-  list-style: none;
-  text-align: left;
-  /* Center the text within the li */
-  margin-bottom: 1.5em;
-  width: 100%;
-  font-size: 0.75em;
+.sidebar-btn:hover {
+  background-color: #dcb34b;
 }
 
 .sidebar-handprints {
-  margin-top: auto;
+  margin-top: -7.5em;
 }
 
 #signOutForm #signOutButton {
@@ -379,7 +384,6 @@ hr {
 }
 
 
-
 .clear-btn {
   position: relative;
   background-color: #81D3DB;
@@ -393,7 +397,7 @@ hr {
   border: none !important;
   color: #ffffff;
   margin-top: .5em;
-  margin-bottom: 2.25em;
+  margin-bottom: auto;
   text-align: center;
   font-size: .75em;
 }
@@ -663,7 +667,7 @@ input[type="text"]:focus {
 }
 
 .prompt-display-toggle {
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   height: auto;
@@ -673,7 +677,7 @@ input[type="text"]:focus {
 }
 
 .prompt-toggle {
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   width: 100%;
