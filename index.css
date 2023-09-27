@@ -357,11 +357,11 @@ hr {
 }
 
 .sidebar-btn:hover {
-  background-color: #dcb34b;
+  background-color: #FFD159;
 }
 
 .sidebar-handprints {
-  margin-top: -7.5em;
+  margin-top: -8em;
 }
 
 #signOutForm #signOutButton {
@@ -403,7 +403,7 @@ hr {
 }
 
 .clear-btn:hover {
-  background: #FFD159;
+  background: #6aafb5;
   color: #ffffff;
 }
 
