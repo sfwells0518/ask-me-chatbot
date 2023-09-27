@@ -326,10 +326,7 @@ hr {
 }
 
 .sidebar-prompts {
-  text-decoration: 4px underline;
-  text-decoration-color: #83BF6A;
-  text-underline-offset: 10px;
-  margin-bottom: 1em;
+  margin-bottom: 0.25em;
   cursor: default;
 }
 
@@ -342,14 +339,14 @@ hr {
 }
 
 .sidebar-btn {
-  background-color: #FFD159;
+  background-color: #e1e1e1;
   border-radius: 30px;
   border: 1px;
   border-color: #544F4F;
   text-align: center;
   padding-top: 3px;
   padding-bottom: 3px;
-  margin-bottom: 0.5em;
+  margin-bottom: 0.25em;
   margin-top: 0.5em;
   color: #544F4F;
   cursor: default;
@@ -360,7 +357,7 @@ hr {
 }
 
 .sidebar-btn:hover {
-  background-color: #FFD159;
+  background-color: #e1e1e1;
   opacity: 100%;
 }
 
@@ -369,12 +366,24 @@ hr {
   margin-bottom: -0.5em;
   text-decoration: underline;
   text-decoration-style: dotted;
-  text-decoration-color: #544F4F;
+  text-decoration-thickness: 2px;
+  text-decoration-color: #F47575;
   text-underline-offset: 4.5px;
 }
 
 .sidebar-btn h4 {
   font-style: italic;
+}
+
+.sidebar-prompts-hr {
+  margin-top: auto !important;
+  width: 100%;
+  height: 6px;
+  background: #FFD159;
+  opacity: 50%;
+  border: none;
+  margin-top: 0;
+  margin-bottom: 1em;
 }
 
 .sidebar-handprints {
@@ -514,7 +523,7 @@ h2::after {
   transform: translateX(-50%);
   width: 110%;
   height: 4px;
-  background: linear-gradient(to right, transparent, #FFD159, transparent);
+  background: linear-gradient(to right, transparent, #83BF6A, transparent);
 }
 
 .logo {
