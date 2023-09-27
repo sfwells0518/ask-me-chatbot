@@ -330,6 +330,7 @@ hr {
   text-decoration-color: #83BF6A;
   text-underline-offset: 10px;
   margin-bottom: 1em;
+  cursor: default;
 }
 
 .sidebar-content {
