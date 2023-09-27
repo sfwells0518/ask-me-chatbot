@@ -369,7 +369,8 @@ hr {
   margin-bottom: -0.5em;
   text-decoration: underline;
   text-decoration-style: dotted;
-  text-underline-offset: 3px;
+  text-decoration-color: #544F4F;
+  text-underline-offset: 4.5px;
 }
 
 .sidebar-btn h4 {
