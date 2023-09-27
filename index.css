@@ -354,10 +354,22 @@ hr {
   cursor: default;
   height: 20%;
   width: 90%;
+  font-family: Avenir;
+  opacity: 95%;
 }
 
 .sidebar-btn:hover {
   background-color: #FFD159;
+  opacity: 95%;
+}
+
+.sidebar-btn h3 {
+  font-weight: 500;
+  margin-bottom: -0.5em;
+}
+
+.sidebar-btn h4 {
+  font-style: italic;
 }
 
 .sidebar-handprints {
