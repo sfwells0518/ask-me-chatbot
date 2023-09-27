@@ -419,7 +419,7 @@ hr {
   padding-bottom: 1em;
   border: none !important;
   color: #ffffff;
-  margin-top: .5em;
+  margin-top: 0.55em;
   margin-bottom: auto;
   text-align: center;
   font-size: .75em;
@@ -521,11 +521,12 @@ h2::after {
   width: 110%;
   height: 4px;
   background: linear-gradient(to right, transparent, #83BF6A, transparent);
+  margin-bottom: 0.5em;
 }
 
 .logo {
   width: 8em;
-  margin-bottom: .25em;
+  margin-bottom: 0em;
 }
 
 .handprints {
@@ -928,7 +929,6 @@ button:focus {
 
   .clear-btn {
     margin-bottom: 0.5em;
-    margin-top: .1em;
     background-color: #FFD159;
   }
 
