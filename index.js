@@ -368,6 +368,7 @@ function fetchReply() {
 
       const botResponse = response.data.choices[0].message.content.replace(/^(User|Assistant): /, ""); // Remove the role prefix from the bot's response
 
+      console.log("Current conversation ID:", currentConversationID);
       console.log("Bot response data:", botResponse);
       console.log("Current user UID:", auth.currentUser.uid);
       const responseRef = ref(database, `users/${auth.currentUser.uid}/conversations/${currentConversationID}`);
@@ -405,8 +406,6 @@ function renderTypewriterText(text) {
   }
   requestAnimationFrame(animate);
 }
-
-
 
 let lastRenderedUserMessage = ""; // Store the last rendered user message outside function
 let previousConversations = [];
