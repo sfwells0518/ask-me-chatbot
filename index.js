@@ -406,48 +406,7 @@ function renderTypewriterText(text) {
   requestAnimationFrame(animate);
 }
 
-let suggestionHidden = true; // Initial State
 
-suggestionButtons.style.opacity = "0";
-suggestionButtons.style.transform = "translateX(-50%) translateY(0)";
-suggestionButtons.style.visibility = "hidden";
-promptToggle.style.transform = "translateY(185px)";
-
-const promptToggleText = document.querySelector("#prompt-toggle h5");
-promptToggleText.textContent = "Show Suggested Prompts";
-
-const hideIcon = document.querySelector(".hide-icon");
-const showIcon = document.querySelector(".show-icon");
-
-hideIcon.style.display = "none";
-showIcon.style.display = "inline-block";
-
-document.getElementById("prompt-toggle").addEventListener("click", () => {
-  if (suggestionHidden) {
-    // Show the suggestionButtons
-    suggestionButtons.style.opacity = "1";
-    suggestionButtons.style.visibility = "visible";
-    suggestionButtons.style.transform = "translateX(-50%) translateY(0)";
-    suggestionButtons.style.transitionDelay = "0s"; // No delay
-    promptToggle.style.transform = "translateY(0)";
-    promptToggleText.textContent = "Hide Suggested Prompts";
-    hideIcon.style.display = "inline-block";
-    showIcon.style.display = "none";
-  } else {
-    // Hide the suggestionButtons
-    suggestionButtons.style.opacity = "0";
-    suggestionButtons.style.transform = "translateX(-50%) translateY(100%)"; // Move it downwards
-    suggestionButtons.style.transitionDelay = "0s, 0s, 0.3s"; // Delay visibility
-    promptToggle.style.transform = "translateY(185px)"; // Move it half the height downwards
-    promptToggleText.textContent = "Show Suggested Prompts";
-    hideIcon.style.display = "none";
-    showIcon.style.display = "inline-block";
-    setTimeout(() => {
-      suggestionButtons.style.visibility = "hidden"; // Apply visibility hidden after a delay
-    }, 300); // This delay should match the transition duration
-  }
-  suggestionHidden = !suggestionHidden; // Toggle the state
-});
 
 let lastRenderedUserMessage = ""; // Store the last rendered user message outside function
 let previousConversations = [];
@@ -455,11 +414,6 @@ let previousConversations = [];
 function renderConversationFromDb(snapshot) {
   if (snapshot && snapshot.exists()) {
     const messages = Object.values(snapshot.val());
-    // Find the first user message and use it as a title
-    if (suggestionButtons.style.display !== "none" || promptToggle.style.display !== "none") {
-      suggestionButtons.style.display = "grid";
-      promptToggle.style.display = "flex";
-    }
   }
 }
 
