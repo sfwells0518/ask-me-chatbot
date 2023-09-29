@@ -107,6 +107,19 @@ body {
   margin-top: 2.5em;
 }
 
+.welcome-logo-container-mobile {
+  display: none;
+}
+  
+#welcome-logo-mobile {
+  display: none;
+}
+  
+.welcome-subtitle-mobile,
+.welcome-subtitle-mobile h2 {
+  display: none;
+}
+
 #authForm {
   display: flex;
   flex-direction: column;
@@ -912,15 +925,18 @@ button:focus {
   }
 
   .welcome-logo-container-mobile {
+    display: block;
     margin-bottom: 0;
   }
   #welcome-logo-mobile {
+    display: block;
     width: 150px;
     margin: 0.2em 0;
   }
   
   .welcome-subtitle-mobile,
   .welcome-subtitle-mobile h2 {
+    display: block;
     margin-bottom: 0.5em;
     font-weight: 300;
     font-family: Avenir;
