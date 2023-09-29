@@ -393,6 +393,7 @@ hr {
 }
 
 #signOutForm #signOutButton {
+  display: block;
   background-color: #83BF6A;
   border-radius: var(--border-rad-lg);
   border: #83BF6A;
@@ -410,6 +411,15 @@ hr {
 #signOutForm #signOutButton:hover {
   background-color: #72a55c;
   border: #72a55c;
+}
+
+/* signOutButtonMobile not visible on larger screens */
+
+#signOutFormMobile {
+  display: none;
+}
+#signOutFormMobile #signOutButtonMobile {
+  display: none;
 }
 
 
@@ -508,6 +518,14 @@ main {
 
 .chatbot-header>* {
   margin: .11em;
+}
+
+#hr-mobile {
+  display: none;
+}
+
+.clear-btn-mobile {
+  display: none;
 }
 
 h2 {
@@ -811,11 +829,11 @@ button {
 }
 
 button:hover {
-  background-color: #544F4F;
+  background-color: #6cb6bc;
 }
 
 button:active {
-  background-color: #81D3DB;
+  background-color: #6cb6bc;
 }
 
 button:focus {
@@ -890,16 +908,50 @@ button:focus {
   }
 
   .userAuth-container {
+    width: 100%;
+  }
+
+  .welcome-logo-container-mobile {
+    margin-bottom: 0;
+  }
+  #welcome-logo-mobile {
+    width: 150px;
+    margin: 0.2em 0;
+  }
+  
+  .welcome-subtitle-mobile,
+  .welcome-subtitle-mobile h2 {
+    margin-bottom: 0.5em;
+    font-weight: 300;
+    font-family: Avenir;
+  }
+
+  .auth-title-mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 0;
+    color: #544F4F;
+  }
+    
+  .auth-title-mobile h1 {
+    font-family: Avenir;
+    font-size: 1.35em;
+    font-weight: 100;
+  }
+
+  .sidebar {
     display: none;
   }
+
   
   .layout-container {
     flex-direction: column;
     min-height: 100vh;
     align-items: stretch;
   }
-
-
 
   .speech,
   .speech-ai,
@@ -911,27 +963,17 @@ button:focus {
     text-align: center;
     line-height: 1.5em;
     font-weight: 100;
-    max-width: 55%;
-    min-width: 52%;
+    max-width: 60%;
+    min-width: 50%;
     overflow-wrap: break-word;
     word-wrap: break-word;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
   }
   
   .logo {
     width: 8em;
     margin-top: 0em;
-  }
-
-  .prompt-display-toggle {
-    display: none;
-  }
-
-  .suggested-prompts {
-    display: none;
-  }
-
-  .suggestion-btn {
-    display: none;
   }
 
   .clear-btn {
@@ -953,65 +995,49 @@ button:focus {
 
   .chatbot-conversation-container {
     padding: 0.5em;
-    max-height: none;
+    max-height: calc(100vh - 300px);
+    overflow-y: auto;
+    margin-bottom: 1em;
   }
 
   .speech:first-child {
-    top: 33px;
-    margin-bottom: 3em;
+    top: 0px;
+    margin-bottom: 1em;
     height: auto;
+    margin-left: 0;
+    z-index: 1;
   }
-
-  .sidebar {
-    width: 100%;
-    border-right: none;
-    border-bottom: 1.5px solid #544F4F;
-    padding: .5em;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-  }
-
-  .sidebar ul {
-    display: none;
-  }
-
-  .sidebar ul li {
-    display: none;
-  }
-
-  .sidebar ul li a {
-    display: none;
-  }
-
-  .sidebar ul li a:hover {
-    display: none;
-  }
-
 
   .chatbot-container {
-    margin-left: 0;
+    display: flex;
+    flex-direction: column;
     width: 100%;
-    height: calc(100vh - 150px);
+    height: 100vh;
+  }
+
+  .chatbot-content {
+    flex: 1;/* take up vertical space */
+    overflow-y: auto; /* add vertical scrolling if content overflows */
+    padding: 0em;
   }
 
   .chatbot-input-container {
     flex-direction: column;
-    padding: .5em;
-    height: 7.15em;
-    margin-bottom: 6em;
+    padding: 0;
+    height: 7em;
+    margin-bottom: 0;
     display: flex;
     width: 100%;
   }
   
   input[type="text"] {
-    margin: 2em 0;
-    margin-bottom: 1em;
+    margin: 0;
+    margin-bottom: 0;
     padding-top: 6em;
     padding: 1.5em;
     background-color: transparent;
     border: 3px solid #81D3DB;
-    border-radius: 10px;
+    border-radius: var(--border-rad-lg);
     font-size: 14px;
     text-align: left;
   }
@@ -1021,7 +1047,11 @@ button:focus {
   }
 
   .submit-btn {
-    margin: -0.3em 5em;
+    margin: 0.35em 0.15em;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 400px;
+    border-radius: var(--border-rad-lg);
   }
 
   .chatbot-conversation-container {
@@ -1044,7 +1074,7 @@ button:focus {
   /* Styling to ensure the footer stays at the bottom on mobile */
   .footer-bg {
     position: sticky;
-    margin-bottom: 0.5em;
+    margin-bottom: 0em;
     left: 0;
     right: 0;
     transform: none;
@@ -1052,6 +1082,80 @@ button:focus {
     color: #544F4F;
     font-size: 1em;
     padding-top: .25em; 
+    margin-left: 0.35em;
+    margin-top: -0.25em;
+    width: 400px;
+    
+  }
+
+  #signOutFormMobile {
+    display: block;
+    margin-left: 19.5em;
+    position: relative;
+
+  }
+
+  #signOutFormMobile #signOutButtonMobile {
+    display: block;
+    background-color: #83BF6A;
+    border-radius: var(--border-rad-lg);
+    border: #83BF6A;
+    color: #ffffff;
+    font-weight: 800;
+    width: 100px;
+    margin-bottom: 0;
+    margin-top: 4.5em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    text-align: center;
+    font-family: Avenir;
+    position: relative;
+    z-index: 2;
+    margin-right: 0;
+  }
+  
+  #signOutFormMobile #signOutButtonMobile:hover {
+    background-color: #72a55c;
+    border: #72a55c;
+  }
+
+.clear-btn-mobile {
+  display: block;
+  position: absolute;
+  background-color: #544F4F;
+  border-radius: var(--border-rad-lg);
+  border: #544F4F;
+  color: #ffffff;
+  font-weight: 800;
+  width: 105px;
+  padding: 0.5em 0.75em;
+  text-align: center;
+  font-family: Avenir;
+  margin-right: 0.25em;
+  margin-left: 0.25em;
+  /* Adjust the margin as needed */
+  top: 4.65em;
+  /* Adjust the top position to your preference */
+  z-index: 1;
+  /* Ensure it's above other content */
+}
+
+.clear-btn-mobile:hover {
+  background-color: #4b4747;
+  border: #4b4747;
+}
+    
+  #hr-mobile {
+    display: flex;
+    position: sticky;
+    width: 100%;
+    height: 4px;
+    background: #FFD159;
+    border: none;
+    margin-top: -1em;
+    margin-bottom: -1em;
+    top: 0;
+    z-index: 2;
     
   }
 }
@@ -1097,6 +1201,7 @@ button:focus {
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: var(--border-rad-lg);
 }
 
 .send-btn-icon {

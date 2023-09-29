@@ -40,6 +40,7 @@ const authTitle = document.querySelector(".auth-title h1");
 const signUpButton = document.querySelector("#signUpButton");
 const signInButton = document.querySelector("#signInButton");
 const signOutButton = document.querySelector("#signOutButton");
+const signOutButtonMobile = document.querySelector("#signOutButtonMobile");
 const newBMain = document.querySelector(".layout-container");
 newBMain.style.display = "none";
 const userAuthContainer = document.querySelector(".userAuth-container");
@@ -242,6 +243,12 @@ if (signOutButton) {
   signOutButton.addEventListener("click", userSignOut);
 }
 
+if (signOutButtonMobile) {
+  signOutButtonMobile.addEventListener("click", userSignOut);
+}
+
+
+
 const conversationInDb = ref(database);
 
 const openai = new OpenAIApi(configuration);
@@ -258,6 +265,7 @@ const userInput = document.getElementById("user-input");
 const suggestionButtons = document.querySelector(".suggested-prompts");
 const promptToggle = document.getElementById("prompt-toggle");
 const clearButton = document.getElementById("clear-btn");
+const clearButtonMobile = document.getElementById("clear-btn-mobile");
 
 userInput.addEventListener("input", () => {
   const trimmedInput = userInput.value.trim();
@@ -283,6 +291,14 @@ function resetConversation() {
 }
 
 clearButton.addEventListener("click", () => {
+  // Reset the conversation in the UI
+  resetConversation();
+
+  // Reset the currentConversationID so a new one is generated for the next chat session
+  currentConversationID = null;
+});
+
+clearButtonMobile.addEventListener("click", () => {
   // Reset the conversation in the UI
   resetConversation();
 

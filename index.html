@@ -29,6 +29,12 @@
     </div>
 
     <div class="userAuth-container">
+      <div class="welcome-logo-container-mobile">
+        <img src="/newb-logo.png" id="welcome-logo-mobile">
+      </div>
+      <div class="welcome-subtitle-mobile">
+        <h2>A Parenting Advice Chatbot</h2>
+      </div>
       <div class="auth-title">
         <h1>Welcome Back, Newbie</h1>
       </div>
@@ -96,13 +102,6 @@
             <h4>Help me find the right balance for my preschooler's digital exposure.</h4>
           </button>
         </div>
-      
-        
-        <!--<div class="chat-history-container">
-          <ul id="chat-history-list">
-            < Chat history messages will be appended here 
-          </ul>
-        </div> -->
 
         <div class="sidebar-handprints">
           <img src="/handprints.png" class="handprints">
@@ -116,14 +115,20 @@
         <div class="chatbot-header">
           <div class="underline"></div>
         </div>
-
+        
         <div class="chatbot-content">
+          <div id="signOutFormMobile">
+            <button id="signOutButtonMobile">Log Out</button>
+          </div>
+          <button class="clear-btn-mobile" id="clear-btn-mobile">New Chat
+          </button>
+          <hr id="hr-mobile">
           <div class="chatbot-conversation-container" id="chatbot-conversation">
             <div class="speech speech-ai">
               <h4>Hey, newbie parent! What can I help you with today?</h4>
             </div>
           </div>
-          
+
           <form id="form" class="chatbot-input-container">
             <input name="user-input" type="text" id="user-input" placeholder="Send a message..." autocomplete="off"
               required>
@@ -135,9 +140,11 @@
         <div class="handprints-mobile">
           <img src="/handprints.png" class="handprints-mobile">
         </div>
+        
         <div class="footer-bg">
           <h6>*Our chatbot offers parenting advice based on ChatGPT's general knowledge. Remember, every family is unique. Consult professionals for tailored assistance.*</h6>
         </div>
+        
       </section> 
     </div>
   </main>
