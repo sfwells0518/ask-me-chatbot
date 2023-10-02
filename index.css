@@ -983,8 +983,8 @@ button:focus {
     min-width: 50%;
     overflow-wrap: break-word;
     word-wrap: break-word;
-    margin-left: 0.5em;
-    margin-right: 0.5em;
+    margin-left: -1em;
+    margin-right: -1em;
   }
   
   .logo {
@@ -1017,10 +1017,11 @@ button:focus {
   }
 
   .speech:first-child {
-    top: 0px;
+    top: 0;
     margin-bottom: 1em;
+    margin-top: -0.5em;
     height: auto;
-    margin-left: 0;
+    margin-left: -1em;
     z-index: 1;
   }
 
@@ -1066,7 +1067,7 @@ button:focus {
     margin: 0.35em 0.15em;
     padding-top: 5px;
     padding-bottom: 5px;
-    width: 400px;
+    width: 411px;
     border-radius: var(--border-rad-lg);
   }
 
@@ -1090,6 +1091,8 @@ button:focus {
   /* Styling to ensure the footer stays at the bottom on mobile */
   .footer-bg {
     position: sticky;
+    display: flex;
+    justify-content: center;
     margin-bottom: 0em;
     left: 0;
     right: 0;
@@ -1098,9 +1101,9 @@ button:focus {
     color: #544F4F;
     font-size: 1em;
     padding-top: .25em; 
-    margin-left: 0.35em;
-    margin-top: -0.25em;
-    width: 400px;
+    margin-left: 0em;
+    margin-top: 0.25em;
+    width: 415px;
     
   }
 
@@ -1120,7 +1123,7 @@ button:focus {
     font-weight: 800;
     width: 100px;
     margin-bottom: 0;
-    margin-top: 4.5em;
+    margin-top: 5.65em;
     padding-top: 0.5em;
     padding-bottom: 0.5em;
     text-align: center;
@@ -1150,7 +1153,7 @@ button:focus {
   margin-right: 0.25em;
   margin-left: 0.25em;
   /* Adjust the margin as needed */
-  top: 4.65em;
+  top: 5.65em;
   /* Adjust the top position to your preference */
   z-index: 1;
   /* Ensure it's above other content */
@@ -1161,22 +1164,21 @@ button:focus {
   border: #4b4747;
 }
     
-  #hr-mobile {
-    display: flex;
-    position: sticky;
-    width: 100%;
-    height: 4px;
-    background: #FFD159;
-    border: none;
-    margin-top: -1em;
-    margin-bottom: -1em;
-    top: 0;
-    z-index: 2;
-    
-  }
+#hr-mobile {
+  display: flex;
+  position: sticky;
+  width: 100%;
+  height: 4px;
+  background: #FFD159;
+  border: none;
+  margin-top: -2em;
+  margin-bottom: -4em;
+  top: 0;
+  z-index: 2; 
+}
 }
 
-@media (max-width: 480px) {
+@media (max-width: 390px) {
   
   .welcome-container {
       display: none;
@@ -1184,10 +1186,6 @@ button:focus {
 
   .userAuth-container {
       display: none;
-  }
-  
-  .sidebar ul li a {
-    font-size: 1.5em;
   }
 
   .chatbot-input-container {
@@ -1207,6 +1205,123 @@ button:focus {
   .speech {
     font-size: 12px;
     padding: 0.5em;
+  }
+
+  .speech:first-child {
+    top: 0px;
+    margin-bottom: 1em;
+    height: auto;
+    margin-left: 0;
+    z-index: 1;
+  }
+
+    .speech {
+      font-size: .75em;
+      padding: 0.7em;
+    }
+
+  .speech,
+  .speech-ai,
+  .speech-human {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    align-items: center;
+    text-align: center;
+    line-height: 1.5em;
+    font-weight: 100;
+    max-width: 60%;
+    min-width: 50%;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  #signOutFormMobile #signOutButtonMobile {
+    display: block;
+    background-color: #83BF6A;
+    border-radius: var(--border-rad-lg);
+    border: #83BF6A;
+    color: #ffffff;
+    font-weight: 800;
+    width: 100px;
+    margin-bottom: 1.5em;
+    margin-top: 4.6em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    text-align: center;
+    font-family: Avenir;
+    position: relative;
+    z-index: 2;
+    margin-left: -3em;
+  }
+    
+  #signOutFormMobile #signOutButtonMobile:hover {
+    background-color: #72a55c;
+    border: #72a55c;
+  }
+
+  .submit-btn {
+    margin: 0.35em 0.15em;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 362px;
+    border-radius: var(--border-rad-lg);
+  }
+
+    .clear-btn-mobile {
+      display: block;
+      position: absolute;
+      background-color: #544F4F;
+      border-radius: var(--border-rad-lg);
+      border: #544F4F;
+      color: #ffffff;
+      font-weight: 800;
+      width: 105px;
+      padding: 0.5em 0.75em;
+      text-align: center;
+      font-family: Avenir;
+      margin-right: 0.25em;
+      margin-left: 0.25em;
+      /* Adjust the margin as needed */
+      top: 4.65em;
+      /* Adjust the top position to your preference */
+      z-index: 1;
+      /* Ensure it's above other content */
+    }
+  
+    .clear-btn-mobile:hover {
+      background-color: #4b4747;
+      border: #4b4747;
+    }
+
+    #hr-mobile {
+      display: flex;
+      position: sticky;
+      width: 100%;
+      height: 4px;
+      background: #FFD159;
+      border: none;
+      margin-top: 0;
+      margin-bottom: 0;
+      top: 0;
+      z-index: 2;
+    }
+
+  .footer-bg {
+    position: sticky;
+    margin-bottom: 0em;
+    left: 0;
+    right: 0;
+    transform: none;
+    background-color: #eeeeee;
+    color: #544F4F;
+    font-size: 1em;
+    padding-top: .25em;
+    margin-left: 0.35em;
+    margin-top: -0.25em;
+    width: 365px;
   }
 }
 
