@@ -50,6 +50,7 @@ const signUpLink = document.querySelector(".signup-link");
 const authAltContainerH4 = document.querySelector(".auth-alt-container h4");
 const logInLink = document.querySelector(".login-link");
 const chatHistoryList = document.getElementById("chat-history-list");
+const passwordChars = document.querySelector("#password-chars");
 
 function openAuth(action) {
   // Depending on the action, show the corresponding form/content
@@ -58,6 +59,7 @@ function openAuth(action) {
     userNameInput.style.display = "none";
     signUpButton.style.display = "none";
     signInButton.style.display = "block";
+    passwordChars.style.display = "none";
     authTitle.innerHTML = "Welcome Back, Newbie";
     authAltContainerH4.innerHTML = 'Need an account? <a class="signup-link">Sign Up</a>';
   } else if (action === "signup") {
@@ -67,6 +69,7 @@ function openAuth(action) {
     signInButton.style.display = "none";
     authTitle.innerHTML = "Create Account";
     authAltContainerH4.innerHTML = 'Already have an account? <a class="login-link">Log In</a>';
+    passwordChars.style.display = "flex";
   }
 }
 
@@ -112,6 +115,7 @@ const userSignUp = async () => {
   const signUpPassword = userPassword.value;
   const userNameInput = document.getElementById("userName");
   const displayName = userNameInput.value;
+  
 
   try {
     justSignedUp = true; // flag is set to true before begging the sign up and profile update process

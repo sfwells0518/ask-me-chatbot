@@ -225,6 +225,20 @@ hr {
 
 }
 
+#password-chars {
+  display: flex;
+  margin-top: -1.5em;
+  margin-bottom: -2em;
+  margin-left: 0;
+}
+
+#password-chars h6 {
+  color: #F47575;
+  font-size: 0.65em;
+  font-weight: 500;
+  font-family: Avenir;
+}
+
 .button-container {
   display: flex;
   justify-content: center;
