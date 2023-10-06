@@ -1388,6 +1388,7 @@ button:focus {
 
   .chatbot-conversation-container {
     padding: 1.5em;
+    border: none;
   }
 
   .speech {
@@ -1445,7 +1446,8 @@ button:focus {
     font-family: Avenir;
     position: relative;
     z-index: 2;
-    margin-right: 0;
+    margin-right: 1em;
+    margin-left: -0.1em;
   }
   
   #signOutFormMobile #signOutButtonMobile:hover {
@@ -1515,6 +1517,7 @@ button:focus {
 
   .chatbot-conversation-container {
     padding: 10px;
+    border: none;
   }
 
   .speech {
