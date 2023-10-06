@@ -1,0 +1,8 @@
+{
+  "appId": "ask.me.chatbot",
+  "appName": "ask-me-chatbot",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "https"
+  }
+}
